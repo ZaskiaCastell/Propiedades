@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zaskia Castell · propiedades</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* Layout: dark header with stats, one tab per search, a grid of photo cards, full-screen photo viewer */
+:root{
+  --head:#173c34; --head-deep:#0c2420; --on-head:#f6f3ea;
+  --bg:#f3f5f3; --card:#ffffff; --ink:#1b2622; --muted:#62706a; --line:#dbe2de;
+  --accent:#1f6352; --accent-soft:#e2efe9; --note:#fbf3e2; --note-line:#ead9b0; --note-ink:#5b4a1f;
+  --hl:#e7eeeb; --hl-ink:#24413a;
+  --display:"Fraunces",Georgia,serif; --body:"Source Sans 3",system-ui,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#101614; --card:#18201d; --ink:#e6ece9; --muted:#9aa8a1; --line:#29332f;
+  --accent:#72c4a5; --accent-soft:#1c3029; --note:#2a2618; --note-line:#4a4126; --note-ink:#e2d3a6;
+  --hl:#1f2a26; --hl-ink:#cfe0d9; color-scheme:dark}}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:16px}
+header{background:linear-gradient(140deg,var(--head) 0%,var(--head-deep) 100%);color:var(--on-head);padding-block:26px 0}
+.brand{font-family:var(--display);font-weight:600;font-size:22px;letter-spacing:.01em;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,.18)}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;opacity:.8;font-weight:600}
+h1{font-family:var(--display);font-weight:500;font-size:clamp(26px,4vw,36px);line-height:1.1;margin-top:4px}
+.head-row{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap}
+.stats{display:flex;gap:22px}
+.stat{text-align:center}
+.stat .n{font-family:var(--display);font-size:26px;line-height:1}
+.stat .l{font-size:11px;opacity:.78;letter-spacing:.05em;text-transform:uppercase;margin-top:3px}
+.tabs{display:flex;gap:6px;margin-top:22px;overflow-x:auto;scrollbar-width:none}
+.tab{font:600 15px var(--body);color:var(--on-head);background:rgba(255,255,255,.08);border:0;border-radius:10px 10px 0 0;padding:11px 16px;cursor:pointer;white-space:nowrap;opacity:.85}
+.tab[aria-selected="true"]{background:var(--bg);color:var(--ink);opacity:1}
+.tab:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.note{background:var(--note);border:1px solid var(--note-line);color:var(--note-ink);border-radius:12px;padding:14px 16px;margin-top:20px;font-size:14.5px;line-height:1.6}
+.note b{font-weight:700}
+.controls{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.pill{font:600 14px var(--body);padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.pill[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.sec-head{display:flex;align-items:baseline;gap:12px;margin:24px 0 14px}
+.sec-head h2{font-family:var(--display);font-weight:500;font-size:22px;text-wrap:balance;min-width:0}
+.sec-head .rule{min-width:24px}
+.sec-head .meta{font-size:13.5px;color:var(--muted);white-space:nowrap}
+.rule{height:1px;background:var(--line);flex:1}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:18px;margin-bottom:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 1px 2px rgba(12,36,32,.05),0 6px 22px rgba(12,36,32,.07)}
+.card.ref{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+.thumb{position:relative;aspect-ratio:16/10;max-width:100%;background:var(--hl) center/cover no-repeat;cursor:pointer;border:0;width:100%;display:block}
+.badge{position:absolute;top:10px;left:10px;background:var(--accent);color:var(--bg);font-size:11.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:999px;padding:3px 10px}
+.photos{position:absolute;bottom:10px;left:10px;background:rgba(12,36,32,.78);color:#fff;border-radius:999px;padding:6px 12px;font-size:13px;font-weight:600}
+.body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:10px;flex:1}
+.card h3{font-family:var(--display);font-weight:500;font-size:19px;line-height:1.25}
+.area{font-size:13.5px;color:var(--muted);margin-top:-6px}
+.price{font-family:var(--display);font-size:23px;font-weight:600;color:var(--accent)}
+.price small{font-family:var(--body);font-size:13px;font-weight:400;color:var(--muted);margin-left:6px}
+.was{font-size:12.5px;color:var(--muted);text-decoration:line-through;margin-left:6px;font-family:var(--body);font-weight:400}
+.facts{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:14px;padding-block:8px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
+.facts b{font-weight:700}
+.desc{font-size:14px;line-height:1.55}
+.hl{background:var(--hl);border-radius:9px;padding:9px 12px;font-size:13.5px;color:var(--hl-ink)}
+.hl b{display:block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;color:var(--muted)}
+.hl ul{margin-left:16px}
+.hl li{margin:2px 0}
+.contact{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;font-size:13.5px;background:var(--accent-soft);border-radius:9px;padding:9px 12px}
+.contact .who{flex:1;min-width:0}
+.contact .who b{display:block;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.contact .tel{color:var(--ink);font-weight:600;text-decoration:none;white-space:nowrap;font-variant-numeric:tabular-nums}
+.wa{display:inline-flex;align-items:center;gap:6px;background:#1f8a4c;color:#fff;font-weight:700;font-size:13.5px;text-decoration:none;border-radius:999px;padding:7px 13px;white-space:nowrap}
+.wa:hover{background:#18743f}
+.contact .hint{font-size:12.5px;color:var(--muted);flex-basis:100%}
+.warn{font-size:13px;color:var(--note-ink);background:var(--note);border:1px solid var(--note-line);border-radius:8px;padding:7px 10px}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:auto;padding-top:11px;border-top:1px solid var(--line);flex-wrap:wrap}
+.go{font-weight:700;color:var(--accent);text-decoration:none;font-size:14.5px}
+.go:hover{text-decoration:underline}
+.verified{font-size:12.5px;color:var(--muted)}
+.empty{color:var(--muted);padding:20px 0}
+.links{display:grid;gap:8px;margin-bottom:10px}
+.links a{display:flex;justify-content:space-between;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 16px;color:var(--ink);text-decoration:none}
+.links a span:last-child{color:var(--accent);font-weight:700;white-space:nowrap}
+footer{text-align:center;color:var(--muted);font-size:13px;padding:30px 16px 24px;line-height:1.7}
+/* Photo viewer */
+.lb{position:fixed;inset:0;background:rgba(8,14,12,.94);z-index:50;display:flex;align-items:center;justify-content:center;padding:20px}
+.lb[hidden]{display:none}
+.lb-in{width:100%;max-width:min(940px,94vw);display:flex;flex-direction:column;align-items:center;gap:12px}
+.lb-img{position:relative;width:100%;display:flex;justify-content:center}
+.lb-img img{max-width:100%;max-height:70vh;border-radius:10px;object-fit:contain;background:#0c2420}
+.lb-x{position:absolute;top:-8px;right:-4px;background:#f6f3ea;color:#0c2420;border:0;width:36px;height:36px;border-radius:999px;font-size:18px;font-weight:700;cursor:pointer}
+.lb-row{display:flex;align-items:center;gap:14px;justify-content:center;width:100%}
+.lb-nav{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);color:#f6f3ea;width:44px;height:44px;border-radius:999px;font-size:22px;cursor:pointer;flex-shrink:0}
+.lb-meta{color:#f6f3ea;font-size:14px;text-align:center;opacity:.9}
+.lb-thumbs{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
+.lb-thumbs img{width:54px;height:40px;object-fit:cover;border-radius:5px;opacity:.5;cursor:pointer;border:2px solid transparent}
+.lb-thumbs img.on{opacity:1;border-color:#f6f3ea}
+@media (prefers-reduced-motion:no-preference){.card{transition:transform .15s ease}.card:hover{transform:translateY(-2px)}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <div class="brand">Zaskia Castell</div>
+        <div class="eyebrow">Bienes raíces · Ciudad de Panamá</div>
+        <h1>Propiedades seleccionadas</h1>
+      </div>
+      <div class="stats" id="stats"></div>
+    </div>
+    <div class="tabs" role="tablist" id="tabs"></div>
+  </div>
+</header>
+
+<main class="wrap" id="main"></main>
+
+<footer>
+  Datos tomados de anuncios públicos activos en Encuentra24, verificados uno por uno el 03/10/2026.<br>
+  Los precios y la disponibilidad pueden cambiar; confirma con el agente antes de visitar.
+  <div style="margin-top:18px;padding-top:16px;border-top:1px solid var(--line)"><div style="font-family:var(--display);font-size:18px;font-weight:600;color:var(--ink)">Zaskia Castell</div>
+  <div>Selección de opciones dentro del rango solicitado, con todas las fotos de cada propiedad en esta misma página.</div></div>
+</footer>
+
+<div class="lb" id="lb" hidden>
+  <div class="lb-in">
+    <div class="lb-img">
+      <button class="lb-x" id="lb-x" aria-label="Cerrar">✕</button>
+      <img id="lb-photo" src="" alt="Foto de la propiedad">
+    </div>
+    <div class="lb-row">
+      <button class="lb-nav" id="lb-prev" aria-label="Foto anterior">‹</button>
+      <div class="lb-meta"><b id="lb-title"></b><br><span id="lb-count"></span></div>
+      <button class="lb-nav" id="lb-next" aria-label="Foto siguiente">›</button>
+    </div>
+    <div class="lb-thumbs" id="lb-thumbs"></div>
+  </div>
+</div>
+
+<script>
+/* ---------- Fotos: carpeta del anuncio + códigos de cada foto ---------- */
+const PH="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/";
+const ph=(dir,codes)=>[...new Set(codes)].map(c=>PH+dir+c);
+const AP="https://www.encuentra24.com/panama-es/bienes-raices-alquiler-apartamentos/";
+const CR="https://www.encuentra24.com/panama-es/bienes-raices-alquiler-casas/";
+const CV="https://www.encuentra24.com/panama-es/bienes-raices-venta-de-propiedades-casas/";
+
+/* ---------- Búsquedas. Para agregar una nueva, se suma otro bloque. ---------- */
+const SEARCHES=[
+{
+ id:"david-lopez",
+ tab:"David López · casas en venta",
+ title:"Venta · Obarrio, San Francisco, Loma Alegre, Coco del Mar · con piscina · ≈ $550k",
+ note:"<b>Cliente: David López.</b> Casas en venta con piscina en Obarrio, San Francisco, Loma Alegre y Coco del Mar, con presupuesto alrededor de $550,000. Revisé Encuentra24, Compreoalquile, InmoPanamá y Rent-A-House. Las cuatro primeras están dentro del presupuesto; las dos últimas lo pasan, pero son las únicas con piscina en Coco del Mar y Loma Alegre. Cada tarjeta trae el contacto del corredor.",
+ ops:[{k:"ven",l:"Venta"}],
+ filters:[{k:"all",l:"Todas"},{k:"in",l:"Dentro del presupuesto"},{k:"out",l:"Arriba del presupuesto"}],
+ items:{ven:[
+  {name:"Obarrio I, piscina privada y terraza",area:"Obarrio · zona residencial con seguridad 24 h",price:489000,beds:3,baths:3.5,park:2,m2:320,
+   desc:"Casa de dos niveles con piscina privada y una terraza techada amplia para reuniones familiares. Cerca de Multiplaza y Soho Mall.",
+   hl:["Piscina privada","Terraza techada","Seguridad 24 horas","2 niveles"],
+   broker:"GREICORP Real Estate",hint:"El corredor no publica su número fuera del portal. Escríbele con el botón WhatsApp del anuncio.",
+   photos:ph("33/06/28/65/33062865_",["064f75f","91a5ebc","30d8a68","e5a868d","ca96040","de9f512","4db4f6a","fbc16e5","bf2d660","554bbd8"]),
+   url:"https://www.encuentra24.com/panama-en/real-estate-for-sale-houses-homes/house-in-obarrio-i-with-private-pool-and-terrace/33062865",ver:"04/10/2026"},
+  {name:"La Manzana de Obarrio",area:"Obarrio · urbanización privada",price:489000,beds:3,baths:3,park:2,m2:434,
+   desc:"Casa unifamiliar en urbanización privada, con piscina y mucha construcción para su terreno. La recámara principal tiene vestidor y baño.",
+   hl:["Piscina","Ático con piso de madera","Parking techado para 2","Céntrica y tranquila"],
+   broker:"Grupo Tribaldos",phone:"+507 6355-5573",wa:"50763555573",phone2:"Oficina: +507 300-2222",
+   photos:ph("32/84/46/96/32844696_",["3e521f","9dd3f0","1db8be","fb1797","c84429","ea6d41","00a9ba","6ca1bf","86778a","4d793e"]),
+   url:"https://www.encuentra24.com/panama-es/bienes-raices-venta-de-propiedades-casas/casa-en-venta-en-la-manzana-de-obarrio/32844696",ver:"04/10/2026"},
+  {name:"Obarrio, residencial privado",area:"Obarrio · Bella Vista",price:500000,beds:3,baths:3,park:2,m2:178,maint:"$110/mes",
+   desc:"Casa de tres niveles en residencial cerrado con seguridad 24 horas, piscina privada y portón automático. Cerca del centro financiero.",
+   hl:["Piscina privada","Residencial cerrado","Portón automático","Cerca de Calle 50"],
+   broker:"RN Realty Group",hint:"El corredor no publica su número fuera del portal. Escríbele con el botón WhatsApp del anuncio.",
+   photos:ph("32/71/55/92/32715592_5e808869886673e2ddb3ea33391d8470-",["c177e9d","8aaaded","2f23602","a158582","c1c4447","6db7e1f","210b7a3","26e0f1c","689c31f","c65318e"]),
+   url:"https://www.encuentra24.com/panama-es/bienes-raices-venta-de-propiedades-casas/venta-de-casa-en-obarrio-bella-vista-residencial-privado/32715592",ver:"04/10/2026"},
+  {name:"Calle Las Hortensias",area:"San Francisco · cerca del Parque Omar",price:500000,beds:3,baths:3,park:4,m2:262,
+   desc:"Casa con piscina privada en un terreno de 781 m², con mucho espacio exterior. Cerca de supermercados, restaurantes y el Parque Omar.",
+   hl:["Piscina privada","Terreno de 781 m²","4 parkings","Potencial de ampliación"],
+   broker:"Servmor Realty",phone:"+507 202-2121",hint:"Es el número de la oficina (no tiene WhatsApp publicado). Para WhatsApp, usa el botón del anuncio.",
+   photos:ph("32/96/29/41/32962941_",["568325","68d1e5","52b16b","203d7a","0b02f8","153509","d0609e","148a24","b38ec8","780d73"]),
+   url:"https://www.encuentra24.com/panama-es/bienes-raices-venta-de-propiedades-casas/casa-en-san-francisco-calle-las-hortensias-id-26678/32962941",ver:"04/10/2026"},
+  {name:"Coco del Mar, 5 recámaras",area:"Coco del Mar · cerca del Corredor Sur",price:735000,beds:5,baths:7,park:6,m2:528,maint:"$1/mes",
+   desc:"Tres niveles con piscina, terraza techada y rancho con baño. Es la única con piscina en Coco del Mar cerca del presupuesto.",
+   hl:["Piscina","Rancho con baño","6 parkings","Cuarto de servicio"],
+   warn:"Pasa el presupuesto por $185,000.",
+   broker:"Be Luxe Real Estate",hint:"El corredor no publica su número fuera del portal. Escríbele con el botón WhatsApp del anuncio.",
+   photos:ph("29/20/77/82/29207782_",["db7691","d47312","9d1ac0","152b26","f976f8","3a2888","a1bb3b","3e5a22","2b0097","9b28bf"]),
+   url:"https://www.encuentra24.com/panama-es/bienes-raices-venta-de-propiedades-casas/vendo-casa-en-coco-del-mar-15/29207782",ver:"04/10/2026"},
+  {name:"Loma Alegre, terreno de 1,045 m²",area:"Loma Alegre · junto a Altos del Golf",price:799500,beds:3,baths:3.5,park:5,m2:524,
+   desc:"Casa de dos niveles en un terreno grande y cercado, con piscina, bohío y vigilancia. El anuncio dice que el precio es negociable.",
+   hl:["Piscina y bohío","Precio negociable","Terreno de 1,045 m²","5 parkings"],
+   warn:"Pasa el presupuesto, pero el precio es negociable. Vale la pena preguntar.",
+   broker:"Zcajigarealty",hint:"El corredor no publica su número fuera del portal. Escríbele con el botón WhatsApp del anuncio.",
+   photos:ph("31/01/14/18/31011418_",["85a62b","aea906","e59dd9","d01acd","06ed22","63ef78","aa9db1","6cb4fd","bb759d","e37f7b"]),
+   url:"https://www.encuentra24.com/panama-es/bienes-raices-venta-de-propiedades-casas/casa-loma-alegre-negociable-unifamiliar-1045mt2-amplio-terreno-con-piscina/31011418",ver:"04/10/2026"}
+ ]},
+ links:[
+  ["Casas en venta en Obarrio","https://www.encuentra24.com/panama-es/bienes-raices-venta-de-propiedades-casas/prov-panama-ciudad-de-panama-obarrio"],
+  ["Casas en venta en Coco del Mar","https://www.encuentra24.com/panama-es/bienes-raices-venta-de-propiedades-casas/prov-panama-ciudad-de-panama-coco-del-mar"],
+  ["Casas con piscina en San Francisco","https://www.encuentra24.com/panama-es/bienes-raices-venta-de-propiedades-casas/prov-panama-ciudad-de-panama-san-francisco?q=keyword.piscina"]
+ ]
+},
+{
+ id:"carrasquilla",
+ tab:"Carrasquilla · apartamentos",
+ title:"Alquiler · Carrasquilla · 2R 2B · $750–1,000",
+ note:"<b>Búsqueda:</b> apartamentos en alquiler parecidos a los dos de referencia (PH Buona Vista y PH Taurus Tower): Carrasquilla y Vía España, 2 o 3 recámaras, 2 baños, 1 parking, entre $750 y $1,000 al mes. Toca cualquier foto para ver la galería completa sin salir de esta página.",
+ ops:[{k:"alq",l:"Alquiler"}],
+ filters:[{k:"all",l:"Todas"},{k:"r2",l:"2 recámaras"},{k:"r3",l:"3 recámaras"},{k:"am",l:"Con muebles"}],
+ items:{alq:[
+  {ref:true,name:"PH Buona Vista",area:"Carrasquilla · cerca de Vía Porras",price:850,beds:2,baths:2,park:1,m2:65,maint:"Incluido en el alquiler",
+   desc:"Apartamento todo eléctrico a pocos metros de Vía España, Vía Porras y el Hospital San Fernando. Entregan con línea blanca y A/C en las dos recámaras.",
+   hl:["Mantenimiento incluido","Piscina, gimnasio y squash","Seguridad 24/7","Sin muebles, con línea blanca"],
+   photos:ph("32/95/30/45/32953045_54c33b903be24283e9af3f564b6f3433-",["7299e59","b49a4a0","c6a356a","c209df0","4f65d9b","d5e2302","f070577","e8acaf3","f8a6fca","c09440a"]),
+   url:AP+"apartamento-en-carrasquilla-ph-buona-vista/32953045",ver:"02/10/2026"},
+  {ref:true,name:"PH Taurus Tower",area:"Carrasquilla · Vía España",price:850,beds:2,baths:2,park:1,m2:100,
+   desc:"El más amplio del grupo, con cuarto y baño de servicio. Se entrega con línea blanca y aires inverter, a unos 10 minutos caminando del Parque Omar.",
+   hl:["100 m²","Cuarto y baño de servicio","Aires inverter","Sin muebles"],
+   photos:ph("32/80/25/30/32802530_a352994fc682800a35626359a8d70c28-",["b5d9445","7682223","02ada3a","132f490","3eaed26","23d53f1","80ee648","1ccba54","009e703","e79a740"]),
+   url:AP+"ph-taurus-tower-via-espana-carrasquilla/32802530",ver:"03/10/2026"},
+  {name:"PH Plaza Valencia",area:"Carrasquilla · Vía España",price:750,beds:2,baths:2,park:1,m2:64,maint:"Agua y mantenimiento incluidos",
+   desc:"Piso 7 sobre Vía España, cerca de las estaciones de Metro Fernández de Córdoba y 12 de Octubre. Solo se paga luz e internet.",
+   hl:["Agua y mantenimiento incluidos","Cocina recién renovada","Lavadora y secadora","Cerca del Metro"],
+   photos:ph("33/07/84/00/33078400_",["2917317","ad8bce9","f9e4aea","b7c19b3","ad936a3","ec89c29","9f4bf74","2adf623","fc79b39","752117d"]),
+   url:AP+"alquilo-apartamento-2-recamaras-linea-blanca-a-c-ph-plaza-valencia-via-espana/33078400",ver:"03/10/2026"},
+  {name:"PH Royal Tower",area:"Carrasquilla",price:800,beds:2,baths:2,park:1,m2:76,
+   desc:"El más parecido en precio y tamaño a las dos de referencia. Acabados modernos, cerca de supermercados, clínicas y colegios.",
+   hl:["Balcón con malla de protección","Línea blanca incluida","Piscina y gimnasio","Seguridad 24 horas"],
+   photos:ph("33/07/90/70/33079070_",["091023e","c39d61c","e54c90d","ddf6c63","3cc3b33","fe6eef2","4005666","a494495","5593817","97ca67c"]),
+   url:AP+"alquiler-de-apartamento-en-ph-royal-tower-carrasquilla/33079070",ver:"03/10/2026"},
+  {name:"Sunshine by the Park",area:"Carrasquilla · Parque Omar",price:900,beds:3,baths:2,park:1,m2:83,am:true,
+   desc:"Tres recámaras con vista al Parque Omar, cerca de comercios y bancos. El edificio tiene piscina, gimnasio, cancha y parque infantil.",
+   hl:["3 recámaras por $50 más","Amoblado","Vista al Parque Omar","Seguridad 24 horas"],
+   photos:ph("33/03/16/70/33031670_",["de6ddc5","fb0ac8c","ff571ff","afd3109","c3f7014","052dc01","607b35e","4313d2a","01c0f8b","db4baf1"]),
+   url:AP+"alquiler-apartamento-3rec-vista-al-parque-omar-sunshine-by-the-park/33031670",ver:"03/10/2026"},
+  {name:"Amoblado sobre Vía España",area:"Carrasquilla · Vía España",price:950,beds:2,baths:2,park:1,m2:70,am:true,
+   desc:"Piso 26, completamente amoblado y con A/C en sala y recámaras. Área social con piscina, gimnasio, salón de eventos y BBQ.",
+   hl:["Amoblado completo","Piso 26","A/C en todos los ambientes","Cerca del Parque Omar"],
+   photos:ph("33/04/34/27/33043427_",["964c239","75af5ab","1010f2e","c98d4b4","2489648","c2d6c9c","63744f3","c1f7b95"]),
+   url:AP+"alquilo-apartamento-amoblado-en-carrasquilla-sobre-la-via-espana/33043427",ver:"29/09/2026"},
+  {name:"PH Green Point",area:"Carrasquilla · Parque Omar",price:950,beds:3,baths:2,park:1,m2:80,am:true,
+   desc:"Semiamoblado, con acceso directo al Parque Omar desde el edificio. Incluye camas, línea blanca, aires y un depósito privado.",
+   hl:["Acceso directo al parque","Semiamoblado","Depósito privado","Piscina y gimnasio"],
+   photos:ph("32/99/92/99/32999299_",["d010293","d433b02","f1aa93d","a96c976","2956bb2","733eb68","5b5277b","1b0209b","fa28b5b","49a5510"]),
+   url:AP+"alquiler-en-ph-green-point-acceso-directo-al-parque-omar-3-recamaras/32999299",ver:"01/10/2026"},
+  {name:"Vista al Parque Omar",area:"Carrasquilla",price:1000,beds:2,baths:2,park:1,m2:70,
+   desc:"Balcón con vista panorámica al Parque Omar y entrega inmediata. Edificio con piscina, canchas, coworking y gimnasio.",
+   hl:["Vista al parque","Entrega inmediata","Coworking en el edificio","Canchas de fútbol y básquet"],
+   warn:"El título dice amoblado, pero la ficha del anuncio dice que no. Confirmar con el agente.",
+   photos:ph("33/04/92/91/33049291_",["6f1d6e5","cecab3d","db88aa2","59c4dc3","683e346","49903af","141a54b","7f39900","75946c4","c8d35c4"]),
+   url:AP+"apartamento-con-vista-al-parque-omar-amoblado-1-000/33049291",ver:"03/10/2026"},
+  {name:"Full amoblado",area:"Carrasquilla",price:1000,beds:2,baths:2,park:1,m2:70,am:true,
+   desc:"Listo para entrar a vivir, completamente amueblado. Cerca de hospitales, colegios y farmacias.",
+   hl:["Amoblado completo","Piscina y gimnasio","Seguridad 24 horas","Cerca de servicios"],
+   photos:ph("33/06/56/85/33065685_",["a9b6780","5f3f4b3","a4d64ff","b682e50","f650499","764663c","af131db","6140683","c1c73d0","68b6100"]),
+   url:AP+"se-alquila-apartamento-full-amoblado/33065685",ver:"03/10/2026"},
+  {name:"Precioso apartamento en Vía España",area:"Carrasquilla · Vía España",price:1000,was:1099,beds:3,baths:2,park:1,m2:82,am:true,
+   desc:"Proyecto reciente, totalmente amoblado y cerca del Parque Omar. Piden un mes de depósito y un mes adelantado.",
+   hl:["Bajó de $1,099","Amoblado","Coworking y piscina","Parque infantil"],
+   photos:ph("32/99/99/10/32999910_",["b923fb1","5048670","cca5a81","0e8aa44","fa3fa8f","49cbb85","51efb5c","857a025","9a3b34f","95e8111"]),
+   url:AP+"alquilo-precioso-apartamento-en-via-espana/32999910",ver:"02/10/2026"}
+ ]},
+ links:[["Todos los alquileres en Carrasquilla","https://www.encuentra24.com/panama-es/bienes-raices-alquiler-apartamentos/prov-panama-ciudad-de-panama-carrasquilla"]]
+},
+{
+ id:"costa-del-este",
+ tab:"Costa del Este · casas",
+ title:"Alquiler y venta · Costa del Este · casas",
+ note:"<b>Búsqueda:</b> casas en Costa del Este, en alquiler y en venta, para tener una idea de precios en la zona. Cambia entre alquiler y venta con los botones. Toca cualquier foto para ver la galería completa.",
+ ops:[{k:"alq",l:"Alquiler"},{k:"ven",l:"Venta"}],
+ filters:[{k:"all",l:"Todas"},{k:"r3",l:"3 recámaras"},{k:"r4",l:"4 recámaras"},{k:"r5",l:"5 o más"}],
+ items:{
+ alq:[
+  {name:"Dúplex en Palmeras del Este",area:"Frente al Colegio San Agustín",price:2900,beds:3,baths:3.5,park:2,m2:340,
+   desc:"Casa dúplex renovada, con acabados modernos y cada recámara con su baño. Zona segura y planificada, con buena salida.",
+   hl:["Cocina renovada y terraza techada","Cuarto y baño de servicio","Seguridad 24/7","Frente a colegio"],
+   photos:ph("32/05/93/74/32059374_",["4492c28","2263603","a46a6ae","e054c64","7253031","6416be1","5dcb68e","9f4dc28","2015e53"]),
+   url:CR+"se-alquila-casa-duplex-en-palmeras-del-este-frente-al-colegio-san-agustin/32059374",ver:"03/10/2026"},
+  {name:"PH Costa Bay",area:"Costa del Este",price:3500,beds:3,baths:2.5,park:2,m2:315,
+   desc:"Casa amplia en PH Costa Bay con piscina comunitaria, gimnasio y parque infantil. Salida rápida al Corredor Sur.",
+   hl:["Piscina y gimnasio","Parque infantil","Cuarto de servicio","Seguridad 24 horas"],
+   photos:ph("32/97/56/35/32975635_",["416fd7","a0ceee","b262a5","a6231d","b0b49e","a912e6","7876c9","70265f","3f2d63","845412"]),
+   url:CR+"casa-en-alquiler-costa-bay-costa-del-este/32975635",ver:"03/10/2026"},
+  {name:"Palmeras del Este, amoblada",area:"Costa del Este · solo cliente directo",price:3500,beds:3,baths:3,park:2,m2:296,am:true,
+   desc:"Casa amoblada con acabados de primera, jardín y gimnasio en el residencial. Incluye cuarto y baño de servicio.",
+   hl:["Amoblada","Jardín","Cuarto de servicio","Solo cliente directo"],
+   photos:ph("32/85/52/35/32855235_18e9e74deec5bff849bdbcec3cafd74d-",["a450073","ee817a5","475dc4c","6f66fd8","94901ae","7c02de2","5aaa4e6","864a1a2","79ce770","1b8ed40"]),
+   url:CR+"alquiler-de-casa-en-costa-del-este-palmeras-del-este-solo-cliente-directo-lfc/32855235",ver:"03/10/2026"},
+  {name:"Costa Bella",area:"Costa del Este",price:4500,beds:3,baths:3.5,park:4,m2:500,maint:"$1/mes",
+   desc:"Con paneles solares, así que prácticamente no se paga luz. Piscina con cascada, terraza con BBQ y estudio para oficina.",
+   hl:["Paneles solares","Piscina con cascada","Estudio para oficina","8 cámaras de seguridad"],
+   photos:ph("32/85/50/57/32855057_452bec290b91a5a6d34310927bc7ba12-",["b4278be","7864929","1e3b99e","7899bab","c145ff1","b45b660","3920f0f","c6364de","8cdbf8f","05cd466"]),
+   url:CR+"casa-en-alquiler-en-costa-bella-costa-del-este-cig271208/32855057",ver:"03/10/2026"},
+  {name:"Costa Serena (anuncio AK)",area:"Costa del Este · Costa Serena",price:4800,was:5000,beds:4,baths:5,park:2,m2:425,maint:"$1/mes",
+   desc:"Lote de 625 m² con piscina privada y jardín amplio. Cada recámara tiene su baño y aire minisplit. Aceptan mascotas.",
+   hl:["Piscina privada","Jardín amplio","Acepta mascotas","Bajó de $5,000"],
+   warn:"Parece ser la misma casa que el anuncio de $5,000 y la que está en venta en $1.2 millones. Vale la pena preguntar.",
+   photos:ph("32/93/84/42/32938442_",["36262a2","d68320b","310bc9d4b1df806001f825baaf4b5b7c-6710e2a","310bc9d4b1df806001f825baaf4b5b7c-a29a1d6","310bc9d4b1df806001f825baaf4b5b7c-db26707","310bc9d4b1df806001f825baaf4b5b7c-bb8a556","310bc9d4b1df806001f825baaf4b5b7c-6155de8","310bc9d4b1df806001f825baaf4b5b7c-9348558"]),
+   url:CR+"alquiler-de-casa-en-costa-del-este-ak/32938442",ver:"03/10/2026"},
+  {name:"Costa Serena (anuncio 27LBR1890)",area:"Costa del Este · Costa Serena",price:5000,beds:4,baths:4.5,park:2,m2:425,
+   desc:"425 m² en lote de 625 m², con piscina privada, estudio, cuarto de servicio y parking techado para dos autos.",
+   hl:["Piscina privada","Estudio","Cuarto de servicio","Parking techado"],
+   photos:ph("32/93/55/44/32935544_c9e970fa87fa893fa0a4adcdf648578d-",["25fba14","1a0ba56","dacf4cd","1d2a06c","4133d0b","3ccbbea","323e2a7","7fae767","b5bd73d","bbbd40b"]),
+   url:CR+"alquiler-de-casa-en-costa-del-este-27lbr1890/32935544",ver:"03/10/2026"},
+  {name:"Casa en esquina con paneles solares",area:"Costa del Este · calle sin salida",price:6500,beds:4,baths:4.5,park:3,m2:460,am:true,
+   desc:"En esquina, en calle sin salida. Se puede rentar semiamueblada o solo con línea blanca. Pisos de mármol, piscina y terraza con minibar.",
+   hl:["Paneles solares","Cocina remodelada","Den y sala familiar","Semiamueblada opcional"],
+   photos:ph("32/09/48/07/32094807_",["3e975cf","7c71c0b","fbffed2","0be5294","22520d4","1d22ecd"]),
+   url:CR+"alquilo-casa-en-costa-del-este/32094807",ver:"03/10/2026"},
+  {name:"Residencial Antigua",area:"Costa del Este · Antigua",price:9500,was:10000,beds:5,baths:7,park:5,m2:630,
+   desc:"Residencia de dos niveles en residencial privado, cerca de colegios. Piscina con tobogán, gazebo con baño, BBQ y horno de pizza.",
+   hl:["Piscina con tobogán","Gazebo y horno de pizza","5 parkings","Bajó de $10,000"],
+   photos:ph("31/88/90/72/31889072_",["88f6fe","29f64b5","147e996","dea785c","646397d","9d68050","7880e17","091ee46","514dc76","bca280d"]),
+   url:CR+"alquilo-casa-en-ph-antigua-costa-del-este/31889072",ver:"03/10/2026"}
+ ],
+ ven:[
+  {name:"Palmeras del Este, con patio",area:"Costa del Este · Palmeras del Este",price:680000,beds:4,baths:4.5,park:3,m2:340,maint:"$220/mes",
+   desc:"Tres recámaras más un den convertible, oficina y patio amplio. Doble altura en la entrada y terraza con BBQ. Precio negociable.",
+   hl:["Den + oficina","Patio y BBQ","Línea blanca incluida","Precio negociable"],
+   photos:ph("31/55/41/70/31554170_",["2e95ce","f59701","789aa8","559709","9b7737","d9c2eb","468529","94b41e","ec9b78","8c58a5"]),
+   url:CV+"venta-de-casa-con-patio-en-costa-del-este-den-oficina/31554170",ver:"03/10/2026"},
+  {name:"Casa familiar con piscina",area:"Costa del Este",price:850000,beds:3,baths:3.5,park:2,m2:366,maint:"$220/mes",
+   desc:"De dos niveles, con sala familiar abierta hacia la terraza, el jardín y la piscina. Suite principal con tina.",
+   hl:["Piscina y jardín","Suite con tina","Cuarto de servicio","Parking techado"],
+   photos:ph("29/05/93/71/29059371_",["6ab68f","d1df4d","f7bf56","bacc9d","e62ddd","0b2b65","3115d4","8eb02d","e69e1d","8affeb"]),
+   url:CV+"vendo-casa-en-costa-del-este/29059371",ver:"03/10/2026"},
+  {name:"PH Costa Azul, remodelada",area:"Costa del Este · Costa Azul",price:1050000,beds:4,baths:4.5,park:2,m2:424,maint:"$200/mes",
+   desc:"Completamente remodelada, con piscina privada, den familiar y terraza cerrada con aire acondicionado.",
+   hl:["Remodelada","Piscina privada","Terraza con A/C","Área de BBQ"],
+   photos:ph("32/91/06/82/32910682_",["b37668","3cae28","6ff6e5","38e2a7","2a6947","3881d6","3f11ec","8fc830","bedee1","91f873"]),
+   url:CV+"venta-de-casa-en-costa-del-este-ph-costa-azul/32910682",ver:"03/10/2026"},
+  {name:"Costa Serena (también en alquiler)",area:"Costa del Este · Costa Serena",price:1200000,beds:4,baths:4.5,park:4,m2:425,
+   desc:"425 m² en lote de 625 m², con piscina, jardín privado y estudio. Comunidad cerrada cerca de colegios internacionales.",
+   hl:["Piscina y jardín","Estudio para oficina","Acepta mascotas","Se vende o se alquila"],
+   photos:ph("32/98/07/38/32980738_",["a73466","729f53","9a1079","987715","b318fb","e4db77","a425c4","4f03a3","4aa7fc","58036b"]),
+   url:CV+"se-vende-o-se-alquila-casa-en-costa-serena-costa-del-este/32980738",ver:"03/10/2026"},
+  {name:"Antigua, esquina con paneles solares",area:"Costa del Este · Antigua",price:1300000,beds:4,baths:3,park:3,m2:560,
+   desc:"Lote de esquina con piscina privada y paneles solares que cubren casi todo el consumo eléctrico. Cerca de Town Center.",
+   hl:["Paneles solares","Lote de esquina","Piscina privada","Comunidad cerrada"],
+   photos:ph("32/49/83/75/32498375_",["6053a5","ac103a","503c8f","97acc9","5364f7","55406e","a29852","0e7d85","c961b0","785e61"]),
+   url:CV+"casa-en-venta-en-antigua-costa-del-este-paneles-solares/32498375",ver:"03/10/2026"},
+  {name:"Paseo del Parque",area:"Costa del Este · a pasos de Town Center",price:1890000,beds:5,baths:4,park:4,m2:892,
+   desc:"Dos niveles en comunidad privada, con sala de doble altura, comedor independiente, den y piscina. La cocina se puede remodelar.",
+   hl:["Doble altura","Piscina privada","Garaje para 4 autos","Cerca de Town Center"],
+   photos:ph("32/94/63/79/32946379_",["2111b5","09df6b","fff77c","c07c1f","1c49ad","d80318","a018fe","e21d53","7bfde0","d6a131"]),
+   url:CV+"se-vende-casa-en-paseo-del-parque-costa-del-este/32946379",ver:"03/10/2026"},
+  {name:"Royal Pacific, residencia de lujo",area:"Costa del Este · Royal Pacific",price:3400000,beds:5,baths:5.5,park:4,m2:1065,maint:"$1/mes",
+   desc:"Terreno de 2,137 m². Cinco recámaras con baño y walk-in closet, salón de entretenimiento con bar, billar y gimnasio.",
+   hl:["Escalera imperial de mármol","Bar, billar y gimnasio","Walk-in closet en cada recámara","Cochera cerrada"],
+   photos:ph("32/58/56/14/32585614_7f8930fda77a49e3d6d342bde3f9a7c5-",["323855a","fe70894","f9330f8","9df12d4","8fd292e","fa22980","8cab9ae","f56a1f6","3477c21","a443752"]),
+   url:CV+"residencia-de-lujo-en-royal-pacific-5rcs-3-4m/32585614",ver:"03/10/2026"}
+ ]},
+ links:[
+  ["Todas las casas en alquiler en Costa del Este","https://www.encuentra24.com/panama-es/bienes-raices-alquiler-casas/prov-panama-ciudad-de-panama-costa-del-este"],
+  ["Todas las casas en venta en Costa del Este","https://www.encuentra24.com/panama-es/bienes-raices-venta-de-propiedades-casas/prov-panama-ciudad-de-panama-costa-del-este"]
+ ]
+}
+];
+
+/* ---------- Página ---------- */
+const money=n=>"$"+n.toLocaleString("en-US");
+const st={s:SEARCHES[0],op:SEARCHES[0].ops[0].k,f:"all"};
+const all=s=>Object.values(s.items).flat();
+
+function stats(){
+  const total=SEARCHES.reduce((a,s)=>a+all(s).length,0);
+  document.getElementById("stats").innerHTML=
+   `<div class="stat"><div class="n">${SEARCHES.length}</div><div class="l">Búsquedas</div></div>
+    <div class="stat"><div class="n">${total}</div><div class="l">Propiedades</div></div>`;
+}
+function tabs(){
+  document.getElementById("tabs").innerHTML=SEARCHES.map(s=>
+   `<button class="tab" role="tab" aria-selected="${s===st.s}" data-id="${s.id}">${s.tab}</button>`).join("");
+  document.querySelectorAll(".tab").forEach(b=>b.onclick=()=>{
+    st.s=SEARCHES.find(x=>x.id===b.dataset.id);st.op=st.s.ops[0].k;st.f="all";
+    history.replaceState(null,"","#"+st.s.id);tabs();page();});
+}
+function match(p,f){return f==="all"||(f==="in"&&p.price<=600000)||(f==="out"&&p.price>600000)||(f==="am"&&p.am)||(f==="r5"&&p.beds>=5)||(/^r[234]$/.test(f)&&p.beds===+f[1])}
+function card(p,rent,i){
+  const ppm=!rent&&p.m2?`<small>${money(Math.round(p.price/p.m2))}/m²</small>`:(rent?"<small>al mes</small>":"");
+  return `<article class="card${p.ref?" ref":""}">
+   <button class="thumb" style="background-image:url('${p.photos[0]}')" data-i="${i}" aria-label="Ver fotos de ${p.name}">
+     ${p.ref?'<span class="badge">Referencia</span>':""}
+     <span class="photos">📷 Ver las ${p.photos.length} fotos</span>
+   </button>
+   <div class="body">
+     <h3>${p.name}</h3>
+     <div class="area">${p.area}</div>
+     <div class="price">${money(p.price)}${p.was?`<span class="was">${money(p.was)}</span>`:""}${ppm}</div>
+     <div class="facts"><span><b>${p.beds}</b> rec</span><span><b>${p.baths}</b> baños</span><span><b>${p.park}</b> parking</span><span><b>${p.m2}</b> m²</span></div>
+     <p class="desc">${p.desc}</p>
+     <div class="hl"><b>Destacados</b><ul>${p.hl.map(h=>`<li>${h}</li>`).join("")}</ul></div>
+     ${p.warn?`<div class="warn">⚠ ${p.warn}</div>`:""}
+     ${p.maint?`<div class="verified">Mantenimiento: ${p.maint}</div>`:""}
+     ${p.broker?`<div class="contact"><div class="who"><b>Corredor</b>${p.broker}${p.phone?`<br><a class="tel" href="tel:${p.phone.replace(/[^+\d]/g,"")}">${p.phone}</a>`:""}${p.phone2?` <span class="verified">· ${p.phone2}</span>`:""}</div>
+       <a class="wa" href="${p.wa?`https://wa.me/${p.wa}?text=${encodeURIComponent("Hola, me interesa la casa \""+p.name+"\" ("+money(p.price)+"). "+p.url)}`:p.url}" target="_blank" rel="noopener">WhatsApp</a>
+       ${p.hint?`<span class="hint">${p.hint}</span>`:""}</div>`:""}
+     <div class="foot"><a class="go" href="${p.url}" target="_blank" rel="noopener">Ver anuncio →</a><span class="verified">verificado ${p.ver}</span></div>
+   </div></article>`;
+}
+let shown=[];
+function page(){
+  const s=st.s,rent=st.op==="alq";
+  shown=s.items[st.op].filter(p=>match(p,st.f)).sort((a,b)=>(b.ref?1:0)-(a.ref?1:0)||a.price-b.price);
+  const ps=shown.map(p=>p.price);
+  document.getElementById("main").innerHTML=`
+   <div class="note">${s.note}</div>
+   <div class="controls">
+     ${s.ops.length>1?s.ops.map(o=>`<button class="pill" data-op="${o.k}" aria-pressed="${o.k===st.op}">${o.l}</button>`).join("")+'<span style="width:10px"></span>':""}
+     ${s.filters.map(f=>`<button class="pill" data-f="${f.k}" aria-pressed="${f.k===st.f}">${f.l}</button>`).join("")}
+   </div>
+   <div class="sec-head"><h2>${s.title}</h2><div class="rule"></div></div>
+   <p class="verified" style="margin:-6px 0 14px">${shown.length?`${shown.length} propiedades · de ${money(Math.min(...ps))} a ${money(Math.max(...ps))}${rent?" al mes":""}`:""}</p>
+   ${shown.length?`<div class="grid">${shown.map((p,i)=>card(p,rent,i)).join("")}</div>`:'<p class="empty">No hay propiedades con ese filtro.</p>'}
+   <div class="sec-head"><h2>Seguir buscando</h2><div class="rule"></div></div>
+   <div class="links">${s.links.map(([t,u])=>`<a href="${u}" target="_blank" rel="noopener"><span>${t}</span><span>Abrir →</span></a>`).join("")}</div>`;
+  document.querySelectorAll("[data-op]").forEach(b=>b.onclick=()=>{st.op=b.dataset.op;st.f="all";page()});
+  document.querySelectorAll("[data-f]").forEach(b=>b.onclick=()=>{st.f=b.dataset.f;page()});
+  document.querySelectorAll(".thumb").forEach(b=>b.onclick=()=>openLb(shown[+b.dataset.i]));
+}
+
+/* ---------- Visor de fotos ---------- */
+const lb=document.getElementById("lb");let G=[],gi=0;
+function openLb(p){G=p.photos;gi=0;document.getElementById("lb-title").textContent=p.name;
+  document.getElementById("lb-thumbs").innerHTML=G.map((u,i)=>`<img src="${u}" data-i="${i}" alt="">`).join("");
+  document.querySelectorAll("#lb-thumbs img").forEach(t=>t.onclick=()=>{gi=+t.dataset.i;show()});
+  show();lb.hidden=false;document.body.style.overflow="hidden";}
+function closeLb(){lb.hidden=true;document.body.style.overflow="";}
+function show(){document.getElementById("lb-photo").src=G[gi];document.getElementById("lb-count").textContent=(gi+1)+" / "+G.length;
+  document.querySelectorAll("#lb-thumbs img").forEach((t,i)=>t.classList.toggle("on",i===gi));}
+const step=d=>{gi=(gi+d+G.length)%G.length;show()};
+document.getElementById("lb-x").onclick=closeLb;
+document.getElementById("lb-prev").onclick=()=>step(-1);
+document.getElementById("lb-next").onclick=()=>step(1);
+lb.addEventListener("click",e=>{if(e.target===lb)closeLb()});
+document.addEventListener("keydown",e=>{if(lb.hidden)return;if(e.key==="Escape")closeLb();if(e.key==="ArrowRight")step(1);if(e.key==="ArrowLeft")step(-1)});
+let tx=null;lb.addEventListener("touchstart",e=>tx=e.touches[0].clientX,{passive:true});
+lb.addEventListener("touchend",e=>{if(tx===null)return;const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>40)step(dx<0?1:-1);tx=null});
+
+/* ---------- Inicio ---------- */
+const h=location.hash.slice(1);if(h){const f=SEARCHES.find(s=>s.id===h);if(f){st.s=f;st.op=f.ops[0].k}}
+stats();tabs();page();
+</script>
+</body>
+</html>
