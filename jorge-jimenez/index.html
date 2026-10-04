@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Selección para Jorge Enrique Jiménez · Zaskia Castell</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* Layout: branded header with client name, short note, one column of large photo cards, contact block at the end */
+:root{
+  --head:#173c34; --head-deep:#0c2420; --on-head:#f6f3ea;
+  --bg:#f3f5f3; --card:#ffffff; --ink:#1b2622; --muted:#62706a; --line:#dbe2de;
+  --accent:#1f6352; --accent-soft:#e2efe9; --hl:#e7eeeb; --hl-ink:#24413a;
+  --display:"Fraunces",Georgia,serif; --body:"Source Sans 3",system-ui,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#101614; --card:#18201d; --ink:#e6ece9; --muted:#9aa8a1; --line:#29332f;
+  --accent:#72c4a5; --accent-soft:#1c3029; --hl:#1f2a26; --hl-ink:#cfe0d9; color-scheme:dark}}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{max-width:860px;margin:0 auto;padding-inline:16px}
+header{background:linear-gradient(140deg,var(--head) 0%,var(--head-deep) 100%);color:var(--on-head);padding-block:26px 30px}
+.brand{font-family:var(--display);font-weight:600;font-size:22px;padding-bottom:12px;margin-bottom:16px;border-bottom:1px solid rgba(255,255,255,.18)}
+.brand span{display:block;font-family:var(--body);font-weight:400;font-size:13px;opacity:.8;letter-spacing:.06em;text-transform:uppercase;margin-top:2px}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;opacity:.8;font-weight:600}
+h1{font-family:var(--display);font-weight:500;font-size:clamp(26px,5vw,36px);line-height:1.1;margin-top:4px;text-wrap:balance}
+.intro{margin-top:12px;max-width:60ch;opacity:.9;font-size:15.5px}
+main{display:grid;gap:22px;padding-block:24px 8px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 1px 2px rgba(12,36,32,.05),0 6px 22px rgba(12,36,32,.07)}
+.thumb{position:relative;display:block;width:100%;aspect-ratio:16/10;max-width:100%;border:0;background:var(--hl) center/cover no-repeat;cursor:pointer}
+.num{position:absolute;top:12px;left:12px;background:var(--accent);color:var(--bg);font-weight:700;font-size:12px;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:4px 11px}
+.photos{position:absolute;bottom:12px;left:12px;background:rgba(12,36,32,.8);color:#fff;border-radius:999px;padding:7px 13px;font-size:14px;font-weight:600}
+.strip{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;padding:4px;background:var(--card)}
+.strip button{aspect-ratio:4/3;border:0;border-radius:6px;background:var(--hl) center/cover no-repeat;cursor:pointer}
+.body{padding:16px 18px 20px;display:grid;gap:12px}
+.card h2{font-family:var(--display);font-weight:500;font-size:22px;line-height:1.2;text-wrap:balance}
+.area{font-size:14px;color:var(--muted);margin-top:-8px}
+.price{font-family:var(--display);font-size:26px;font-weight:600;color:var(--accent)}
+.price small{font-family:var(--body);font-size:13px;font-weight:400;color:var(--muted);margin-left:8px}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding-block:10px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);text-align:center;font-variant-numeric:tabular-nums}
+.facts b{display:block;font-size:18px}
+.facts span{font-size:12.5px;color:var(--muted)}
+.desc{font-size:15px;line-height:1.6;max-width:65ch}
+.hl{background:var(--hl);border-radius:10px;padding:10px 14px;color:var(--hl-ink);font-size:14.5px}
+.hl b{display:block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.hl ul{margin-left:18px;columns:2;column-gap:24px}
+.hl li{margin:2px 0;break-inside:avoid}
+.loc{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:var(--accent);text-decoration:none}
+.loc:hover{text-decoration:underline}
+.tag{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;background:var(--accent-soft);color:var(--accent);border-radius:999px;padding:3px 10px}
+.sec{font-family:var(--display);font-weight:500;font-size:22px;margin-top:10px}
+.maint{font-size:13.5px;color:var(--muted)}
+.contact{margin-block:10px 8px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 18px;display:grid;gap:10px;text-align:center}
+.contact h3{font-family:var(--display);font-weight:500;font-size:21px}
+.contact p{color:var(--muted);font-size:14.5px;max-width:48ch;margin-inline:auto}
+.wa{justify-self:center;display:inline-flex;align-items:center;gap:8px;background:#1f8a4c;color:#fff;font-weight:700;font-size:16px;text-decoration:none;border-radius:999px;padding:12px 22px}
+.wa:hover{background:#18743f}
+.wa[hidden]{display:none}
+footer{text-align:center;color:var(--muted);font-size:12.5px;padding:18px 16px 30px;line-height:1.7}
+button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (max-width:480px){.hl ul{columns:1}.facts b{font-size:16px}}
+/* Photo viewer */
+.lb{position:fixed;inset:0;background:rgba(8,14,12,.95);z-index:50;display:flex;align-items:center;justify-content:center;padding:18px}
+.lb[hidden]{display:none}
+.lb-in{width:100%;max-width:min(940px,94vw);display:flex;flex-direction:column;align-items:center;gap:12px}
+.lb-img{position:relative;width:100%;display:flex;justify-content:center}
+.lb-img img{max-width:100%;max-height:70vh;border-radius:10px;object-fit:contain;background:#0c2420}
+.lb-x{position:absolute;top:-8px;right:-4px;background:#f6f3ea;color:#0c2420;border:0;width:38px;height:38px;border-radius:999px;font-size:18px;font-weight:700;cursor:pointer}
+.lb-row{display:flex;align-items:center;gap:14px;justify-content:center;width:100%}
+.lb-nav{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);color:#f6f3ea;width:46px;height:46px;border-radius:999px;font-size:22px;cursor:pointer;flex-shrink:0}
+.lb-meta{color:#f6f3ea;font-size:14px;text-align:center;opacity:.9}
+.lb-thumbs{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
+.lb-thumbs img{width:54px;height:40px;object-fit:cover;border-radius:5px;opacity:.5;cursor:pointer;border:2px solid transparent}
+.lb-thumbs img.on{opacity:1;border-color:#f6f3ea}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand">Zaskia Castell<span>Corredora de bienes raíces · Panamá</span></div>
+    <div class="eyebrow">Selección preparada para</div>
+    <h1>Jorge Enrique Jiménez</h1>
+    <p class="intro">Apartamentos en Costa del Este, de 2 recámaras y 2 baños, la mayoría amoblados. Al final incluyo una opción en venta por si le interesa comparar. Toca cualquier foto para ver la galería completa.</p>
+  </div>
+</header>
+
+<main class="wrap" id="list"></main>
+
+<div class="wrap">
+  <section class="contact">
+    <h3>¿Alguno le interesa?</h3>
+    <p>Escríbame y coordinamos una visita. También puedo buscar más opciones en la zona o ajustar el presupuesto.</p>
+    <a class="wa" id="wa" href="#" target="_blank" rel="noopener" hidden>Escríbame por WhatsApp</a>
+    <p><b>Zaskia Castell</b> · Corredora de bienes raíces<br>WhatsApp / teléfono: +507 6617-7930</p>
+  </section>
+</div>
+
+<footer>Precios y disponibilidad sujetos a cambio. Información preparada por Zaskia Castell, octubre de 2026.</footer>
+
+<div class="lb" id="lb" hidden>
+  <div class="lb-in">
+    <div class="lb-img">
+      <button class="lb-x" id="lb-x" aria-label="Cerrar">✕</button>
+      <img id="lb-photo" src="" alt="Foto de la propiedad">
+    </div>
+    <div class="lb-row">
+      <button class="lb-nav" id="lb-prev" aria-label="Foto anterior">‹</button>
+      <div class="lb-meta"><b id="lb-title"></b><br><span id="lb-count"></span></div>
+      <button class="lb-nav" id="lb-next" aria-label="Foto siguiente">›</button>
+    </div>
+    <div class="lb-thumbs" id="lb-thumbs"></div>
+  </div>
+</div>
+
+<script>
+const ZASKIA_WA = "50766177930";
+const HOUSES = [{"op": "alq", "name": "PH Top Tower", "area": "Costa del Este · acceso directo al Corredor Sur", "map": "PH Top Tower, Costa del Este, Panamá", "price": 2000, "beds": 2, "baths": 2, "park": 1, "m2": 118, "furn": "Amoblado, todo nuevo", "desc": "Apartamento amplio de 118 m², amoblado y nuevo para estrenar. Tiene dos recámaras, dos baños completos, cuarto de servicio, cocina funcional y sala-comedor con muy buena luz natural. El edificio tiene tres piscinas, gimnasio, baño turco, sala de cine y seguridad 24 horas.", "hl": ["Amoblado y nuevo", "Cuarto de servicio", "3 piscinas y gimnasio", "Baño turco y sala de cine", "Seguridad 24 horas", "Cerca de colegios y supermercados"], "photos": ["https://image.wasi.co/eyJidWNrZXQiOiJzdGF0aWN3Iiwia2V5IjoiaW5tdWVibGVzXC9ncjE4NzY4MjQ1MjAyNjA5MTUwNjMyNDcuanBlZyIsImVkaXRzIjp7InJvdGF0ZSI6MCwicmVzaXplIjp7IndpZHRoIjo5NzksImhlaWdodCI6NzQzLCJmaXQiOiJjb250YWluIiwiYmFja2dyb3VuZCI6eyJyIjoyNTUsImciOjI1NSwiYiI6MjU1LCJhbHBoYSI6MX19fX0=", "https://image.wasi.co/eyJidWNrZXQiOiJzdGF0aWN3Iiwia2V5IjoiaW5tdWVibGVzXC9ncjE4NzY4MjQxMjAyNjA5MTUwNjMyNDQuanBlZyIsImVkaXRzIjp7InJvdGF0ZSI6MCwicmVzaXplIjp7IndpZHRoIjo5NzksImhlaWdodCI6NzQzLCJmaXQiOiJjb250YWluIiwiYmFja2dyb3VuZCI6eyJyIjoyNTUsImciOjI1NSwiYiI6MjU1LCJhbHBoYSI6MX19fX0=", "https://image.wasi.co/eyJidWNrZXQiOiJzdGF0aWN3Iiwia2V5IjoiaW5tdWVibGVzXC9ncjE4NzY4MjUxMjAyNjA5MTUwNjMyNTIuanBlZyIsImVkaXRzIjp7InJvdGF0ZSI6MCwicmVzaXplIjp7IndpZHRoIjo5NzksImhlaWdodCI6NzQzLCJmaXQiOiJjb250YWluIiwiYmFja2dyb3VuZCI6eyJyIjoyNTUsImciOjI1NSwiYiI6MjU1LCJhbHBoYSI6MX19fX0=", "https://image.wasi.co/eyJidWNrZXQiOiJzdGF0aWN3Iiwia2V5IjoiaW5tdWVibGVzXC9ncjE4NzY4MjQyMjAyNjA5MTUwNjMyNDUuanBlZyIsImVkaXRzIjp7InJvdGF0ZSI6MCwicmVzaXplIjp7IndpZHRoIjo5NzksImhlaWdodCI6NzQzLCJmaXQiOiJjb250YWluIiwiYmFja2dyb3VuZCI6eyJyIjoyNTUsImciOjI1NSwiYiI6MjU1LCJhbHBoYSI6MX19fX0=", "https://image.wasi.co/eyJidWNrZXQiOiJzdGF0aWN3Iiwia2V5IjoiaW5tdWVibGVzXC9ncjE4NzY4MjQ0MjAyNjA5MTUwNjMyNDYuanBlZyIsImVkaXRzIjp7InJvdGF0ZSI6MCwicmVzaXplIjp7IndpZHRoIjo5NzksImhlaWdodCI6NzQzLCJmaXQiOiJjb250YWluIiwiYmFja2dyb3VuZCI6eyJyIjoyNTUsImciOjI1NSwiYiI6MjU1LCJhbHBoYSI6MX19fX0=", "https://image.wasi.co/eyJidWNrZXQiOiJzdGF0aWN3Iiwia2V5IjoiaW5tdWVibGVzXC9ncjE4NzY4MjQ2MjAyNjA5MTUwNjMyNDguanBlZyIsImVkaXRzIjp7InJvdGF0ZSI6MCwicmVzaXplIjp7IndpZHRoIjo5NzksImhlaWdodCI6NzQzLCJmaXQiOiJjb250YWluIiwiYmFja2dyb3VuZCI6eyJyIjoyNTUsImciOjI1NSwiYiI6MjU1LCJhbHBoYSI6MX19fX0=", "https://image.wasi.co/eyJidWNrZXQiOiJzdGF0aWN3Iiwia2V5IjoiaW5tdWVibGVzXC9ncjE4NzY4MjQ4MjAyNjA5MTUwNjMyNTAuanBlZyIsImVkaXRzIjp7InJvdGF0ZSI6MCwicmVzaXplIjp7IndpZHRoIjo5NzksImhlaWdodCI6NzQzLCJmaXQiOiJjb250YWluIiwiYmFja2dyb3VuZCI6eyJyIjoyNTUsImciOjI1NSwiYiI6MjU1LCJhbHBoYSI6MX19fX0=", "https://image.wasi.co/eyJidWNrZXQiOiJzdGF0aWN3Iiwia2V5IjoiaW5tdWVibGVzXC9ncjE4NzY4MjQ5MjAyNjA5MTUwNjMyNTEuanBlZyIsImVkaXRzIjp7InJvdGF0ZSI6MCwicmVzaXplIjp7IndpZHRoIjo5NzksImhlaWdodCI6NzQzLCJmaXQiOiJjb250YWluIiwiYmFja2dyb3VuZCI6eyJyIjoyNTUsImciOjI1NSwiYiI6MjU1LCJhbHBoYSI6MX19fX0=", "https://image.wasi.co/eyJidWNrZXQiOiJzdGF0aWN3Iiwia2V5IjoiaW5tdWVibGVzXC9ncjE4NzY4MjUyMjAyNjA5MTUwNjMyNTMuanBlZyIsImVkaXRzIjp7InJvdGF0ZSI6MCwicmVzaXplIjp7IndpZHRoIjo5NzksImhlaWdodCI6NzQzLCJmaXQiOiJjb250YWluIiwiYmFja2dyb3VuZCI6eyJyIjoyNTUsImciOjI1NSwiYiI6MjU1LCJhbHBoYSI6MX19fX0=", "https://image.wasi.co/eyJidWNrZXQiOiJzdGF0aWN3Iiwia2V5IjoiaW5tdWVibGVzXC9ncjE4NzY4MjU0MjAyNjA5MTUwNjMyNTQuanBlZyIsImVkaXRzIjp7InJvdGF0ZSI6MCwicmVzaXplIjp7IndpZHRoIjo5NzksImhlaWdodCI6NzQzLCJmaXQiOiJjb250YWluIiwiYmFja2dyb3VuZCI6eyJyIjoyNTUsImciOjI1NSwiYiI6MjU1LCJhbHBoYSI6MX19fX0="]}, {"op": "alq", "name": "Arcadia", "area": "Costa del Este · Juan Díaz", "map": "PH Arcadia, Costa del Este, Panamá", "price": 2100, "beds": 2, "baths": 2, "park": 1, "m2": 72, "furn": "Amoblado", "desc": "Apartamento amoblado de diseño moderno, con ventanales de piso a techo y cocina equipada. Está cerca de centros corporativos, restaurantes y comercios de Costa del Este.", "hl": ["Amoblado", "Ventanales de piso a techo", "Lavandería interna", "Piscina y gimnasio", "Sky Lounge con vista panorámica", "Seguridad 24 horas"], "photos": ["https://image.wasi.co/eyJidWNrZXQiOiJzdGF0aWN3Iiwia2V5IjoiaW5tdWVibGVzXC9ncjE4MzEwMDMxMjAyNjA5MzAwMjUzMzcuanBlZyIsImVkaXRzIjp7InJvdGF0ZSI6MCwicmVzaXplIjp7IndpZHRoIjo5NzksImhlaWdodCI6NzQzLCJmaXQiOiJjb250YWluIiwiYmFja2dyb3VuZCI6eyJyIjoyNTUsImciOjI1NSwiYiI6MjU1LCJhbHBoYSI6MX19fX0=", "https://image.wasi.co/eyJidWNrZXQiOiJzdGF0aWN3Iiwia2V5IjoiaW5tdWVibGVzXC9ncjE4MzEwMDAyNTIwMjYwOTMwMDI1MzI0LmpwZWciLCJlZGl0cyI6eyJyb3RhdGUiOjAsInJlc2l6ZSI6eyJ3aWR0aCI6OTc5LCJoZWlnaHQiOjc0MywiZml0IjoiY29udGFpbiIsImJhY2tncm91bmQiOnsiciI6MjU1LCJnIjoyNTUsImIiOjI1NSwiYWxwaGEiOjF9fX19", "https://image.wasi.co/eyJidWNrZXQiOiJzdGF0aWN3Iiwia2V5IjoiaW5tdWVibGVzXC9ncjE4MzEwMDAyNjIwMjYwOTMwMDI1MzI3LmpwZWciLCJlZGl0cyI6eyJyb3RhdGUiOjAsInJlc2l6ZSI6eyJ3aWR0aCI6OTc5LCJoZWlnaHQiOjc0MywiZml0IjoiY29udGFpbiIsImJhY2tncm91bmQiOnsiciI6MjU1LCJnIjoyNTUsImIiOjI1NSwiYWxwaGEiOjF9fX19", "https://image.wasi.co/eyJidWNrZXQiOiJzdGF0aWN3Iiwia2V5IjoiaW5tdWVibGVzXC9ncjE4MzEwMDAyMjIwMjYwOTMwMDI1MzE3LmpwZWciLCJlZGl0cyI6eyJyb3RhdGUiOjAsInJlc2l6ZSI6eyJ3aWR0aCI6OTc5LCJoZWlnaHQiOjc0MywiZml0IjoiY29udGFpbiIsImJhY2tncm91bmQiOnsiciI6MjU1LCJnIjoyNTUsImIiOjI1NSwiYWxwaGEiOjF9fX19", "https://image.wasi.co/eyJidWNrZXQiOiJzdGF0aWN3Iiwia2V5IjoiaW5tdWVibGVzXC9ncjE4MzEwMDAyODIwMjYwOTMwMDI1MzMxLmpwZWciLCJlZGl0cyI6eyJyb3RhdGUiOjAsInJlc2l6ZSI6eyJ3aWR0aCI6OTc5LCJoZWlnaHQiOjc0MywiZml0IjoiY29udGFpbiIsImJhY2tncm91bmQiOnsiciI6MjU1LCJnIjoyNTUsImIiOjI1NSwiYWxwaGEiOjF9fX19", "https://image.wasi.co/eyJidWNrZXQiOiJzdGF0aWN3Iiwia2V5IjoiaW5tdWVibGVzXC9ncjE4MzEwMDAxNTIwMjYwOTMwMDI1MzA1LmpwZWciLCJlZGl0cyI6eyJyb3RhdGUiOjAsInJlc2l6ZSI6eyJ3aWR0aCI6OTc5LCJoZWlnaHQiOjc0MywiZml0IjoiY29udGFpbiIsImJhY2tncm91bmQiOnsiciI6MjU1LCJnIjoyNTUsImIiOjI1NSwiYWxwaGEiOjF9fX19", "https://image.wasi.co/eyJidWNrZXQiOiJzdGF0aWN3Iiwia2V5IjoiaW5tdWVibGVzXC9ncjE4MzEwMDAxNjIwMjYwOTMwMDI1MzA2LmpwZWciLCJlZGl0cyI6eyJyb3RhdGUiOjAsInJlc2l6ZSI6eyJ3aWR0aCI6OTc5LCJoZWlnaHQiOjc0MywiZml0IjoiY29udGFpbiIsImJhY2tncm91bmQiOnsiciI6MjU1LCJnIjoyNTUsImIiOjI1NSwiYWxwaGEiOjF9fX19", "https://image.wasi.co/eyJidWNrZXQiOiJzdGF0aWN3Iiwia2V5IjoiaW5tdWVibGVzXC9ncjE4MzEwMDAxOTIwMjYwOTMwMDI1MzEyLmpwZWciLCJlZGl0cyI6eyJyb3RhdGUiOjAsInJlc2l6ZSI6eyJ3aWR0aCI6OTc5LCJoZWlnaHQiOjc0MywiZml0IjoiY29udGFpbiIsImJhY2tncm91bmQiOnsiciI6MjU1LCJnIjoyNTUsImIiOjI1NSwiYWxwaGEiOjF9fX19", "https://image.wasi.co/eyJidWNrZXQiOiJzdGF0aWN3Iiwia2V5IjoiaW5tdWVibGVzXC9ncjE4MzEwMDIxMjAyNjA5MzAwMjUzMTUuanBlZyIsImVkaXRzIjp7InJvdGF0ZSI6MCwicmVzaXplIjp7IndpZHRoIjo5NzksImhlaWdodCI6NzQzLCJmaXQiOiJjb250YWluIiwiYmFja2dyb3VuZCI6eyJyIjoyNTUsImciOjI1NSwiYiI6MjU1LCJhbHBoYSI6MX19fX0=", "https://image.wasi.co/eyJidWNrZXQiOiJzdGF0aWN3Iiwia2V5IjoiaW5tdWVibGVzXC9ncjE4MzEwMDI0MjAyNjA5MzAwMjUzMjAuanBlZyIsImVkaXRzIjp7InJvdGF0ZSI6MCwicmVzaXplIjp7IndpZHRoIjo5NzksImhlaWdodCI6NzQzLCJmaXQiOiJjb250YWluIiwiYmFja2dyb3VuZCI6eyJyIjoyNTUsImciOjI1NSwiYiI6MjU1LCJhbHBoYSI6MX19fX0="]}, {"op": "alq", "name": "PH Arcadia, vista al parque", "area": "Costa del Este · frente al Parque de Costa del Este", "map": "PH Arcadia, Costa del Este, Panamá", "price": 2300, "beds": 2, "baths": 2, "park": 1, "m2": 70, "furn": "Amoblado", "desc": "Apartamento amoblado con vista al Parque de Costa del Este y vista parcial al mar. Edificio con concierge y valet parking, cerca de centros comerciales, restaurantes y servicios médicos. Aceptan mascotas.", "hl": ["Amoblado", "Vista al parque y parcial al mar", "Concierge y valet parking", "Cocina abierta con desayunador", "Planta eléctrica total", "Acepta mascotas"], "photos": ["https://image.wasi.co/eyJidWNrZXQiOiJzdGF0aWN3Iiwia2V5IjoiaW5tdWVibGVzXC9ncjIwNTg3NzE5MjAyNjA5MjkwMjU5MzIuanBnIiwiZWRpdHMiOnsicm90YXRlIjowLCJyZXNpemUiOnsid2lkdGgiOjk3OSwiaGVpZ2h0Ijo3NDMsImZpdCI6ImNvbnRhaW4iLCJiYWNrZ3JvdW5kIjp7InIiOjI1NSwiZyI6MjU1LCJiIjoyNTUsImFscGhhIjoxfX19fQ==", "https://image.wasi.co/eyJidWNrZXQiOiJzdGF0aWN3Iiwia2V5IjoiaW5tdWVibGVzXC9ncjIwNTg3NzIyMDI2MDkyOTAyNDgyOC5qcGciLCJlZGl0cyI6eyJyb3RhdGUiOjAsInJlc2l6ZSI6eyJ3aWR0aCI6OTc5LCJoZWlnaHQiOjc0MywiZml0IjoiY29udGFpbiIsImJhY2tncm91bmQiOnsiciI6MjU1LCJnIjoyNTUsImIiOjI1NSwiYWxwaGEiOjF9fX19", "https://image.wasi.co/eyJidWNrZXQiOiJzdGF0aWN3Iiwia2V5IjoiaW5tdWVibGVzXC9ncjIwNTg3NzIwMjAyNjA5MjkwMzAwMDguanBnIiwiZWRpdHMiOnsicm90YXRlIjowLCJyZXNpemUiOnsid2lkdGgiOjk3OSwiaGVpZ2h0Ijo3NDMsImZpdCI6ImNvbnRhaW4iLCJiYWNrZ3JvdW5kIjp7InIiOjI1NSwiZyI6MjU1LCJiIjoyNTUsImFscGhhIjoxfX19fQ==", "https://image.wasi.co/eyJidWNrZXQiOiJzdGF0aWN3Iiwia2V5IjoiaW5tdWVibGVzXC9ncjIwNTg3NzQyMDI2MDkyOTAyNDg0Ni5qcGciLCJlZGl0cyI6eyJyb3RhdGUiOjAsInJlc2l6ZSI6eyJ3aWR0aCI6OTc5LCJoZWlnaHQiOjc0MywiZml0IjoiY29udGFpbiIsImJhY2tncm91bmQiOnsiciI6MjU1LCJnIjoyNTUsImIiOjI1NSwiYWxwaGEiOjF9fX19", "https://image.wasi.co/eyJidWNrZXQiOiJzdGF0aWN3Iiwia2V5IjoiaW5tdWVibGVzXC9ncjIwNTg3NzMyMDI2MDkyOTAyNDgzOC5qcGciLCJlZGl0cyI6eyJyb3RhdGUiOjAsInJlc2l6ZSI6eyJ3aWR0aCI6OTc5LCJoZWlnaHQiOjc0MywiZml0IjoiY29udGFpbiIsImJhY2tncm91bmQiOnsiciI6MjU1LCJnIjoyNTUsImIiOjI1NSwiYWxwaGEiOjF9fX19", "https://image.wasi.co/eyJidWNrZXQiOiJzdGF0aWN3Iiwia2V5IjoiaW5tdWVibGVzXC9ncjIwNTg3NzUyMDI2MDkyOTAyNDg1Ni5qcGciLCJlZGl0cyI6eyJyb3RhdGUiOjAsInJlc2l6ZSI6eyJ3aWR0aCI6OTc5LCJoZWlnaHQiOjc0MywiZml0IjoiY29udGFpbiIsImJhY2tncm91bmQiOnsiciI6MjU1LCJnIjoyNTUsImIiOjI1NSwiYWxwaGEiOjF9fX19", "https://image.wasi.co/eyJidWNrZXQiOiJzdGF0aWN3Iiwia2V5IjoiaW5tdWVibGVzXC9ncjIwNTg3NzYyMDI2MDkyOTAyNDkwNy5qcGciLCJlZGl0cyI6eyJyb3RhdGUiOjAsInJlc2l6ZSI6eyJ3aWR0aCI6OTc5LCJoZWlnaHQiOjc0MywiZml0IjoiY29udGFpbiIsImJhY2tncm91bmQiOnsiciI6MjU1LCJnIjoyNTUsImIiOjI1NSwiYWxwaGEiOjF9fX19", "https://image.wasi.co/eyJidWNrZXQiOiJzdGF0aWN3Iiwia2V5IjoiaW5tdWVibGVzXC9ncjIwNTg3NzcyMDI2MDkyOTAyNDkxNy5qcGciLCJlZGl0cyI6eyJyb3RhdGUiOjAsInJlc2l6ZSI6eyJ3aWR0aCI6OTc5LCJoZWlnaHQiOjc0MywiZml0IjoiY29udGFpbiIsImJhY2tncm91bmQiOnsiciI6MjU1LCJnIjoyNTUsImIiOjI1NSwiYWxwaGEiOjF9fX19", "https://image.wasi.co/eyJidWNrZXQiOiJzdGF0aWN3Iiwia2V5IjoiaW5tdWVibGVzXC9ncjIwNTg3NzgyMDI2MDkyOTAyNDkyNS5qcGciLCJlZGl0cyI6eyJyb3RhdGUiOjAsInJlc2l6ZSI6eyJ3aWR0aCI6OTc5LCJoZWlnaHQiOjc0MywiZml0IjoiY29udGFpbiIsImJhY2tncm91bmQiOnsiciI6MjU1LCJnIjoyNTUsImIiOjI1NSwiYWxwaGEiOjF9fX19", "https://image.wasi.co/eyJidWNrZXQiOiJzdGF0aWN3Iiwia2V5IjoiaW5tdWVibGVzXC9ncjIwNTg3NzkyMDI2MDkyOTAyNDkzMi5qcGciLCJlZGl0cyI6eyJyb3RhdGUiOjAsInJlc2l6ZSI6eyJ3aWR0aCI6OTc5LCJoZWlnaHQiOjc0MywiZml0IjoiY29udGFpbiIsImJhY2tncm91bmQiOnsiciI6MjU1LCJnIjoyNTUsImIiOjI1NSwiYWxwaGEiOjF9fX19"]}, {"op": "alq", "name": "PH The Regent, piso 48", "area": "Costa del Este · junto a Financial Park", "map": "PH The Regent, Costa del Este, Panamá", "price": 2400, "beds": 2, "baths": 2, "park": 1, "m2": 105, "furn": "Amoblado", "desc": "Apartamento amoblado en piso alto, con balcón y vista panorámica al mar y a la ciudad. Incluye línea blanca, aires acondicionados y cocina abierta. El edificio funciona como casa club: dos piscinas, jacuzzi, dos gimnasios, cancha de tenis, cine y parque para mascotas.", "hl": ["Piso 48 con vista al mar", "Amoblado", "Dos piscinas y jacuzzi", "Cancha de tenis y cine", "Parque para mascotas", "Seguridad 24 horas"], "photos": ["https://assets.easybroker.com/property_images/6231482/110680916/EB-WY1482.jpeg?s=8a9111a94b2410fc&version=1788992734", "https://assets.easybroker.com/property_images/6231482/110680915/EB-WY1482.jpeg?s=cc8511ef073aca94&version=1788992734", "https://assets.easybroker.com/property_images/6231482/110680914/EB-WY1482.jpeg?s=896110356bd77609&version=1788992734", "https://assets.easybroker.com/property_images/6231482/110680919/EB-WY1482.jpeg?s=bd40148bb75e9a83&version=1788992734", "https://assets.easybroker.com/property_images/6231482/110680917/EB-WY1482.jpeg?s=09a283d05e22314e&version=1788992734", "https://assets.easybroker.com/property_images/6231482/110680912/EB-WY1482.jpeg?s=614f8c274c10a989&version=1788992734", "https://assets.easybroker.com/property_images/6231482/110680920/EB-WY1482.jpeg?s=fd97fd7a77e3dcbb&version=1788992734", "https://assets.easybroker.com/property_images/6231482/110680918/EB-WY1482.jpeg?s=8cdfc2f49899a0f0&version=1788992734", "https://assets.easybroker.com/property_images/6231482/110680913/EB-WY1482.jpeg?s=a103250d581c5088&version=1788992734", "https://assets.easybroker.com/property_images/6231482/110680267/EB-WY1482.jpeg?s=8296bea6e23c6c1b&version=1788992321", "https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/33/06/74/77/33067477_738191a", "https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/33/06/74/77/33067477_3776dc9", "https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/33/06/74/77/33067477_b9c9704", "https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/33/06/74/77/33067477_2995ccd"]}, {"op": "ven", "name": "PH Parkside", "area": "Costa del Este · Juan Díaz", "map": "PH Parkside, Costa del Este, Panamá", "price": 429000, "beds": 2, "baths": 2, "park": 1, "m2": 125, "maint": "$293 al mes", "desc": "Apartamento de 125 m² en el corazón de Costa del Este, con balcón amplio y vista al mar. Cocina moderna tipo americana y walk-in closet en la recámara principal. El edificio tiene piscina, jacuzzi, gimnasio y cancha de squash.", "hl": ["Balcón con vista al mar", "Walk-in closet", "Cocina tipo americana", "Piscina y jacuzzi", "Gimnasio y squash", "Rápido acceso al aeropuerto"], "photos": ["https://image.wasi.co/eyJidWNrZXQiOiJzdGF0aWN3Iiwia2V5IjoiaW5tdWVibGVzXC9ncjE5NzU4NDEwMjAyNjA3MDQxMTQ2MzcuanBnIiwiZWRpdHMiOnsibm9ybWFsaXNlIjp0cnVlLCJyb3RhdGUiOjAsInJlc2l6ZSI6eyJ3aWR0aCI6OTc5LCJoZWlnaHQiOjc0MywiZml0IjoiY29udGFpbiIsImJhY2tncm91bmQiOnsiciI6MjU1LCJnIjoyNTUsImIiOjI1NSwiYWxwaGEiOjF9fX19", "https://image.wasi.co/eyJidWNrZXQiOiJzdGF0aWN3Iiwia2V5IjoiaW5tdWVibGVzXC9ncjE5NzU4NDQyMDI2MDcwNDExNDM1MC5qcGciLCJlZGl0cyI6eyJub3JtYWxpc2UiOnRydWUsInJvdGF0ZSI6MCwicmVzaXplIjp7IndpZHRoIjo5NzksImhlaWdodCI6NzQzLCJmaXQiOiJjb250YWluIiwiYmFja2dyb3VuZCI6eyJyIjoyNTUsImciOjI1NSwiYiI6MjU1LCJhbHBoYSI6MX19fX0=", "https://image.wasi.co/eyJidWNrZXQiOiJzdGF0aWN3Iiwia2V5IjoiaW5tdWVibGVzXC9ncjE5NzU4NDEyMDI2MDcwNDExNDQwNy5qcGciLCJlZGl0cyI6eyJub3JtYWxpc2UiOnRydWUsInJvdGF0ZSI6MCwicmVzaXplIjp7IndpZHRoIjo5NzksImhlaWdodCI6NzQzLCJmaXQiOiJjb250YWluIiwiYmFja2dyb3VuZCI6eyJyIjoyNTUsImciOjI1NSwiYiI6MjU1LCJhbHBoYSI6MX19fX0=", "https://image.wasi.co/eyJidWNrZXQiOiJzdGF0aWN3Iiwia2V5IjoiaW5tdWVibGVzXC9ncjE5NzU4NDgyMDI2MDcwNDExNDYwMC5qcGciLCJlZGl0cyI6eyJub3JtYWxpc2UiOnRydWUsInJvdGF0ZSI6MCwicmVzaXplIjp7IndpZHRoIjo5NzksImhlaWdodCI6NzQzLCJmaXQiOiJjb250YWluIiwiYmFja2dyb3VuZCI6eyJyIjoyNTUsImciOjI1NSwiYiI6MjU1LCJhbHBoYSI6MX19fX0=", "https://image.wasi.co/eyJidWNrZXQiOiJzdGF0aWN3Iiwia2V5IjoiaW5tdWVibGVzXC9ncjE5NzU4NDIyMDI2MDcwNDExNDQyNS5qcGciLCJlZGl0cyI6eyJub3JtYWxpc2UiOnRydWUsInJvdGF0ZSI6MCwicmVzaXplIjp7IndpZHRoIjo5NzksImhlaWdodCI6NzQzLCJmaXQiOiJjb250YWluIiwiYmFja2dyb3VuZCI6eyJyIjoyNTUsImciOjI1NSwiYiI6MjU1LCJhbHBoYSI6MX19fX0=", "https://image.wasi.co/eyJidWNrZXQiOiJzdGF0aWN3Iiwia2V5IjoiaW5tdWVibGVzXC9ncjE5NzU4NDYyMDI2MDcwNDExNDUyMy5qcGciLCJlZGl0cyI6eyJub3JtYWxpc2UiOnRydWUsInJvdGF0ZSI6MCwicmVzaXplIjp7IndpZHRoIjo5NzksImhlaWdodCI6NzQzLCJmaXQiOiJjb250YWluIiwiYmFja2dyb3VuZCI6eyJyIjoyNTUsImciOjI1NSwiYiI6MjU1LCJhbHBoYSI6MX19fX0=", "https://image.wasi.co/eyJidWNrZXQiOiJzdGF0aWN3Iiwia2V5IjoiaW5tdWVibGVzXC9ncjE5NzU4NDUyMDI2MDcwNDExNDUwNC5qcGciLCJlZGl0cyI6eyJub3JtYWxpc2UiOnRydWUsInJvdGF0ZSI6MCwicmVzaXplIjp7IndpZHRoIjo5NzksImhlaWdodCI6NzQzLCJmaXQiOiJjb250YWluIiwiYmFja2dyb3VuZCI6eyJyIjoyNTUsImciOjI1NSwiYiI6MjU1LCJhbHBoYSI6MX19fX0=", "https://image.wasi.co/eyJidWNrZXQiOiJzdGF0aWN3Iiwia2V5IjoiaW5tdWVibGVzXC9ncjE5NzU4NDMyMDI2MDcwNDExNDQ0NS5qcGciLCJlZGl0cyI6eyJub3JtYWxpc2UiOnRydWUsInJvdGF0ZSI6MCwicmVzaXplIjp7IndpZHRoIjo5NzksImhlaWdodCI6NzQzLCJmaXQiOiJjb250YWluIiwiYmFja2dyb3VuZCI6eyJyIjoyNTUsImciOjI1NSwiYiI6MjU1LCJhbHBoYSI6MX19fX0=", "https://image.wasi.co/eyJidWNrZXQiOiJzdGF0aWN3Iiwia2V5IjoiaW5tdWVibGVzXC9ncjE5NzU4NDcyMDI2MDcwNDExNDU0MS5qcGciLCJlZGl0cyI6eyJub3JtYWxpc2UiOnRydWUsInJvdGF0ZSI6MCwicmVzaXplIjp7IndpZHRoIjo5NzksImhlaWdodCI6NzQzLCJmaXQiOiJjb250YWluIiwiYmFja2dyb3VuZCI6eyJyIjoyNTUsImciOjI1NSwiYiI6MjU1LCJhbHBoYSI6MX19fX0=", "https://image.wasi.co/eyJidWNrZXQiOiJzdGF0aWN3Iiwia2V5IjoiaW5tdWVibGVzXC9ncjE5NzU4NDkyMDI2MDcwNDExNDYxOS5qcGciLCJlZGl0cyI6eyJub3JtYWxpc2UiOnRydWUsInJvdGF0ZSI6MCwicmVzaXplIjp7IndpZHRoIjo5NzksImhlaWdodCI6NzQzLCJmaXQiOiJjb250YWluIiwiYmFja2dyb3VuZCI6eyJyIjoyNTUsImciOjI1NSwiYiI6MjU1LCJhbHBoYSI6MX19fX0="]}];
+
+const money=n=>"$"+n.toLocaleString("en-US");
+const maps=q=>"https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(q);
+function card(h,i,n){
+  const rent=h.op==="alq";
+  return `<article class="card">
+   <button class="thumb" style="background-image:url('${h.photos[0]}')" data-i="${i}" data-p="0" aria-label="Ver fotos de ${h.name}">
+     <span class="num">${rent?"Opción "+n:"En venta"}</span>
+     <span class="photos">📷 Ver las ${h.photos.length} fotos</span>
+   </button>
+   <div class="strip">${h.photos.slice(1,5).map((u,k)=>`<button style="background-image:url('${u}')" data-i="${i}" data-p="${k+1}" aria-label="Foto ${k+2}"></button>`).join("")}</div>
+   <div class="body">
+     <h2>${h.name}</h2>
+     <div class="area">${h.area}</div>
+     <div class="price">${money(h.price)}<small>${rent?"al mes":money(Math.round(h.price/h.m2))+" por m²"}</small></div>
+     <div class="facts">
+       <div><b>${h.beds}</b><span>recámaras</span></div>
+       <div><b>${h.baths}</b><span>baños</span></div>
+       <div><b>${h.park}</b><span>parking</span></div>
+       <div><b>${h.m2}</b><span>m²</span></div>
+     </div>
+     ${h.furn?`<div><span class="tag">${h.furn}</span></div>`:""}
+     <p class="desc">${h.desc}</p>
+     <div class="hl"><b>Destacados</b><ul>${h.hl.map(x=>`<li>${x}</li>`).join("")}</ul></div>
+     ${h.maint?`<div class="maint">Mantenimiento: ${h.maint}</div>`:""}
+     <a class="loc" href="${maps(h.map)}" target="_blank" rel="noopener">📍 Ver ubicación en el mapa</a>
+   </div>
+ </article>`;
+}
+let n=0;const list=document.getElementById("list");
+list.innerHTML=HOUSES.map((h,i)=>h.op==="alq"?card(h,i,++n):"").join("")+
+  (HOUSES.some(h=>h.op==="ven")?`<h2 class="sec">También en venta</h2>`+HOUSES.map((h,i)=>h.op==="ven"?card(h,i,0):"").join(""):"");
+
+if(ZASKIA_WA){const wa=document.getElementById("wa");
+  wa.href="https://wa.me/"+ZASKIA_WA+"?text="+encodeURIComponent("Hola Zaskia, vi la selección de apartamentos en Costa del Este y me interesa ");
+  wa.hidden=false;}
+
+/* Quitar fotos que no carguen */
+HOUSES.forEach(h=>h.photos.forEach(u=>{const im=new Image();im.onerror=()=>{h.photos=h.photos.filter(x=>x!==u);
+  document.querySelectorAll(`[style*="${CSS.escape?u.slice(-24):u}"]`).forEach(el=>{el.style.backgroundImage=h.photos[0]?`url('${h.photos[0]}')`:"none"});};im.src=u;}));
+
+/* Visor de fotos */
+const lb=document.getElementById("lb");let G=[],gi=0;
+function openLb(i,p){const h=HOUSES[i];G=h.photos;gi=Math.min(p||0,G.length-1);document.getElementById("lb-title").textContent=h.name;
+  document.getElementById("lb-thumbs").innerHTML=G.map((u,k)=>`<img src="${u}" data-k="${k}" alt="">`).join("");
+  document.querySelectorAll("#lb-thumbs img").forEach(t=>t.onclick=()=>{gi=+t.dataset.k;show()});
+  show();lb.hidden=false;document.body.style.overflow="hidden";}
+function closeLb(){lb.hidden=true;document.body.style.overflow="";}
+function show(){document.getElementById("lb-photo").src=G[gi];document.getElementById("lb-count").textContent=(gi+1)+" / "+G.length;
+  document.querySelectorAll("#lb-thumbs img").forEach((t,k)=>t.classList.toggle("on",k===gi));}
+const step=d=>{gi=(gi+d+G.length)%G.length;show()};
+document.querySelectorAll("[data-i]").forEach(b=>b.onclick=()=>openLb(+b.dataset.i,+b.dataset.p));
+document.getElementById("lb-x").onclick=closeLb;
+document.getElementById("lb-prev").onclick=()=>step(-1);
+document.getElementById("lb-next").onclick=()=>step(1);
+lb.addEventListener("click",e=>{if(e.target===lb)closeLb()});
+document.addEventListener("keydown",e=>{if(lb.hidden)return;if(e.key==="Escape")closeLb();if(e.key==="ArrowRight")step(1);if(e.key==="ArrowLeft")step(-1)});
+let tx=null;lb.addEventListener("touchstart",e=>tx=e.touches[0].clientX,{passive:true});
+lb.addEventListener("touchend",e=>{if(tx===null)return;const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>40)step(dx<0?1:-1);tx=null});
+</script>
+</body>
+</html>
