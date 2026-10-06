@@ -1,0 +1,12 @@
+-rw-r--r-- 1 runner runner   3972 Oct  6 17:25 fotos/lista.txt
+-rw-r--r-- 1 runner runner 175095 Oct  6 17:25 fotos/pedro-lote-esquina-1.jpg
+-rw-r--r-- 1 runner runner 153997 Oct  6 17:25 fotos/pedro-lote-esquina-2.jpg
+-rw-r--r-- 1 runner runner 188687 Oct  6 17:25 fotos/pedro-lote-esquina-3.jpg
+-rw-r--r-- 1 runner runner 208600 Oct  6 17:25 fotos/pedro-lote-esquina-4.jpg
+-rw-r--r-- 1 runner runner 173901 Oct  6 17:25 fotos/pedro-lote-esquina-5.jpg
+-rw-r--r-- 1 runner runner 119917 Oct  6 17:25 fotos/valle-las-uvas-1.jpg
+-rw-r--r-- 1 runner runner 107486 Oct  6 17:25 fotos/valle-las-uvas-2.jpg
+-rw-r--r-- 1 runner runner 104277 Oct  6 17:25 fotos/valle-las-uvas-3.jpg
+-rw-r--r-- 1 runner runner  98848 Oct  6 17:25 fotos/valle-las-uvas-4.jpg
+-rw-r--r-- 1 runner runner  93961 Oct  6 17:25 fotos/valle-las-uvas-5.jpg
+-rw-r--r-- 1 runner runner 101412 Oct  6 17:25 fotos/valle-las-uvas-6.jpg
