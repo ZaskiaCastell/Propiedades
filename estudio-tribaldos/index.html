@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Estudio de mercado - Grupo Tribaldos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+  /* Layout: encabezado sobrio, cuadro comparativo, luego una ficha con galería por propiedad */
+  :root {
+    --bg: #f6f7f8;
+    --paper: #ffffff;
+    --ink: #1c2530;
+    --muted: #5d6b78;
+    --line: #dde2e7;
+    --accent: #1f4e6b;
+    --accent-soft: #e6eef3;
+    --flag: #8a5a12;
+    --display: "Fraunces", Georgia, "Times New Roman", serif;
+    --body: "Source Sans 3", "Segoe UI", Helvetica, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.5; }
+  .wrap { max-width: 1100px; margin: 0 auto; padding-block: 32px 48px; padding-inline: 20px; display: grid; gap: 28px; }
+  header { border-bottom: 2px solid var(--accent); padding-bottom: 16px; display: grid; gap: 6px; }
+  .eyebrow { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  h1 { font-family: var(--display); font-weight: 600; font-size: clamp(26px, 4vw, 36px); line-height: 1.15; margin: 0; text-wrap: balance; }
+  h2 { font-family: var(--display); font-weight: 600; font-size: 22px; margin: 0; }
+  h3 { font-family: var(--display); font-weight: 500; font-size: 19px; margin: 0; }
+  .lead { color: var(--muted); max-width: 70ch; margin: 0; }
+  .card { background: var(--paper); border: 1px solid var(--line); border-radius: 6px; padding: 20px; display: grid; gap: 14px; min-width: 0; }
+  .table-scroll { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; min-width: 820px; }
+  th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: middle; }
+  th { font-size: 12px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); font-weight: 700; background: var(--accent-soft); }
+  td.num, th.num { text-align: right; }
+  td img { width: 92px; height: 64px; object-fit: cover; border-radius: 4px; display: block; }
+  .na { color: var(--flag); font-size: 13px; }
+  tfoot td { font-weight: 700; background: var(--accent-soft); }
+  .props { display: grid; gap: 24px; }
+  .prop-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px; }
+  .price { font-family: var(--display); font-size: 22px; color: var(--accent); font-weight: 600; font-variant-numeric: tabular-nums; }
+  .facts { display: flex; flex-wrap: wrap; gap: 8px 18px; margin: 0; padding: 0; list-style: none; color: var(--muted); font-size: 14px; }
+  .facts b { color: var(--ink); font-weight: 600; }
+  .desc { margin: 0; max-width: 75ch; }
+  .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .gallery img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 4px; background: var(--accent-soft); display: block; }
+  .notes { font-size: 13px; color: var(--muted); display: grid; gap: 4px; }
+  .notes p { margin: 0; max-width: 90ch; }
+  @media (max-width: 600px) { .gallery { grid-template-columns: repeat(2, 1fr); } }
+  @media print {
+    body { background: #fff; }
+    .card { break-inside: avoid; border-color: #ccc; }
+    .wrap { padding-block: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <span class="eyebrow">Betania · Urbanización Los Ángeles · Casas en venta · Octubre 2026</span>
+    <h1>Estudio de mercado - Grupo Tribaldos</h1>
+    <p class="lead">Cuatro casas en venta en Los Ángeles, Betania, con precios publicados entre $358,200 y $790,000. Precio promedio por m² de construcción: $1,093.</p>
+  </header>
+
+  <section class="card">
+    <h2>Cuadro resumen</h2>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Foto</th>
+            <th>Propiedad</th>
+            <th>Ubicación</th>
+            <th class="num">Terreno (m²)</th>
+            <th class="num">Construcción (m²)</th>
+            <th class="num">Precio de venta</th>
+            <th class="num">Precio / m² terreno</th>
+            <th class="num">Precio / m² construcción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><img src="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/31/36/77/60/31367760_04769b" alt="Propiedad 1"></td>
+            <td>1 · Casa dúplex, 4 rec.</td>
+            <td>Betania, Los Ángeles</td>
+            <td class="num"><span class="na">No indicado</span></td>
+            <td class="num">361.20</td>
+            <td class="num">$358,200</td>
+            <td class="num"><span class="na">—</span></td>
+            <td class="num">$992</td>
+          </tr>
+          <tr>
+            <td><img src="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/30/98/37/24/30983724_cdc622" alt="Propiedad 2"></td>
+            <td>2 · Casa colonial, 4 rec.</td>
+            <td>Betania, Los Ángeles</td>
+            <td class="num"><span class="na">No indicado</span></td>
+            <td class="num">497.24</td>
+            <td class="num">$525,000</td>
+            <td class="num"><span class="na">—</span></td>
+            <td class="num">$1,056</td>
+          </tr>
+          <tr>
+            <td><img src="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/32/94/56/34/32945634_156cf3580e4eb399b5a5f187cd21d225-6ebd002" alt="Propiedad 3"></td>
+            <td>3 · Casa remodelada con piscina, 4 rec.</td>
+            <td>Betania, Los Ángeles</td>
+            <td class="num"><span class="na">No indicado</span></td>
+            <td class="num">665.00</td>
+            <td class="num">$550,000</td>
+            <td class="num"><span class="na">—</span></td>
+            <td class="num">$827</td>
+          </tr>
+          <tr>
+            <td><img src="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/32/80/54/10/32805410_6c6a2c" alt="Propiedad 4"></td>
+            <td>4 · Casa con terraza y taller, 5 rec.</td>
+            <td>Betania, Los Ángeles</td>
+            <td class="num">1,208.05</td>
+            <td class="num">528.06</td>
+            <td class="num">$790,000</td>
+            <td class="num">$654</td>
+            <td class="num">$1,496</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="5">Promedio</td>
+            <td class="num">$555,800</td>
+            <td class="num">$654</td>
+            <td class="num">$1,093</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    <div class="notes">
+      <p>Solo la propiedad 4 publica el área del terreno; en las otras tres el anuncio reporta únicamente el área construida. El precio por m² de terreno queda pendiente hasta confirmar esas superficies (por ejemplo, en el Registro Público).</p>
+      <p>Precios de oferta publicados al 6 de octubre de 2026, no precios de cierre.</p>
+    </div>
+  </section>
+
+  <section class="props">
+    <h2>Detalle por propiedad</h2>
+
+    <article class="card">
+      <div class="prop-head"><h3>Propiedad 1 · Casa dúplex</h3><span class="price">$358,200</span></div>
+      <ul class="facts">
+        <li><b>Terreno:</b> no indicado</li><li><b>Construcción:</b> 361.20 m²</li><li><b>4</b> recámaras</li><li><b>5.5</b> baños</li><li><b>2</b> estacionamientos</li><li><b>2</b> niveles</li><li><b>$992</b> / m² construcción</li>
+      </ul>
+      <p class="desc">Casa de dos niveles con sala, comedor, cocina, cuarto de estudio, cuarto y baño de servicio, lavandería, depósito, terraza trasera techada, patio amplio y jardín. Acceso rápido a la Transístmica y a Tumba Muerto.</p>
+      <div class="gallery">
+        <img src="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/31/36/77/60/31367760_04769b" alt="">
+        <img src="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/31/36/77/60/31367760_e1d16f" alt="">
+        <img src="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/31/36/77/60/31367760_1506fd" alt="">
+        <img src="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/31/36/77/60/31367760_7434bf" alt="">
+        <img src="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/31/36/77/60/31367760_b24326" alt="">
+        <img src="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/31/36/77/60/31367760_e2f535" alt="">
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="prop-head"><h3>Propiedad 2 · Casa estilo colonial</h3><span class="price">$525,000</span></div>
+      <ul class="facts">
+        <li><b>Terreno:</b> no indicado</li><li><b>Construcción:</b> 497.24 m²</li><li><b>4</b> recámaras</li><li><b>5</b> baños</li><li><b>4</b> estacionamientos</li><li><b>$1,056</b> / m² construcción</li>
+      </ul>
+      <p class="desc">Casa estilo colonial con jardín amplio, terraza y área tipo bohío. Cada recámara tiene baño y clóset; cocina amplia con alacena, cuarto y baño de servicio, lavandería y estacionamiento techado.</p>
+      <div class="gallery">
+        <img src="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/30/98/37/24/30983724_cdc622" alt="">
+        <img src="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/30/98/37/24/30983724_9e87be" alt="">
+        <img src="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/30/98/37/24/30983724_0ec121" alt="">
+        <img src="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/30/98/37/24/30983724_0bd8de" alt="">
+        <img src="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/30/98/37/24/30983724_74a929" alt="">
+        <img src="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/30/98/37/24/30983724_12d90e" alt="">
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="prop-head"><h3>Propiedad 3 · Casa remodelada con piscina</h3><span class="price">$550,000</span></div>
+      <ul class="facts">
+        <li><b>Terreno:</b> no indicado</li><li><b>Construcción:</b> 665 m²</li><li><b>4</b> recámaras</li><li><b>4</b> baños</li><li><b>4</b> estacionamientos</li><li><b>2</b> niveles</li><li><b>$827</b> / m² construcción</li>
+      </ul>
+      <p class="desc">Casa remodelada con sala-comedor, den, cocina amplia, lavandería, depósito interior, cuarto para gimnasio, terraza, patio con piscina y gazebo. Garaje techado y cuarto de servicio.</p>
+      <div class="gallery">
+        <img src="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/32/94/56/34/32945634_156cf3580e4eb399b5a5f187cd21d225-6ebd002" alt="">
+        <img src="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/32/94/56/34/32945634_156cf3580e4eb399b5a5f187cd21d225-93fccbf" alt="">
+        <img src="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/32/94/56/34/32945634_156cf3580e4eb399b5a5f187cd21d225-ad3b989" alt="">
+        <img src="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/32/94/56/34/32945634_156cf3580e4eb399b5a5f187cd21d225-c4cfb25" alt="">
+        <img src="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/32/94/56/34/32945634_156cf3580e4eb399b5a5f187cd21d225-91ea1a5" alt="">
+        <img src="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/32/94/56/34/32945634_156cf3580e4eb399b5a5f187cd21d225-e64d8f0" alt="">
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="prop-head"><h3>Propiedad 4 · Casa con terraza y taller</h3><span class="price">$790,000</span></div>
+      <ul class="facts">
+        <li><b>Terreno:</b> 1,208.05 m²</li><li><b>Construcción:</b> 528.06 m²</li><li><b>5</b> recámaras</li><li><b>5</b> baños</li><li><b>6</b> estacionamientos (hasta 7)</li><li><b>$654</b> / m² terreno</li><li><b>$1,496</b> / m² construcción</li>
+      </ul>
+      <p class="desc">Casa de muchos ambientes con terraza grande techada, jardín en un segundo nivel con cuarto de visitas o den, taller, cuarto de música y cuarto y baño de servicio.</p>
+      <div class="gallery">
+        <img src="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/32/80/54/10/32805410_6c6a2c" alt="">
+        <img src="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/32/80/54/10/32805410_3d4871" alt="">
+        <img src="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/32/80/54/10/32805410_3836ae" alt="">
+        <img src="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/32/80/54/10/32805410_73452b" alt="">
+        <img src="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/32/80/54/10/32805410_1ba545" alt="">
+        <img src="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/32/80/54/10/32805410_144259" alt="">
+      </div>
+    </article>
+  </section>
+
+</div>
+</body>
+</html>
