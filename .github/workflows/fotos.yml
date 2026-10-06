@@ -1,0 +1,32 @@
+name: Descargar fotos
+on:
+  push:
+    paths: ["fotos/lista.txt"]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  fotos:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Descargar
+        run: |
+          set +e
+          while read -r dest url; do
+            [ -z "$dest" ] && continue
+            mkdir -p "$(dirname "$dest")"
+            for ref in "https://grupoanissa.com/" "https://www.fazwaz.com.pa/" "https://www.encuentra24.com/" ""; do
+              curl -sSL --fail -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124 Safari/537.36" ${ref:+-e "$ref"} -o "$dest" "$url" && file "$dest" | grep -qiE "image|JPEG|PNG|WebP" && break
+              rm -f "$dest"
+            done
+            if [ -f "$dest" ]; then echo "OK  $dest"; else echo "FALLO $dest"; fi
+          done < fotos/lista.txt
+          ls -la fotos/* > fotos/resultado.txt 2>&1
+      - name: Guardar
+        run: |
+          git config user.name "Zaskia Castell"
+          git config user.email "danielcastell61@gmail.com"
+          git add fotos
+          git commit -m "Fotos descargadas" || echo "sin cambios"
+          git push
