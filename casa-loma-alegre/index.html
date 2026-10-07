@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Casa en Loma Alegre, San Francisco</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+  /* Layout: encabezado sobrio, cuadro comparativo, luego una ficha con galería por propiedad */
+  :root {
+    --bg: #f6f7f8;
+    --paper: #ffffff;
+    --ink: #1c2530;
+    --muted: #5d6b78;
+    --line: #dde2e7;
+    --accent: #1f4e6b;
+    --accent-soft: #e6eef3;
+    --flag: #8a5a12;
+    --display: "Fraunces", Georgia, "Times New Roman", serif;
+    --body: "Source Sans 3", "Segoe UI", Helvetica, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.5; }
+  .wrap { max-width: 1100px; margin: 0 auto; padding-block: 32px 48px; padding-inline: 20px; display: grid; gap: 28px; }
+  header { border-bottom: 2px solid var(--accent); padding-bottom: 16px; display: grid; gap: 6px; }
+  .eyebrow { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  h1 { font-family: var(--display); font-weight: 600; font-size: clamp(26px, 4vw, 36px); line-height: 1.15; margin: 0; text-wrap: balance; }
+  h2 { font-family: var(--display); font-weight: 600; font-size: 22px; margin: 0; }
+  h3 { font-family: var(--display); font-weight: 500; font-size: 19px; margin: 0; }
+  .lead { color: var(--muted); max-width: 70ch; margin: 0; }
+  .card { background: var(--paper); border: 1px solid var(--line); border-radius: 6px; padding: 20px; display: grid; gap: 14px; min-width: 0; }
+  .table-scroll { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; min-width: 820px; }
+  th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: middle; }
+  th { font-size: 12px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); font-weight: 700; background: var(--accent-soft); }
+  td.num, th.num { text-align: right; }
+  td img { width: 92px; height: 64px; object-fit: cover; border-radius: 4px; display: block; }
+  .na { color: var(--flag); font-size: 13px; }
+  tfoot td { font-weight: 700; background: var(--accent-soft); }
+  .props { display: grid; gap: 24px; }
+  .prop-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px; }
+  .price { font-family: var(--display); font-size: 22px; color: var(--accent); font-weight: 600; font-variant-numeric: tabular-nums; }
+  .facts { display: flex; flex-wrap: wrap; gap: 8px 18px; margin: 0; padding: 0; list-style: none; color: var(--muted); font-size: 14px; }
+  .facts b { color: var(--ink); font-weight: 600; }
+  .desc { margin: 0; max-width: 75ch; }
+  .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .gallery img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 4px; background: var(--accent-soft); display: block; }
+  .notes { font-size: 13px; color: var(--muted); display: grid; gap: 4px; }
+  .notes p { margin: 0; max-width: 90ch; }
+  @media (max-width: 600px) { .gallery { grid-template-columns: repeat(2, 1fr); } }
+  @media print {
+    body { background: #fff; }
+    .card { break-inside: avoid; border-color: #ccc; }
+    .wrap { padding-block: 0; }
+  }
+</style>
+<style>
+  .hero { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 6px; display: block; background: var(--accent-soft); }
+  .spec { min-width: 0; }
+  .spec td:first-child { color: var(--muted); width: 40%; }
+  .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
+  .cols h3 { margin-bottom: 6px; }
+  .cols ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; }
+  .gallery a { display: block; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <span class="eyebrow">Preparado para el señor David López · Octubre 2026</span>
+    <h1>Casa en Loma Alegre, San Francisco</h1>
+    <p class="lead">Casa unifamiliar de 2 niveles entre Altos del Golf y Coco del Mar, en un terreno de 1,045 m² con piscina. Precio de venta: $799,500, negociable.</p>
+  </header>
+
+  <img class="hero" src="https://photos.encuentra24.com/t_or_fh_l/f_auto/v1/pa/31/01/14/18/31011418_85a62b" alt="Fachada de la casa">
+
+  <section class="card">
+    <div class="prop-head"><h2>Ficha técnica</h2><span class="price">$799,500</span></div>
+    <div class="table-scroll">
+      <table class="spec" style="min-width:0">
+        <tbody>
+          <tr><td>Ubicación</td><td>Loma Alegre, San Francisco, Ciudad de Panamá (colinda con Altos del Golf y Coco del Mar)</td></tr>
+          <tr><td>Precio de venta</td><td>$799,500 (negociable)</td></tr>
+          <tr><td>Alquiler</td><td>$4,250 al mes</td></tr>
+          <tr><td>Terreno</td><td>1,045 m² aprox.</td></tr>
+          <tr><td>Construcción</td><td>524.15 m²</td></tr>
+          <tr><td>Precio / m² terreno</td><td>$765</td></tr>
+          <tr><td>Precio / m² construcción</td><td>$1,526</td></tr>
+          <tr><td>Niveles</td><td>2</td></tr>
+          <tr><td>Recámaras</td><td>3</td></tr>
+          <tr><td>Baños</td><td>3.5</td></tr>
+          <tr><td>Estacionamientos</td><td>5 (2 techados + 3 abiertos, dentro de la propiedad)</td></tr>
+          <tr><td>Zonificación</td><td>R2A</td></tr>
+          <tr><td>Antigüedad</td><td>41 años, con remodelaciones</td></tr>
+          <tr><td>Seguridad</td><td>Casa totalmente cercada; vigilancia 24/7 en el complejo</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Descripción</h2>
+    <p class="desc">Amplia casa unifamiliar de dos niveles con jardín al frente y atrás, en un terreno de más de mil metros. La propiedad cuenta con avalúo y el precio indicado corresponde a una venta rápida.</p>
+    <div class="cols">
+      <div><h3>Interiores</h3><ul><li>Vestíbulo, sala y comedor por separado, y sala de estar</li><li>Amplia cocina con desayunador</li><li>Recámara principal con baño completo y cuarto vestidor</li><li>Dos recámaras secundarias con baño completo compartido</li><li>Estudio en planta baja</li><li>Cuarto y baño de servicio, y lavandería</li></ul></div>
+      <div><h3>Exteriores</h3><ul><li>Amplia terraza con bar y escalera de acceso</li><li>Terraza posterior techada con bar</li><li>Piscina, bohío y tendedero abierto</li><li>2 estacionamientos techados con depósito y 3 abiertos adicionales</li><li>Estacionamiento de visitas</li><li>Vista a las montañas</li></ul></div>
+      <div><h3>Acabados y servicios</h3><ul><li>Puertas de madera sólida</li><li>Cielo raso de madera machimbrada; en áreas internas se reemplazó por gypsum en una remodelación posterior</li><li>Tanque de agua de aproximadamente 700 galones</li><li>No cuenta con planta eléctrica</li></ul></div>
+      <div><h3>Entorno</h3><ul><li>Parque con cancha de tenis a 50 metros de la casa</li><li>Cerca de escuelas</li></ul></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Fotos</h2>
+    <div class="gallery">
+        <a href="https://photos.encuentra24.com/t_or_fh_l/f_auto/v1/pa/31/01/14/18/31011418_85a62b" target="_blank" rel="noopener"><img src="https://photos.encuentra24.com/t_or_fh_l/f_auto/v1/pa/31/01/14/18/31011418_85a62b" alt="Foto 1" loading="lazy"></a>
+        <a href="https://photos.encuentra24.com/t_or_fh_l/f_auto/v1/pa/31/01/14/18/31011418_aea906" target="_blank" rel="noopener"><img src="https://photos.encuentra24.com/t_or_fh_l/f_auto/v1/pa/31/01/14/18/31011418_aea906" alt="Foto 2" loading="lazy"></a>
+        <a href="https://photos.encuentra24.com/t_or_fh_l/f_auto/v1/pa/31/01/14/18/31011418_e59dd9" target="_blank" rel="noopener"><img src="https://photos.encuentra24.com/t_or_fh_l/f_auto/v1/pa/31/01/14/18/31011418_e59dd9" alt="Foto 3" loading="lazy"></a>
+        <a href="https://photos.encuentra24.com/t_or_fh_l/f_auto/v1/pa/31/01/14/18/31011418_d01acd" target="_blank" rel="noopener"><img src="https://photos.encuentra24.com/t_or_fh_l/f_auto/v1/pa/31/01/14/18/31011418_d01acd" alt="Foto 4" loading="lazy"></a>
+        <a href="https://photos.encuentra24.com/t_or_fh_l/f_auto/v1/pa/31/01/14/18/31011418_06ed22" target="_blank" rel="noopener"><img src="https://photos.encuentra24.com/t_or_fh_l/f_auto/v1/pa/31/01/14/18/31011418_06ed22" alt="Foto 5" loading="lazy"></a>
+        <a href="https://photos.encuentra24.com/t_or_fh_l/f_auto/v1/pa/31/01/14/18/31011418_63ef78" target="_blank" rel="noopener"><img src="https://photos.encuentra24.com/t_or_fh_l/f_auto/v1/pa/31/01/14/18/31011418_63ef78" alt="Foto 6" loading="lazy"></a>
+        <a href="https://photos.encuentra24.com/t_or_fh_l/f_auto/v1/pa/31/01/14/18/31011418_aa9db1" target="_blank" rel="noopener"><img src="https://photos.encuentra24.com/t_or_fh_l/f_auto/v1/pa/31/01/14/18/31011418_aa9db1" alt="Foto 7" loading="lazy"></a>
+        <a href="https://photos.encuentra24.com/t_or_fh_l/f_auto/v1/pa/31/01/14/18/31011418_6cb4fd" target="_blank" rel="noopener"><img src="https://photos.encuentra24.com/t_or_fh_l/f_auto/v1/pa/31/01/14/18/31011418_6cb4fd" alt="Foto 8" loading="lazy"></a>
+        <a href="https://photos.encuentra24.com/t_or_fh_l/f_auto/v1/pa/31/01/14/18/31011418_bb759d" target="_blank" rel="noopener"><img src="https://photos.encuentra24.com/t_or_fh_l/f_auto/v1/pa/31/01/14/18/31011418_bb759d" alt="Foto 9" loading="lazy"></a>
+        <a href="https://photos.encuentra24.com/t_or_fh_l/f_auto/v1/pa/31/01/14/18/31011418_e37f7b" target="_blank" rel="noopener"><img src="https://photos.encuentra24.com/t_or_fh_l/f_auto/v1/pa/31/01/14/18/31011418_e37f7b" alt="Foto 10" loading="lazy"></a>
+        <a href="https://photos.encuentra24.com/t_or_fh_l/f_auto/v1/pa/31/01/14/18/31011418_cd4b40" target="_blank" rel="noopener"><img src="https://photos.encuentra24.com/t_or_fh_l/f_auto/v1/pa/31/01/14/18/31011418_cd4b40" alt="Foto 11" loading="lazy"></a>
+        <a href="https://photos.encuentra24.com/t_or_fh_l/f_auto/v1/pa/31/01/14/18/31011418_29d240" target="_blank" rel="noopener"><img src="https://photos.encuentra24.com/t_or_fh_l/f_auto/v1/pa/31/01/14/18/31011418_29d240" alt="Foto 12" loading="lazy"></a>
+        <a href="https://photos.encuentra24.com/t_or_fh_l/f_auto/v1/pa/31/01/14/18/31011418_f0420d" target="_blank" rel="noopener"><img src="https://photos.encuentra24.com/t_or_fh_l/f_auto/v1/pa/31/01/14/18/31011418_f0420d" alt="Foto 13" loading="lazy"></a>
+        <a href="https://photos.encuentra24.com/t_or_fh_l/f_auto/v1/pa/31/01/14/18/31011418_79e6fb" target="_blank" rel="noopener"><img src="https://photos.encuentra24.com/t_or_fh_l/f_auto/v1/pa/31/01/14/18/31011418_79e6fb" alt="Foto 14" loading="lazy"></a>
+        <a href="https://photos.encuentra24.com/t_or_fh_l/f_auto/v1/pa/31/01/14/18/31011418_b35dd36" target="_blank" rel="noopener"><img src="https://photos.encuentra24.com/t_or_fh_l/f_auto/v1/pa/31/01/14/18/31011418_b35dd36" alt="Foto 15" loading="lazy"></a>
+        <a href="https://photos.encuentra24.com/t_or_fh_l/f_auto/v1/pa/31/01/14/18/31011418_a84f39c" target="_blank" rel="noopener"><img src="https://photos.encuentra24.com/t_or_fh_l/f_auto/v1/pa/31/01/14/18/31011418_a84f39c" alt="Foto 16" loading="lazy"></a>
+        <a href="https://photos.encuentra24.com/t_or_fh_l/f_auto/v1/pa/31/01/14/18/31011418_41b0e42" target="_blank" rel="noopener"><img src="https://photos.encuentra24.com/t_or_fh_l/f_auto/v1/pa/31/01/14/18/31011418_41b0e42" alt="Foto 17" loading="lazy"></a>
+        <a href="https://photos.encuentra24.com/t_or_fh_l/f_auto/v1/pa/31/01/14/18/31011418_2e20f7b" target="_blank" rel="noopener"><img src="https://photos.encuentra24.com/t_or_fh_l/f_auto/v1/pa/31/01/14/18/31011418_2e20f7b" alt="Foto 18" loading="lazy"></a>
+        <a href="https://photos.encuentra24.com/t_or_fh_l/f_auto/v1/pa/31/01/14/18/31011418_c18e0e2" target="_blank" rel="noopener"><img src="https://photos.encuentra24.com/t_or_fh_l/f_auto/v1/pa/31/01/14/18/31011418_c18e0e2" alt="Foto 19" loading="lazy"></a>
+        <a href="https://photos.encuentra24.com/t_or_fh_l/f_auto/v1/pa/31/01/14/18/31011418_f0fd39d" target="_blank" rel="noopener"><img src="https://photos.encuentra24.com/t_or_fh_l/f_auto/v1/pa/31/01/14/18/31011418_f0fd39d" alt="Foto 20" loading="lazy"></a>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>
