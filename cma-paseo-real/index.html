@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>CMA Paseo Real - Villa Lucre</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+  /* Layout: mismo formato del estudio Tribaldos: encabezado sobrio, recomendación, sujeto, cuadro comparativo y fichas con galería */
+  :root {
+    --bg: #f6f7f8; --paper: #ffffff; --ink: #1c2530; --muted: #5d6b78; --line: #dde2e7;
+    --accent: #1f4e6b; --accent-soft: #e6eef3; --flag: #8a5a12; --flag-soft: #f6eedf; --warn: #9a3b25; --warn-soft: #f8e7e2;
+    --display: "Fraunces", Georgia, "Times New Roman", serif;
+    --body: "Source Sans 3", "Segoe UI", Helvetica, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.5; }
+  .wrap { max-width: 1100px; margin: 0 auto; padding-block: 32px 48px; padding-inline: 20px; display: grid; gap: 28px; }
+  header { border-bottom: 2px solid var(--accent); padding-bottom: 16px; display: grid; gap: 6px; }
+  .eyebrow { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .internal { justify-self: start; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; font-weight: 700; color: var(--flag); background: var(--flag-soft); border-radius: 999px; padding: 3px 10px; }
+  h1 { font-family: var(--display); font-weight: 600; font-size: clamp(26px, 4vw, 36px); line-height: 1.15; margin: 0; text-wrap: balance; }
+  h2 { font-family: var(--display); font-weight: 600; font-size: 22px; margin: 0; }
+  h3 { font-family: var(--display); font-weight: 500; font-size: 19px; margin: 0; text-wrap: balance; }
+  .lead { color: var(--muted); max-width: 75ch; margin: 0; }
+  .card { background: var(--paper); border: 1px solid var(--line); border-radius: 6px; padding: 20px; display: grid; gap: 14px; min-width: 0; }
+  .big { font-family: var(--display); font-size: clamp(36px, 7vw, 48px); font-weight: 600; color: var(--accent); line-height: 1; font-variant-numeric: tabular-nums; }
+  .opts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .opt { border: 1px solid var(--line); border-radius: 6px; padding: 10px 12px; display: grid; gap: 2px; font-size: 13px; color: var(--muted); }
+  .opt b { font-size: 19px; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .opt.on { border-color: var(--accent); background: var(--accent-soft); }
+  .box { background: var(--flag-soft); border-radius: 6px; padding: 12px 14px; font-size: 14px; }
+  .box b { color: var(--flag); }
+  .table-scroll { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; min-width: 900px; }
+  th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: middle; }
+  th { font-size: 12px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); font-weight: 700; background: var(--accent-soft); }
+  td.num, th.num { text-align: right; }
+  td img { width: 92px; height: 64px; object-fit: cover; border-radius: 4px; display: block; background: var(--accent-soft); }
+  td s, .price s { color: var(--muted); font-size: 13px; font-weight: 400; }
+  .sub { font-size: 13px; color: var(--muted); }
+  .na { color: var(--flag); font-size: 13px; }
+  tfoot td { font-weight: 700; background: var(--accent-soft); }
+  a { color: var(--accent); font-weight: 600; }
+  .props { display: grid; gap: 20px; }
+  .zone { display: grid; gap: 4px; margin-top: 8px; }
+  .zone-h { font-size: 21px; font-weight: 600; color: var(--accent); }
+  .prop-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px; }
+  .price { font-family: var(--display); font-size: 22px; color: var(--accent); font-weight: 600; font-variant-numeric: tabular-nums; }
+  .tag { justify-self: start; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; font-weight: 700; color: var(--flag); background: var(--flag-soft); border-radius: 999px; padding: 3px 10px; }
+  .facts { display: flex; flex-wrap: wrap; gap: 8px 18px; margin: 0; padding: 0; list-style: none; color: var(--muted); font-size: 14px; }
+  .facts b { color: var(--ink); font-weight: 600; }
+  .desc { margin: 0; max-width: 75ch; }
+  .flagnote { margin: 0; font-size: 14px; color: var(--warn); background: var(--warn-soft); border-radius: 6px; padding: 8px 10px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip { font-size: 13px; background: var(--accent-soft); border-radius: 999px; padding: 3px 10px; }
+  .chip.minus { background: var(--warn-soft); color: var(--warn); }
+  .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .gallery img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 4px; background: var(--accent-soft); display: block; }
+  .src { margin: 0; font-size: 13px; color: var(--muted); }
+  .notes { font-size: 13px; color: var(--muted); display: grid; gap: 4px; }
+  .notes p { margin: 0; max-width: 90ch; }
+  ul.sig { margin: 0; padding-left: 20px; display: grid; gap: 6px; max-width: 85ch; }
+  @media (max-width: 600px) { .gallery { grid-template-columns: repeat(2, 1fr); } .opts { grid-template-columns: 1fr; } }
+  @media print { body { background: #fff; } .card { break-inside: avoid; border-color: #ccc; } .wrap { padding-block: 0; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <span class="eyebrow">Paseo Real · Villa Lucre · Casa en venta · Octubre 2026</span>
+    <h1>Análisis comparativo de mercado - Paseo Real, Villa Lucre</h1>
+    <p class="lead">Calle Stuttgart, Lote PR-12 · José Domingo Espinar, San Miguelito · Finca 284472. Diez casas comparables en venta en Paseo Real, Villa Lucre y Brisas del Golf, con precios publicados entre $170,000 y $215,000. Precio promedio por m² de construcción: $1,035.</p>
+    <span class="internal">Uso interno · incluye enlaces a los portales</span>
+  </header>
+
+  <section class="card">
+    <h2>Recomendación de precio</h2>
+    <div><div class="eyebrow">Precio de lista recomendado</div><div class="big">$209,900</div>
+    <p class="lead" style="margin-top:6px">Para vender en un promedio de seis meses. Cierre esperado: <b>$198,000–$205,000</b>.</p></div>
+    <div class="opts"><div class="opt"><span>Venta rápida</span><b>$204,900</b><span>60 a 90 días</span></div><div class="opt on"><span>Recomendado</span><b>$209,900</b><span>4 a 6 meses</span></div><div class="opt"><span>Techo de prueba</span><b>$219,900</b><span>solo 45 días, luego bajar</span></div></div>
+    <p class="desc">La casa del mismo modelo en Paseo Real, con más terreno (179 m²) y más construcción (208 m²), lleva cerca de dos años publicada: salió en $232,000 y hoy se ofrece entre $215,000 y $225,000 sin venderse. Salir por debajo de ella, en $209,900, deja a esta casa como la mejor compra del residencial, con margen de negociación de 4 a 5% para cerrar alrededor de $200,000.</p>
+    <div class="box"><b>Sobre el avalúo.</b> Avalúo AVINCO AV-516-08-26 (28 sep. 2026): valor de mercado $224,500 · liquidación forzosa $202,050 · valor de reposición depreciado $192,730. El avaluador comparó contra precios de oferta y sumó 10% por mejoras a todas las comparables, por eso su cifra queda en la parte alta del mercado.</div>
+  </section>
+
+  <section class="card">
+    <h2>Propiedad analizada</h2>
+    <p class="lead">Calle Stuttgart, Lote PR-12 · José Domingo Espinar, San Miguelito · Finca 284472</p>
+    <ul class="facts"><li><b>Terreno:</b> 168.30 m²</li><li><b>Área cerrada:</b> 130.50 m²</li><li><b>Planta baja:</b> 73.89 m²</li><li><b>Planta alta:</b> 56.61 m²</li><li><b>Semicerradas:</b> 47.72 m²</li><li><b>Área homologada:</b> 166.29 m²</li><li><b>Recámaras:</b> 3</li><li><b>Baños:</b> 3.5</li><li><b>Estacionamientos:</b> 2 techados</li><li><b>Antigüedad:</b> 18 años</li><li><b>Mejoras:</b> 2018</li><li><b>Zonificación:</b> RE</li></ul>
+    <div class="chips"><span class="chip">Cuarto de empleada con baño</span><span class="chip">Den con A/A</span><span class="chip">Cocina remodelada con sobre negro y lavaplatos</span><span class="chip">Porcelanato en planta baja</span><span class="chip">Patio posterior con piso tipo madera</span><span class="chip">Walk-in closet en principal</span><span class="chip">Depósito</span><span class="chip">Calle sin salida</span><span class="chip">Residencial con garita</span><span class="chip minus">Planta alta con techo de Tejalit (no losa)</span><span class="chip minus">Terreno menor al modelo de 179 m²</span><span class="chip minus">Mantiene hipoteca (cedida a Davivienda)</span></div>
+    <div class="gallery"><img src="casa-01.jpg" alt="Vista frontal" loading="lazy"><img src="casa-02.jpg" alt="Sala" loading="lazy"><img src="casa-03.jpg" alt="Comedor" loading="lazy"><img src="casa-04.jpg" alt="Cocina remodelada" loading="lazy"><img src="casa-05.jpg" alt="Den" loading="lazy"><img src="casa-06.jpg" alt="Recámara principal" loading="lazy"><img src="casa-07.jpg" alt="Recámara" loading="lazy"><img src="casa-08.jpg" alt="Recámara" loading="lazy"><img src="casa-09.jpg" alt="Patio posterior" loading="lazy"><img src="casa-10.jpg" alt="Patio posterior" loading="lazy"><img src="casa-11.jpg" alt="Calle Stuttgart" loading="lazy"></div>
+  </section>
+
+  <section class="card">
+    <h2>Cuadro resumen</h2>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Foto</th><th>Propiedad</th><th>Zona</th><th class="num">Terreno (m²)</th><th class="num">Construcción (m²)</th><th class="num">Precio de venta</th><th class="num">Precio / m² construcción</th><th>Anuncio</th></tr></thead>
+        <tbody>
+          <tr><td><img src="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/32/86/11/48/32861148_49082f07674b81324d1e6421e5ca273a-d2c2b5f" alt="Propiedad 1" loading="lazy"></td><td>1 · Modelo dúplex 179/208 m², terraza-bar<br><span class="sub">3 rec. · 2.5 baños · 2 est.</span></td><td>Paseo Real</td><td class="num">179</td><td class="num">208</td><td class="num">$215,000<br><s>$232,000</s></td><td class="num">$1,034</td><td><a href="https://rentahouse.com.pa/casa_en_venta_en_san-miguelito_en_villa-lucre_rah-26-2095.html" target="_blank" rel="noopener">Rent-A-House</a></td></tr><tr><td><img src="https://bienesonline.ai/storage/property_images/e6da6e74-f59c-4dd8-8c3d-021ac4914324.jpg" alt="Propiedad 2" loading="lazy"></td><td>2 · Lote de 168 m², 152 m² de construcción<br><span class="sub">3 rec. · 2 baños · 2 est.</span></td><td>Paseo Real</td><td class="num">168</td><td class="num">152</td><td class="num">$185,000</td><td class="num">$1,217</td><td><a href="https://bienesonline.ai/es/panama/jose-domingo-espinar/propiedad/109027-venta-de-casa-de-152-m2-de-construccion-en-ph-paseo-real-villa-lucre-24-4842" target="_blank" rel="noopener">BienesOnline</a></td></tr><tr><td><img src="https://bienesonline.ai/storage/property_images/1ee65643-2f5f-4ef6-8d55-f32b3c1d1d30.jpg" alt="Propiedad 3" loading="lazy"></td><td>3 · Dúplex de 216 m² para actualizar<br><span class="sub">3 rec. · 3 baños · 2 est.</span></td><td>Paseo Real</td><td class="num"><span class="na">No indicado</span></td><td class="num">216</td><td class="num">$195,000</td><td class="num">$903</td><td><a href="https://bienesonline.ai/es/panama/jose-domingo-espinar/propiedad/103346-venta-de-casa-duplex-en-ph-paseo-real-villa-lucre-26-2415" target="_blank" rel="noopener">BienesOnline</a></td></tr><tr><td><img src="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/32/71/31/96/32713196_cb61c2a" alt="Propiedad 4" loading="lazy"></td><td>4 · Casa de esquina remodelada<br><span class="sub">3 rec. · 4 baños · 2 est.</span></td><td>Villa Lucre</td><td class="num"><span class="na">No indicado</span></td><td class="num">202</td><td class="num">$175,000</td><td class="num">$866</td><td><a href="https://www.encuentra24.com/panama-es/bienes-raices-venta-de-propiedades-casas/venta-casa-villa-lucre-oportunidad-ec/32713196" target="_blank" rel="noopener">Encuentra24</a></td></tr><tr><td><img src="https://img10.naventcdn.com/avisos/20/01/51/25/16/70/360x266/1635265835.jpg" alt="Propiedad 5" loading="lazy"></td><td>5 · Colonia Las Lomas, estudio<br><span class="sub">3 rec. · 2 baños · 2 est.</span></td><td>Villa Lucre</td><td class="num">240.5</td><td class="num">214.77</td><td class="num">$170,000</td><td class="num">$792</td><td><a href="https://www.compreoalquile.com/propiedades/clasificado/veclcain-casa-en-venta-colonia-las-lomas-villa-lucre-151251670.html" target="_blank" rel="noopener">Compreoalquile</a></td></tr><tr><td><img src="https://cdn.resize.sparkplatform.com/pa/1024x768/true/20260902001754840237000000-o.jpg" alt="Propiedad 6" loading="lazy"></td><td>6 · Casa remodelada de una planta<br><span class="sub">3 rec. · 2 baños · 2 est.</span></td><td>Villa Lucre</td><td class="num">332</td><td class="num">264</td><td class="num">$215,000<br><s>$255,000</s></td><td class="num">$814</td><td><a href="https://rentahouse.com.pa/casa_en_venta_en_san-miguelito_en_villa-lucre_rah-27-2032.html" target="_blank" rel="noopener">Rent-A-House</a></td></tr><tr><td><img src="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/33/04/25/58/33042558_4091ad6" alt="Propiedad 7" loading="lazy"></td><td>7 · Dúplex en Augusta, Paseo del Norte<br><span class="sub">3 rec. · 2.5 baños · 2 est.</span></td><td>Brisas del Golf</td><td class="num"><span class="na">No indicado</span></td><td class="num">157</td><td class="num">$200,000</td><td class="num">$1,274</td><td><a href="https://www.encuentra24.com/panama-es/bienes-raices-venta-de-propiedades-casas/venta-casa-duplex-brisas-del-golf-yd/33042558" target="_blank" rel="noopener">Encuentra24</a></td></tr><tr><td><img src="../fotos/didier-31985215-1.jpg" alt="Propiedad 8" loading="lazy"></td><td>8 · PH Alpes, Paseo del Norte<br><span class="sub">3 rec. · 2.5 baños · 2 est.</span></td><td>Brisas del Golf</td><td class="num"><span class="na">No indicado</span></td><td class="num">157</td><td class="num">$205,000</td><td class="num">$1,306</td><td><a href="https://www.encuentra24.com/panama-es/bienes-raices-venta-de-propiedades-casas/venta-de-casa-ph-alpes-paseo-del-norte/31985215" target="_blank" rel="noopener">Encuentra24</a></td></tr><tr><td><img src="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/32/97/75/73/32977573_6ace8c" alt="Propiedad 9" loading="lazy"></td><td>9 · PH Victoria, dúplex 164 m²<br><span class="sub">3 rec. · 2 baños · 2 est.</span></td><td>Brisas del Golf</td><td class="num"><span class="na">No indicado</span></td><td class="num">164</td><td class="num">$192,000<br><s>$204,255</s></td><td class="num">$1,171</td><td><a href="https://www.encuentra24.com/panama-es/bienes-raices-venta-de-propiedades-casas/brisas-del-golf-victoria-164m-3-habitaciones-2-banos-duplex/32977573" target="_blank" rel="noopener">Encuentra24</a></td></tr><tr><td><img src="../fotos/didier-32184552-1.jpg" alt="Propiedad 10" loading="lazy"></td><td>10 · Brisas Norte, dos niveles<br><span class="sub">3 rec. · 4.5 baños · 2 est.</span></td><td>Brisas del Golf</td><td class="num"><span class="na">No indicado</span></td><td class="num">200</td><td class="num">$195,000<br><s>$240,741</s></td><td class="num">$975</td><td><a href="https://www.encuentra24.com/panama-es/bienes-raices-venta-de-propiedades-casas/se-vende-brisas-norte-2-niveles/32184552" target="_blank" rel="noopener">Encuentra24</a></td></tr>
+        </tbody>
+        <tfoot>
+          <tr><td colspan="5">Promedio de las diez</td><td class="num">$194,700</td><td class="num">$1,035</td><td></td></tr>
+          <tr><td colspan="5">Propiedad analizada al precio recomendado (178.22 m² cerrados y semicerrados)</td><td class="num">$209,900</td><td class="num">$1,178</td><td></td></tr>
+        </tfoot>
+      </table>
+    </div>
+    <div class="notes">
+      <p>El precio tachado es el precio anterior publicado; varias casas ya fueron rebajadas.</p>
+      <p>Precios de oferta publicados al 8 de octubre de 2026, no precios de cierre.</p>
+    </div>
+  </section>
+
+  <section class="props">
+    <h2>Detalle por propiedad</h2>
+    <div class="zone"><h3 class="zone-h">Paseo Real</h3><p class="lead">Mismo residencial privado de 88 casas, garita 24 h, mantenimiento $55. La referencia más fuerte.</p></div><article class="card">
+      <div class="prop-head"><h3>Propiedad 1 · Modelo dúplex 179/208 m², terraza-bar</h3><span class="price">$215,000 <s>$232,000</s></span></div>
+      <span class="tag">Competidora directa</span><ul class="facts"><li><b>Terreno:</b> 179 m²</li><li><b>Construcción:</b> 208 m²</li><li><b>3</b> recámaras</li><li><b>2.5</b> baños</li><li><b>2</b> estacionamientos</li><li><b>$1,034</b> / m² construcción</li></ul>
+      <p class="desc">Remodelada, family room, terraza con bar y BBQ. La misma casa aparece en $215,000 (Rent-A-House) y $225,000 (Encuentra24, actualizado 05/10/2026).</p><p class="flagnote">Publicada desde 2024 en $232,000. Sigue sin venderse: el mercado no ha pagado más de $215,000 en Paseo Real.</p>
+      <div class="gallery"><img src="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/32/86/11/48/32861148_49082f07674b81324d1e6421e5ca273a-d2c2b5f" alt="" loading="lazy"><img src="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/32/86/11/48/32861148_49082f07674b81324d1e6421e5ca273a-174bd5c" alt="" loading="lazy"><img src="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/32/86/11/48/32861148_49082f07674b81324d1e6421e5ca273a-d02d831" alt="" loading="lazy"><img src="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/32/86/11/48/32861148_49082f07674b81324d1e6421e5ca273a-5cb938b" alt="" loading="lazy"><img src="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/32/86/11/48/32861148_49082f07674b81324d1e6421e5ca273a-7f129ff" alt="" loading="lazy"><img src="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/32/86/11/48/32861148_49082f07674b81324d1e6421e5ca273a-49bac9f" alt="" loading="lazy"></div>
+      <p class="src"><a href="https://rentahouse.com.pa/casa_en_venta_en_san-miguelito_en_villa-lucre_rah-26-2095.html" target="_blank" rel="noopener">Ver anuncio en Rent-A-House ↗</a> · Rent-A-House 26-2095 · Encuentra24 32861148 · también es la comparable 1 del avalúo. El anuncio original 31826932 ya muestra otra propiedad.</p>
+    </article><article class="card">
+      <div class="prop-head"><h3>Propiedad 2 · Lote de 168 m², 152 m² de construcción</h3><span class="price">$185,000</span></div>
+      <span class="tag">Lote casi igual</span><ul class="facts"><li><b>Terreno:</b> 168 m²</li><li><b>Construcción:</b> 152 m²</li><li><b>3</b> recámaras</li><li><b>2</b> baños</li><li><b>2</b> estacionamientos</li><li><b>$1,217</b> / m² construcción</li></ul>
+      <p class="desc">Terraza totalmente cerrada. Mismo tamaño de terreno que el sujeto, pero sin cuarto de empleada y con menos baños.</p><p class="flagnote">Código de 2024: confirmar con el agente si sigue activa o a cuánto se vendió.</p>
+      <div class="gallery"><img src="https://bienesonline.ai/storage/property_images/e6da6e74-f59c-4dd8-8c3d-021ac4914324.jpg" alt="" loading="lazy"><img src="https://bienesonline.ai/storage/property_images/2682fe30-4a0e-406c-ba1a-c439928d7315.jpg" alt="" loading="lazy"><img src="https://bienesonline.ai/storage/property_images/d57fea86-afb0-46bf-afcd-3076920081fb.jpg" alt="" loading="lazy"><img src="https://bienesonline.ai/storage/property_images/aaca63f1-a17e-4ca7-8d62-d92bb2c58f08.jpg" alt="" loading="lazy"><img src="https://bienesonline.ai/storage/property_images/f14f18f1-7881-413e-b98f-c05001153952.jpg" alt="" loading="lazy"><img src="https://bienesonline.ai/storage/property_images/b8dae668-3e5d-45f1-99cb-4df70f545966.jpg" alt="" loading="lazy"></div>
+      <p class="src"><a href="https://bienesonline.ai/es/panama/jose-domingo-espinar/propiedad/109027-venta-de-casa-de-152-m2-de-construccion-en-ph-paseo-real-villa-lucre-24-4842" target="_blank" rel="noopener">Ver anuncio en BienesOnline ↗</a> · Rent-A-House 24-4842 · BienesOnline CAV64801</p>
+    </article><article class="card">
+      <div class="prop-head"><h3>Propiedad 3 · Dúplex de 216 m² para actualizar</h3><span class="price">$195,000</span></div>
+      <span class="tag">Por remodelar</span><ul class="facts"><li><b>Construcción:</b> 216 m²</li><li><b>3</b> recámaras</li><li><b>3</b> baños</li><li><b>2</b> estacionamientos</li><li><b>$903</b> / m² construcción</li></ul>
+      <p class="desc">Sala, comedor, terraza y cocina; se anuncia para personalizar. Muestra el piso de precio para casas sin remodelar.</p>
+      <div class="gallery"><img src="https://bienesonline.ai/storage/property_images/1ee65643-2f5f-4ef6-8d55-f32b3c1d1d30.jpg" alt="" loading="lazy"><img src="https://bienesonline.ai/storage/property_images/8259cfab-ebeb-4e50-969b-700d550ed010.jpg" alt="" loading="lazy"><img src="https://bienesonline.ai/storage/property_images/4e56eaba-ad68-489a-b1fd-348f220ba030.jpg" alt="" loading="lazy"><img src="https://bienesonline.ai/storage/property_images/0755d989-433f-4a19-8ac6-f1a35cd59337.jpg" alt="" loading="lazy"><img src="https://bienesonline.ai/storage/property_images/8cefc1a7-4913-488d-ac33-c9a551da04e2.jpg" alt="" loading="lazy"><img src="https://bienesonline.ai/storage/property_images/549eb531-be1e-4e94-8aa5-2d44db8c6707.jpg" alt="" loading="lazy"></div>
+      <p class="src"><a href="https://bienesonline.ai/es/panama/jose-domingo-espinar/propiedad/103346-venta-de-casa-duplex-en-ph-paseo-real-villa-lucre-26-2415" target="_blank" rel="noopener">Ver anuncio en BienesOnline ↗</a> · Rent-A-House 26-2415 · BienesOnline CAV81777</p>
+    </article><div class="zone"><h3 class="zone-h">Villa Lucre</h3><p class="lead">Otros residenciales cerrados y calles de Villa Lucre con casas de 3 recámaras en el mismo rango.</p></div><article class="card">
+      <div class="prop-head"><h3>Propiedad 4 · Casa de esquina remodelada</h3><span class="price">$175,000</span></div>
+      <ul class="facts"><li><b>Construcción:</b> 202 m²</li><li><b>3</b> recámaras</li><li><b>4</b> baños</li><li><b>2</b> estacionamientos</li><li><b>$866</b> / m² construcción</li><li>Mantenimiento <b>$35</b>/mes</li></ul>
+      <p class="desc">Residencial privado, den posterior, terraza con BBQ, cuarto y baño de servicio.</p><p class="flagnote">La ficha dice $175,000 y la descripción $185,000.</p>
+      <div class="gallery"><img src="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/32/71/31/96/32713196_cb61c2a" alt="" loading="lazy"><img src="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/32/71/31/96/32713196_ad1065a" alt="" loading="lazy"><img src="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/32/71/31/96/32713196_3cd848f" alt="" loading="lazy"><img src="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/32/71/31/96/32713196_3236798" alt="" loading="lazy"><img src="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/32/71/31/96/32713196_3ac4883" alt="" loading="lazy"><img src="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/32/71/31/96/32713196_ebce4c4" alt="" loading="lazy"></div>
+      <p class="src"><a href="https://www.encuentra24.com/panama-es/bienes-raices-venta-de-propiedades-casas/venta-casa-villa-lucre-oportunidad-ec/32713196" target="_blank" rel="noopener">Ver anuncio en Encuentra24 ↗</a> · Encuentra24 32713196</p>
+    </article><article class="card">
+      <div class="prop-head"><h3>Propiedad 5 · Colonia Las Lomas, estudio</h3><span class="price">$170,000</span></div>
+      <ul class="facts"><li><b>Terreno:</b> 240.5 m²</li><li><b>Construcción:</b> 214.77 m²</li><li><b>3</b> recámaras</li><li><b>2</b> baños</li><li><b>2</b> estacionamientos</li><li><b>$792</b> / m² construcción</li><li>Mantenimiento <b>$40</b>/mes</li></ul>
+      <p class="desc">Construida en 1993, complejo cerrado, vestíbulo y estudio.</p>
+      <div class="gallery"><img src="https://img10.naventcdn.com/avisos/20/01/51/25/16/70/360x266/1635265835.jpg" alt="" loading="lazy"></div>
+      <p class="src"><a href="https://www.compreoalquile.com/propiedades/clasificado/veclcain-casa-en-venta-colonia-las-lomas-villa-lucre-151251670.html" target="_blank" rel="noopener">Ver anuncio en Compreoalquile ↗</a> · Compreoalquile</p>
+    </article><article class="card">
+      <div class="prop-head"><h3>Propiedad 6 · Casa remodelada de una planta</h3><span class="price">$215,000 <s>$255,000</s></span></div>
+      <ul class="facts"><li><b>Terreno:</b> 332 m²</li><li><b>Construcción:</b> 264 m²</li><li><b>3</b> recámaras</li><li><b>2</b> baños</li><li><b>2</b> estacionamientos</li><li><b>$814</b> / m² construcción</li></ul>
+      <p class="desc">Cuarto y baño de empleada, tres terrazas, calle pública.</p><p class="flagnote">Bajó 15% (de $255,000) por falta de compradores.</p>
+      <div class="gallery"><img src="https://cdn.resize.sparkplatform.com/pa/1024x768/true/20260902001754840237000000-o.jpg" alt="" loading="lazy"><img src="https://img10.naventcdn.com/avisos/20/01/50/98/13/04/360x266/1629363526.jpg" alt="" loading="lazy"></div>
+      <p class="src"><a href="https://rentahouse.com.pa/casa_en_venta_en_san-miguelito_en_villa-lucre_rah-27-2032.html" target="_blank" rel="noopener">Ver anuncio en Rent-A-House ↗</a> · Rent-A-House 27-2032 · Compreoalquile</p>
+    </article><div class="zone"><h3 class="zone-h">Brisas del Golf</h3><p class="lead">Paseo del Norte y Brisas Norte: la alternativa que comparará el comprador. Casas más nuevas, muchas con piscina social.</p></div><article class="card">
+      <div class="prop-head"><h3>Propiedad 7 · Dúplex en Augusta, Paseo del Norte</h3><span class="price">$200,000</span></div>
+      <span class="tag">Actualizada 25/09/2026</span><ul class="facts"><li><b>Construcción:</b> 157 m²</li><li><b>3</b> recámaras</li><li><b>2.5</b> baños</li><li><b>2</b> estacionamientos</li><li><b>$1,274</b> / m² construcción</li></ul>
+      <p class="desc">Construida en 2014, terraza abierta y terraza techada.</p>
+      <div class="gallery"><img src="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/33/04/25/58/33042558_4091ad6" alt="" loading="lazy"><img src="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/33/04/25/58/33042558_b0c0a20" alt="" loading="lazy"><img src="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/33/04/25/58/33042558_3e8c13f" alt="" loading="lazy"><img src="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/33/04/25/58/33042558_8aa2d52" alt="" loading="lazy"><img src="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/33/04/25/58/33042558_8ed0811" alt="" loading="lazy"><img src="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/33/04/25/58/33042558_1241d8c" alt="" loading="lazy"></div>
+      <p class="src"><a href="https://www.encuentra24.com/panama-es/bienes-raices-venta-de-propiedades-casas/venta-casa-duplex-brisas-del-golf-yd/33042558" target="_blank" rel="noopener">Ver anuncio en Encuentra24 ↗</a> · Encuentra24 33042558 · Rent-A-House 27-2718</p>
+    </article><article class="card">
+      <div class="prop-head"><h3>Propiedad 8 · PH Alpes, Paseo del Norte</h3><span class="price">$205,000</span></div>
+      <ul class="facts"><li><b>Construcción:</b> 157 m²</li><li><b>3</b> recámaras</li><li><b>2.5</b> baños</li><li><b>2</b> estacionamientos</li><li><b>$1,306</b> / m² construcción</li><li>Mantenimiento <b>$65</b>/mes</li></ul>
+      <p class="desc">Cuarto y baño de empleada, walk-in closet. Tres piscinas, gimnasio y garita.</p>
+      <div class="gallery"><img src="../fotos/didier-31985215-1.jpg" alt="" loading="lazy"><img src="../fotos/didier-31985215-2.jpg" alt="" loading="lazy"><img src="../fotos/didier-31985215-3.jpg" alt="" loading="lazy"><img src="../fotos/didier-31985215-4.jpg" alt="" loading="lazy"><img src="../fotos/didier-31985215-5.jpg" alt="" loading="lazy"><img src="../fotos/didier-31985215-6.jpg" alt="" loading="lazy"></div>
+      <p class="src"><a href="https://www.encuentra24.com/panama-es/bienes-raices-venta-de-propiedades-casas/venta-de-casa-ph-alpes-paseo-del-norte/31985215" target="_blank" rel="noopener">Ver anuncio en Encuentra24 ↗</a> · Encuentra24 31985215</p>
+    </article><article class="card">
+      <div class="prop-head"><h3>Propiedad 9 · PH Victoria, dúplex 164 m²</h3><span class="price">$192,000 <s>$204,255</s></span></div>
+      <ul class="facts"><li><b>Construcción:</b> 164 m²</li><li><b>3</b> recámaras</li><li><b>2</b> baños</li><li><b>2</b> estacionamientos</li><li><b>$1,171</b> / m² construcción</li></ul>
+      <p class="desc">Dúplex en residencial con amenidades.</p><p class="flagnote">Rebajada 6%.</p>
+      <div class="gallery"><img src="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/32/97/75/73/32977573_6ace8c" alt="" loading="lazy"><img src="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/32/97/75/73/32977573_dabb48" alt="" loading="lazy"><img src="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/32/97/75/73/32977573_09d2c0" alt="" loading="lazy"><img src="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/32/97/75/73/32977573_92b5c3" alt="" loading="lazy"><img src="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/32/97/75/73/32977573_37d3c9" alt="" loading="lazy"><img src="https://photos.encuentra24.com/t_or_fh_m/f_auto/v1/pa/32/97/75/73/32977573_143dea" alt="" loading="lazy"></div>
+      <p class="src"><a href="https://www.encuentra24.com/panama-es/bienes-raices-venta-de-propiedades-casas/brisas-del-golf-victoria-164m-3-habitaciones-2-banos-duplex/32977573" target="_blank" rel="noopener">Ver anuncio en Encuentra24 ↗</a> · Encuentra24 32977573</p>
+    </article><article class="card">
+      <div class="prop-head"><h3>Propiedad 10 · Brisas Norte, dos niveles</h3><span class="price">$195,000 <s>$240,741</s></span></div>
+      <ul class="facts"><li><b>Construcción:</b> 200 m²</li><li><b>3</b> recámaras</li><li><b>4.5</b> baños</li><li><b>2</b> estacionamientos</li><li><b>$975</b> / m² construcción</li><li>Mantenimiento <b>$65</b>/mes</li></ul>
+      <p class="desc">Patio amplio con espacio para piscina.</p><p class="flagnote">Rebajada 19%.</p>
+      <div class="gallery"><img src="../fotos/didier-32184552-1.jpg" alt="" loading="lazy"><img src="../fotos/didier-32184552-2.jpg" alt="" loading="lazy"><img src="../fotos/didier-32184552-3.jpg" alt="" loading="lazy"><img src="../fotos/didier-32184552-4.jpg" alt="" loading="lazy"><img src="../fotos/didier-32184552-5.jpg" alt="" loading="lazy"><img src="../fotos/didier-32184552-6.jpg" alt="" loading="lazy"></div>
+      <p class="src"><a href="https://www.encuentra24.com/panama-es/bienes-raices-venta-de-propiedades-casas/se-vende-brisas-norte-2-niveles/32184552" target="_blank" rel="noopener">Ver anuncio en Encuentra24 ↗</a> · Encuentra24 32184552</p>
+    </article>
+  </section>
+
+  <section class="card">
+    <h2>Lectura del mercado</h2>
+    <ul class="sig"><li>En Paseo Real hoy compiten tres casas entre $185,000 y $215,000. Ninguna oferta por encima de $215,000 se ha vendido en los últimos dos años.</li><li>Las rebajas son la norma: 15% en Villa Lucre ($255k a $215k), 19% en Brisas Norte y 3% en la competidora de Paseo Real.</li><li>Brisas del Golf ofrece casas de 157 m² y 12 años de antigüedad entre $200,000 y $205,000, con piscina social. Ese es el techo práctico para el comprador que compara.</li><li>El sujeto gana en distribución: es la única de Paseo Real con cuarto de empleada con baño, den y 3.5 baños, y tiene la cocina más actualizada en fotos.</li></ul>
+    <div class="notes"><p>Análisis referencial basado en precios de oferta publicados en portales; no constituye un avalúo. Preparado por Zaskia Castell.</p></div>
+  </section>
+
+</div>
+</body>
+</html>
