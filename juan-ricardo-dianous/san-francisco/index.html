@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Casa en San Francisco · Juan Ricardo Dianous</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* Layout: formato Grupo Tribaldos — encabezado azul, nota, grilla de fichas con galería emergente */
+  :root{
+    --bay:#1b3a5c; --bay-deep:#0d1f33; --sand:#f2f4f7; --sand-card:#ffffff;
+    --ink:#1a2430; --muted:#6b7686; --line:#dde2e9;
+    --amber:#9a6a16; --note-bg:#fbf4e4; --note-line:#ecdcb5; --note-ink:#5a4a22;
+    --slate:#3a5566; --slate-bg:#e2ebf0; --slate-line:#c7d5dc; --slate-ink:#233f4d;
+    --hero-a:#20477a; --hero-b:#0d1f33; --hero-ink:#fdfbf5; --pin:#c0392b; --pin-dot:#6e2233;
+    --tag-bg:rgba(255,253,248,.92); --btn-bg:rgba(13,31,51,.72); --btn-bg-h:rgba(13,31,51,.92); --btn-ink:#ffffff;
+    --thumb-bg:#dfe6e2; --lb-bg:rgba(10,16,24,.92);
+    --shadow:0 1px 2px rgba(13,31,51,.06),0 6px 24px rgba(13,31,51,.08);
+    --display:'Fraunces',Georgia,'Times New Roman',serif;
+    --body:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+  }
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+    --bay:#8fb6e0; --bay-deep:#dce8f5; --sand:#0f1621; --sand-card:#17212e;
+    --ink:#e4e9f0; --muted:#97a3b3; --line:#2a3646;
+    --amber:#e3b25a; --note-bg:#2a2414; --note-line:#4a3d1c; --note-ink:#e8d9b0;
+    --slate:#a9c3d1; --slate-bg:#1c2a35; --slate-line:#2d4250; --slate-ink:#cfe0ea;
+    --tag-bg:rgba(23,33,46,.9); --thumb-bg:#223040; color-scheme:dark } }
+  :root[data-theme="dark"]{
+    --bay:#8fb6e0; --bay-deep:#dce8f5; --sand:#0f1621; --sand-card:#17212e;
+    --ink:#e4e9f0; --muted:#97a3b3; --line:#2a3646;
+    --amber:#e3b25a; --note-bg:#2a2414; --note-line:#4a3d1c; --note-ink:#e8d9b0;
+    --slate:#a9c3d1; --slate-bg:#1c2a35; --slate-line:#2d4250; --slate-ink:#cfe0ea;
+    --tag-bg:rgba(23,33,46,.9); --thumb-bg:#223040; color-scheme:dark }
+  *{box-sizing:border-box;margin:0;padding:0}
+  [hidden]{display:none!important}
+  body{font-family:var(--body);background:var(--sand);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased}
+  a{color:var(--bay);text-underline-offset:2px}
+  .wrap{max-width:1180px;margin:0 auto;padding-inline:20px}
+  header{background:linear-gradient(135deg,var(--hero-a) 0%,var(--hero-b) 100%);color:var(--hero-ink);padding-block:20px 30px}
+  .header-brand{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+  .header-brand svg{height:44px;width:auto;max-width:100%}
+  .header-inner{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+  .header-left{flex:1;min-width:0}
+  .eyebrow{font-size:11px;letter-spacing:.16em;text-transform:uppercase;opacity:.8;font-weight:500}
+  h1{font-family:var(--display);font-weight:500;font-size:clamp(24px,3.5vw,34px);line-height:1.1;margin-top:4px;text-wrap:balance}
+  .client{font-size:14px;opacity:.85;margin-top:6px}
+  .stats{display:flex;gap:22px;flex-wrap:wrap}
+  .stat{text-align:center}
+  .stat .n{font-family:var(--display);font-size:24px;line-height:1;font-variant-numeric:tabular-nums}
+  .stat .l{font-size:10.5px;opacity:.78;letter-spacing:.06em;margin-top:2px;white-space:nowrap}
+  .note-box{background:var(--note-bg);border:1px solid var(--note-line);border-radius:12px;padding:14px 16px;margin-top:18px;font-size:13px;color:var(--note-ink);line-height:1.55}
+  .note-box b{color:var(--amber)}
+  .sec-head{display:flex;align-items:baseline;gap:12px;margin:26px 0 16px}
+  .sec-head h2{font-family:var(--display);font-weight:500;font-size:22px}
+  .sec-head .meta{font-size:13px;color:var(--muted);white-space:nowrap}
+  .rule{height:1px;background:var(--line);flex:1}
+  .grid{display:grid;grid-template-columns:minmax(0,680px);justify-content:center;gap:18px;margin-bottom:30px}
+  .grid .thumb{height:clamp(220px,48vw,380px)}
+  .card{background:var(--sand-card);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;transition:transform .15s ease,box-shadow .15s ease;min-width:0}
+  .card:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(18,40,38,.14)}
+  .thumb{height:210px;background:var(--thumb-bg) center/cover no-repeat;position:relative;cursor:pointer;border:none;width:100%;display:block}
+  .thumb:focus-visible,.photos-btn:focus-visible,.lightbox button:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+  .strip{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--line)}
+  .strip button{border:none;padding:0;cursor:pointer;aspect-ratio:4/3;background:var(--thumb-bg) center/cover no-repeat;max-width:100%}
+  .strip button:hover{opacity:.85}
+  .source-tag{position:absolute;top:10px;right:10px;background:var(--tag-bg);border-radius:99px;padding:3px 10px;font-size:10.5px;font-weight:600;color:var(--muted)}
+  .photos-btn{position:absolute;bottom:10px;left:10px;background:var(--btn-bg);color:var(--btn-ink);border:none;border-radius:99px;padding:6px 12px;font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px;font-family:var(--body)}
+  .thumb:hover .photos-btn{background:var(--btn-bg-h)}
+  .card-body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:10px;flex:1}
+  .card h3{font-family:var(--display);font-weight:500;font-size:19px;line-height:1.25;text-wrap:balance}
+  .area{font-size:13px;color:var(--muted);margin-top:-6px}
+  .price{font-family:var(--display);font-size:23px;font-weight:600;color:var(--bay-deep);font-variant-numeric:tabular-nums}
+  .ppm{font-family:var(--body);font-size:11.5px;font-weight:400;color:var(--muted);margin-left:6px}
+  .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px 10px;font-size:12.5px;padding:10px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
+  .facts div{display:flex;flex-direction:column;line-height:1.25}
+  .facts b{font-weight:600;font-size:14px}
+  .facts span{color:var(--muted);font-size:11px;letter-spacing:.02em}
+  .desc{font-size:13px;color:var(--ink);line-height:1.6}
+  .amenities{background:var(--slate-bg);border:1px solid var(--slate-line);border-radius:9px;padding:9px 11px;font-size:12.5px;color:var(--slate-ink)}
+  .amenities b{display:block;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--slate);margin-bottom:4px}
+  .amenities ul{margin:0 0 0 16px}
+  .amenities li{margin:2px 0}
+  .maint{font-size:12px;color:var(--muted)}
+  .card-foot{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-top:auto;padding-top:11px;border-top:1px solid var(--line)}
+  .ref-badge{font-size:12px;font-weight:600;color:var(--muted);background:var(--sand);border:1px solid var(--line);border-radius:7px;padding:5px 10px;font-variant-numeric:tabular-nums}
+  .updated{font-size:11.5px;color:var(--muted)}
+  footer{text-align:center;color:var(--muted);font-size:12.5px;padding:34px 20px 16px;line-height:1.7}
+  .brand-footer{max-width:640px;margin:26px auto 0;padding-top:22px;border-top:1px solid var(--line);text-align:center}
+  .brand-name{font-family:var(--display);font-size:17px;font-weight:600;color:var(--bay-deep)}
+  .brand-tag{font-size:12.5px;color:var(--muted);margin:6px auto 0;line-height:1.6;max-width:520px}
+  .contact{margin-top:8px;font-size:12.5px;color:var(--ink);user-select:all}
+
+  .lightbox{position:fixed;inset:0;background:var(--lb-bg);z-index:999;display:flex;align-items:center;justify-content:center;padding:24px 16px}
+  .lightbox-inner{max-width:min(980px,100%);width:100%;display:flex;flex-direction:column;align-items:center;gap:12px}
+  .lightbox-imgwrap{position:relative;width:100%;display:flex;align-items:center;justify-content:center}
+  .lightbox img#lightbox-img{max-width:100%;max-height:68vh;border-radius:10px;object-fit:contain;background:var(--hero-b);box-shadow:0 12px 40px rgba(0,0,0,.5)}
+  .lightbox-nav{background:rgba(255,253,248,.14);border:1px solid rgba(255,253,248,.3);color:var(--hero-ink);width:42px;height:42px;border-radius:99px;font-size:22px;cursor:pointer;flex-shrink:0}
+  .lightbox-nav:hover{background:rgba(255,253,248,.28)}
+  .lightbox-navrow{display:flex;align-items:center;gap:14px;width:100%;justify-content:center}
+  .lightbox-close{position:absolute;top:-8px;right:-4px;background:var(--hero-ink);color:var(--hero-b);border:none;width:34px;height:34px;border-radius:99px;font-size:18px;font-weight:700;cursor:pointer}
+  .lightbox-meta{color:var(--hero-ink);font-size:13px;text-align:center;opacity:.9;min-width:0}
+  .lightbox-thumbs{display:flex;gap:6px;overflow-x:auto;max-width:100%;padding-bottom:4px}
+  .lightbox-thumbs img{width:56px;height:42px;flex-shrink:0;object-fit:cover;border-radius:5px;opacity:.5;cursor:pointer;border:2px solid transparent}
+  .lightbox-thumbs img.active{opacity:1;border-color:var(--hero-ink)}
+  @media (prefers-reduced-motion: reduce){ .card{transition:none} .card:hover{transform:none} }
+  @media (max-width:520px){ .thumb{height:190px} .stats{gap:16px} }
+</style>
+</head>
+<body>
+
+
+<header>
+  <div class="wrap">
+    <div class="header-brand">
+      <svg viewBox="0 0 720 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Grupo Tribaldos Realtors">
+        <text x="130" y="108" font-family="Georgia,'Times New Roman',serif" font-size="42" font-weight="700" fill="#fdfbf5">Grupo</text>
+        <text x="85" y="185" font-family="Arial,Helvetica,sans-serif" font-size="92" font-weight="800" letter-spacing="-1" fill="#fdfbf5">TRIBALDOS</text>
+        <text x="618" y="140" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="700" fill="#fdfbf5">®</text>
+        <text x="428" y="232" font-family="Georgia,'Times New Roman',serif" font-size="46" font-weight="700" fill="#fdfbf5">Realtors</text>
+        <path d="M348 15c-20 0-36 16-36 36 0 27 36 68 36 68s36-41 36-68c0-20-16-36-36-36z" fill="#c0392b"/>
+        <circle cx="348" cy="51" r="19" fill="#6e2233"/>
+      </svg>
+    </div>
+    <div class="header-inner">
+      <div class="header-left">
+        <div class="eyebrow">Ciudad de Panamá · Casa en venta</div>
+        <h1>Propiedad seleccionada</h1>
+        <div class="client">Preparado para <b>Juan Ricardo Dianous</b></div>
+      </div>
+      <div class="stats" id="stats"></div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="note-box">
+    <b>Nota:</b> casa en San Francisco con potencial para personalizarla a tu gusto. Haz clic en cualquier foto para ver la galería completa sin salir de esta página.
+  </div>
+
+  <div class="sec-head"><h2>La propiedad</h2><span class="meta" id="count-meta"></span><div class="rule"></div></div>
+  <div class="grid" id="grid"></div>
+</main>
+
+<footer>
+  Selección preparada en octubre de 2026 · Los precios y la disponibilidad pueden cambiar.
+<div class="brand-footer">
+    <div class="brand-name">Grupo Tribaldos</div>
+    <div class="brand-tag">Selección de casas preparada para Juan Ricardo Dianous, con todas las fotos de cada propiedad disponibles directamente en esta página.</div>
+    <div class="contact">¿Alguna te interesa? Escríbeme y coordinamos una visita.<br><b>Zaskia Castell</b> · Corredora de bienes raíces · WhatsApp / teléfono: +507 6617-7930</div>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Galería de fotos">
+  <div class="lightbox-inner">
+    <div class="lightbox-imgwrap">
+      <button class="lightbox-close" id="lb-close" title="Cerrar" aria-label="Cerrar">✕</button>
+      <img id="lightbox-img" src="" alt="Foto de la propiedad">
+    </div>
+    <div class="lightbox-navrow">
+      <button class="lightbox-nav" id="lb-prev" title="Anterior" aria-label="Foto anterior">‹</button>
+      <div class="lightbox-meta"><b id="lightbox-title"></b><br><span id="lightbox-counter"></span></div>
+      <button class="lightbox-nav" id="lb-next" title="Siguiente" aria-label="Foto siguiente">›</button>
+    </div>
+    <div class="lightbox-thumbs" id="lightbox-thumbs"></div>
+  </div>
+</div>
+
+<script>
+const PROPERTIES = [{"id": "san-francisco", "building": "Casa en San Francisco", "area": "San Francisco · Ciudad de Panamá", "price": 675000, "beds": 5, "baths": "5", "parking": 3, "size_m2": 475, "lot_m2": null, "maintenance": null, "description": "Casa de dos niveles en San Francisco con 475 m² de construcción sobre 508 m² de área total. En la entrada hay jardín frontal y estacionamiento techado. En la planta baja, sala y comedor amplios, área de bar, una terraza cerrada con ventanales hacia el jardín y una terraza techada que da a un patio interior con árboles. Arriba están las recámaras, varias con clósets empotrados, y un balcón. La casa está desocupada, lo que facilita visitarla y planificar una remodelación a gusto.", "facts": ["5 recámaras y 5 baños", "Terraza cerrada y patio con árboles", "Área de bar y estudio", "Cuarto y baño de servicio, lavandería interna", "3 estacionamientos"], "photos": ["../../fotos/juan-sf-1.jpg", "../../fotos/juan-sf-2.jpg", "../../fotos/juan-sf-3.jpg", "../../fotos/juan-sf-4.jpg", "../../fotos/juan-sf-5.jpg", "../../fotos/juan-sf-6.jpg", "../../fotos/juan-sf-7.jpg", "../../fotos/juan-sf-8.jpg", "../../fotos/juan-sf-9.jpg", "../../fotos/juan-sf-10.jpg", "../../fotos/juan-sf-11.jpg", "../../fotos/juan-sf-12.jpg", "../../fotos/juan-sf-13.jpg", "../../fotos/juan-sf-14.jpg", "../../fotos/juan-sf-15.jpg", "../../fotos/juan-sf-16.jpg", "../../fotos/juan-sf-17.jpg", "../../fotos/juan-sf-18.jpg", "../../fotos/juan-sf-19.jpg", "../../fotos/juan-sf-20.jpg"]}];
+
+const fmtMoney = n => "$" + Math.round(n).toLocaleString("en-US");
+const fmtM2 = n => n.toLocaleString("en-US",{maximumFractionDigits:2}) + " m²";
+
+function cardHtml(p, i){
+  const ppm = Math.round(p.price / p.size_m2);
+  const strip = p.photos.slice(1,5).map((src,k)=>
+    `<button style="background-image:url('${src}')" data-id="${p.id}" data-i="${k+1}" aria-label="Ver foto ${k+2} de ${p.building}"></button>`).join("");
+  const cells = [
+    [p.beds,"recámaras"],[p.baths,"baños"],[p.parking,"estacionamientos"],
+    [fmtM2(p.size_m2),"construcción"]
+  ];
+  if(p.lot_m2) cells.push([fmtM2(p.lot_m2),"terreno"]);
+  return `
+  <article class="card">
+    <button class="thumb" style="background-image:url('${p.photos[0]}')" data-id="${p.id}" data-i="0" aria-label="Ver fotos de ${p.building}">
+      <span class="source-tag">San Francisco</span>
+      <span class="photos-btn">📷 Ver todas las fotos (${p.photos.length})</span>
+    </button>
+    <div class="strip">${strip}</div>
+    <div class="card-body">
+      <h3>${p.building}</h3>
+      <div class="area">${p.area}</div>
+      <div class="price">${fmtMoney(p.price)}<span class="ppm">$${ppm.toLocaleString("en-US")}/m² construido</span></div>
+      <div class="facts">${cells.map(([v,l])=>`<div><b>${v}</b><span>${l}</span></div>`).join("")}</div>
+      <p class="desc">${p.description}</p>
+      <div class="amenities">
+        <b>Destacados</b>
+        <ul>${p.facts.map(c=>`<li>${c}</li>`).join("")}</ul>
+      </div>
+      ${p.maintenance ? `<div class="maint">Mantenimiento: $${p.maintenance}/mes</div>` : ""}
+      <div class="card-foot">
+        <span class="ref-badge">Casa en venta</span>
+        <span class="updated">Venta · octubre 2026</span>
+      </div>
+    </div>
+  </article>`;
+}
+
+function render(){
+  const sorted = [...PROPERTIES].sort((a,b)=>a.price-b.price);
+  document.getElementById("grid").innerHTML = sorted.map((p,i)=>cardHtml(p,i)).join("");
+  const total = PROPERTIES.reduce((s,p)=>s+p.photos.length,0);
+  document.getElementById("count-meta").textContent = "San Francisco · venta";
+  document.getElementById("stats").innerHTML = `
+    <div class="stat"><div class="n">${PROPERTIES.length}</div><div class="l">PROPIEDAD</div></div>
+    <div class="stat"><div class="n">${total}</div><div class="l">FOTOS</div></div>`;
+}
+
+let galleryPhotos = [], galleryIndex = 0, lastFocus = null;
+function openGallery(id, start){
+  const p = PROPERTIES.find(x=>x.id===id);
+  if(!p) return;
+  lastFocus = document.activeElement;
+  galleryPhotos = p.photos; galleryIndex = start || 0;
+  document.getElementById("lightbox-title").textContent = p.building + " · " + fmtMoney(p.price);
+  document.getElementById("lightbox-thumbs").innerHTML = p.photos.map((s,i)=>`<img src="${s}" data-g="${i}" alt="Miniatura ${i+1}" loading="lazy">`).join("");
+  showPhoto();
+  document.getElementById("lightbox").hidden = false;
+  document.body.style.overflow = "hidden";
+  document.getElementById("lb-close").focus();
+}
+function closeGallery(){
+  document.getElementById("lightbox").hidden = true;
+  document.body.style.overflow = "";
+  if(lastFocus) lastFocus.focus();
+}
+function showPhoto(){
+  document.getElementById("lightbox-img").src = galleryPhotos[galleryIndex];
+  document.getElementById("lightbox-counter").textContent = (galleryIndex+1) + " / " + galleryPhotos.length;
+  document.querySelectorAll("#lightbox-thumbs img").forEach((im,i)=>{
+    im.classList.toggle("active", i===galleryIndex);
+    if(i===galleryIndex) im.scrollIntoView({block:"nearest",inline:"center"});
+  });
+  [galleryIndex+1, galleryIndex-1].forEach(i=>{ const j=(i+galleryPhotos.length)%galleryPhotos.length; new Image().src = galleryPhotos[j]; });
+}
+const nextPhoto = ()=>{ galleryIndex=(galleryIndex+1)%galleryPhotos.length; showPhoto(); };
+const prevPhoto = ()=>{ galleryIndex=(galleryIndex-1+galleryPhotos.length)%galleryPhotos.length; showPhoto(); };
+
+document.getElementById("grid").addEventListener("click", e=>{
+  const b = e.target.closest("[data-id]");
+  if(b) openGallery(b.dataset.id, Number(b.dataset.i));
+});
+document.getElementById("lb-close").addEventListener("click", closeGallery);
+document.getElementById("lb-next").addEventListener("click", nextPhoto);
+document.getElementById("lb-prev").addEventListener("click", prevPhoto);
+document.getElementById("lightbox-thumbs").addEventListener("click", e=>{
+  if(e.target.dataset.g){ galleryIndex = Number(e.target.dataset.g); showPhoto(); }
+});
+document.getElementById("lightbox").addEventListener("click", e=>{ if(e.target.id==="lightbox") closeGallery(); });
+document.addEventListener("keydown", e=>{
+  if(document.getElementById("lightbox").hidden) return;
+  if(e.key==="Escape") closeGallery();
+  if(e.key==="ArrowRight") nextPhoto();
+  if(e.key==="ArrowLeft") prevPhoto();
+});
+let tx=null;
+document.getElementById("lightbox-img").addEventListener("touchstart", e=>{ tx=e.touches[0].clientX; }, {passive:true});
+document.getElementById("lightbox-img").addEventListener("touchend", e=>{
+  if(tx===null) return; const dx=e.changedTouches[0].clientX-tx; tx=null;
+  if(Math.abs(dx)>40) (dx<0?nextPhoto:prevPhoto)();
+});
+
+render();
+</script>
+
+</body>
+</html>
