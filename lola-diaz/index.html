@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Casas seleccionadas · Sra. Lola Díaz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* Layout: formato Grupo Tribaldos — encabezado azul, nota, grilla de fichas con galería emergente */
+  :root{
+    --bay:#1b3a5c; --bay-deep:#0d1f33; --sand:#f2f4f7; --sand-card:#ffffff;
+    --ink:#1a2430; --muted:#6b7686; --line:#dde2e9;
+    --amber:#9a6a16; --note-bg:#fbf4e4; --note-line:#ecdcb5; --note-ink:#5a4a22;
+    --slate:#3a5566; --slate-bg:#e2ebf0; --slate-line:#c7d5dc; --slate-ink:#233f4d;
+    --hero-a:#20477a; --hero-b:#0d1f33; --hero-ink:#fdfbf5; --pin:#c0392b; --pin-dot:#6e2233;
+    --tag-bg:rgba(255,253,248,.92); --btn-bg:rgba(13,31,51,.72); --btn-bg-h:rgba(13,31,51,.92); --btn-ink:#ffffff;
+    --thumb-bg:#dfe6e2; --lb-bg:rgba(10,16,24,.92);
+    --shadow:0 1px 2px rgba(13,31,51,.06),0 6px 24px rgba(13,31,51,.08);
+    --display:'Fraunces',Georgia,'Times New Roman',serif;
+    --body:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+  }
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+    --bay:#8fb6e0; --bay-deep:#dce8f5; --sand:#0f1621; --sand-card:#17212e;
+    --ink:#e4e9f0; --muted:#97a3b3; --line:#2a3646;
+    --amber:#e3b25a; --note-bg:#2a2414; --note-line:#4a3d1c; --note-ink:#e8d9b0;
+    --slate:#a9c3d1; --slate-bg:#1c2a35; --slate-line:#2d4250; --slate-ink:#cfe0ea;
+    --tag-bg:rgba(23,33,46,.9); --thumb-bg:#223040; color-scheme:dark } }
+  :root[data-theme="dark"]{
+    --bay:#8fb6e0; --bay-deep:#dce8f5; --sand:#0f1621; --sand-card:#17212e;
+    --ink:#e4e9f0; --muted:#97a3b3; --line:#2a3646;
+    --amber:#e3b25a; --note-bg:#2a2414; --note-line:#4a3d1c; --note-ink:#e8d9b0;
+    --slate:#a9c3d1; --slate-bg:#1c2a35; --slate-line:#2d4250; --slate-ink:#cfe0ea;
+    --tag-bg:rgba(23,33,46,.9); --thumb-bg:#223040; color-scheme:dark }
+  *{box-sizing:border-box;margin:0;padding:0}
+  [hidden]{display:none!important}
+  body{font-family:var(--body);background:var(--sand);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased}
+  a{color:var(--bay);text-underline-offset:2px}
+  .wrap{max-width:1180px;margin:0 auto;padding-inline:20px}
+  header{background:linear-gradient(135deg,var(--hero-a) 0%,var(--hero-b) 100%);color:var(--hero-ink);padding-block:20px 30px}
+  .header-brand{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+  .header-brand svg{height:44px;width:auto;max-width:100%}
+  .header-inner{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+  .header-left{flex:1;min-width:0}
+  .eyebrow{font-size:11px;letter-spacing:.16em;text-transform:uppercase;opacity:.8;font-weight:500}
+  h1{font-family:var(--display);font-weight:500;font-size:clamp(24px,3.5vw,34px);line-height:1.1;margin-top:4px;text-wrap:balance}
+  .client{font-size:14px;opacity:.85;margin-top:6px}
+  .stats{display:flex;gap:22px;flex-wrap:wrap}
+  .stat{text-align:center}
+  .stat .n{font-family:var(--display);font-size:24px;line-height:1;font-variant-numeric:tabular-nums}
+  .stat .l{font-size:10.5px;opacity:.78;letter-spacing:.06em;margin-top:2px;white-space:nowrap}
+  .note-box{background:var(--note-bg);border:1px solid var(--note-line);border-radius:12px;padding:14px 16px;margin-top:18px;font-size:13px;color:var(--note-ink);line-height:1.55}
+  .note-box b{color:var(--amber)}
+  .sec-head{display:flex;align-items:baseline;gap:12px;margin:26px 0 16px}
+  .sec-head h2{font-family:var(--display);font-weight:500;font-size:22px}
+  .sec-head .meta{font-size:13px;color:var(--muted);white-space:nowrap}
+  .rule{height:1px;background:var(--line);flex:1}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),540px));justify-content:center;gap:18px;margin-bottom:30px}
+  .grid .thumb{height:clamp(210px,30vw,300px)}
+  .card{background:var(--sand-card);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;transition:transform .15s ease,box-shadow .15s ease;min-width:0}
+  .card:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(18,40,38,.14)}
+  .thumb{height:210px;background:var(--thumb-bg) center/cover no-repeat;position:relative;cursor:pointer;border:none;width:100%;display:block}
+  .thumb:focus-visible,.photos-btn:focus-visible,.lightbox button:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+  .strip{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--line)}
+  .strip button{border:none;padding:0;cursor:pointer;aspect-ratio:4/3;background:var(--thumb-bg) center/cover no-repeat;max-width:100%}
+  .strip button:hover{opacity:.85}
+  .source-tag{position:absolute;top:10px;right:10px;background:var(--tag-bg);border-radius:99px;padding:3px 10px;font-size:10.5px;font-weight:600;color:var(--muted)}
+  .photos-btn{position:absolute;bottom:10px;left:10px;background:var(--btn-bg);color:var(--btn-ink);border:none;border-radius:99px;padding:6px 12px;font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px;font-family:var(--body)}
+  .thumb:hover .photos-btn{background:var(--btn-bg-h)}
+  .card-body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:10px;flex:1}
+  .card h3{font-family:var(--display);font-weight:500;font-size:19px;line-height:1.25;text-wrap:balance}
+  .area{font-size:13px;color:var(--muted);margin-top:-6px}
+  .price{font-family:var(--display);font-size:23px;font-weight:600;color:var(--bay-deep);font-variant-numeric:tabular-nums}
+  .ppm{font-family:var(--body);font-size:11.5px;font-weight:400;color:var(--muted);margin-left:6px}
+  .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px 10px;font-size:12.5px;padding:10px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
+  .facts div{display:flex;flex-direction:column;line-height:1.25}
+  .facts b{font-weight:600;font-size:14px}
+  .facts span{color:var(--muted);font-size:11px;letter-spacing:.02em}
+  .desc{font-size:13px;color:var(--ink);line-height:1.6}
+  .amenities{background:var(--slate-bg);border:1px solid var(--slate-line);border-radius:9px;padding:9px 11px;font-size:12.5px;color:var(--slate-ink)}
+  .amenities b{display:block;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--slate);margin-bottom:4px}
+  .amenities ul{margin:0 0 0 16px}
+  .amenities li{margin:2px 0}
+  .maint{font-size:12px;color:var(--muted)}
+  .card-foot{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-top:auto;padding-top:11px;border-top:1px solid var(--line)}
+  .ref-badge{font-size:12px;font-weight:600;color:var(--muted);background:var(--sand);border:1px solid var(--line);border-radius:7px;padding:5px 10px;font-variant-numeric:tabular-nums}
+  .updated{font-size:11.5px;color:var(--muted)}
+  footer{text-align:center;color:var(--muted);font-size:12.5px;padding:34px 20px 16px;line-height:1.7}
+  .brand-footer{max-width:640px;margin:26px auto 0;padding-top:22px;border-top:1px solid var(--line);text-align:center}
+  .brand-name{font-family:var(--display);font-size:17px;font-weight:600;color:var(--bay-deep)}
+  .brand-tag{font-size:12.5px;color:var(--muted);margin:6px auto 0;line-height:1.6;max-width:520px}
+  .contact{margin-top:8px;font-size:12.5px;color:var(--ink);user-select:all}
+
+  .lightbox{position:fixed;inset:0;background:var(--lb-bg);z-index:999;display:flex;align-items:center;justify-content:center;padding:24px 16px}
+  .lightbox-inner{max-width:min(980px,100%);width:100%;display:flex;flex-direction:column;align-items:center;gap:12px}
+  .lightbox-imgwrap{position:relative;width:100%;display:flex;align-items:center;justify-content:center}
+  .lightbox img#lightbox-img{max-width:100%;max-height:68vh;border-radius:10px;object-fit:contain;background:var(--hero-b);box-shadow:0 12px 40px rgba(0,0,0,.5)}
+  .lightbox-nav{background:rgba(255,253,248,.14);border:1px solid rgba(255,253,248,.3);color:var(--hero-ink);width:42px;height:42px;border-radius:99px;font-size:22px;cursor:pointer;flex-shrink:0}
+  .lightbox-nav:hover{background:rgba(255,253,248,.28)}
+  .lightbox-navrow{display:flex;align-items:center;gap:14px;width:100%;justify-content:center}
+  .lightbox-close{position:absolute;top:-8px;right:-4px;background:var(--hero-ink);color:var(--hero-b);border:none;width:34px;height:34px;border-radius:99px;font-size:18px;font-weight:700;cursor:pointer}
+  .lightbox-meta{color:var(--hero-ink);font-size:13px;text-align:center;opacity:.9;min-width:0}
+  .lightbox-thumbs{display:flex;gap:6px;overflow-x:auto;max-width:100%;padding-bottom:4px}
+  .lightbox-thumbs img{width:56px;height:42px;flex-shrink:0;object-fit:cover;border-radius:5px;opacity:.5;cursor:pointer;border:2px solid transparent}
+  .lightbox-thumbs img.active{opacity:1;border-color:var(--hero-ink)}
+  @media (prefers-reduced-motion: reduce){ .card{transition:none} .card:hover{transform:none} }
+  @media (max-width:520px){ .thumb{height:190px} .stats{gap:16px} }
+</style>
+</head>
+<body>
+
+
+<header>
+  <div class="wrap">
+    <div class="header-brand">
+      <svg viewBox="0 0 720 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Grupo Tribaldos Realtors">
+        <text x="130" y="108" font-family="Georgia,'Times New Roman',serif" font-size="42" font-weight="700" fill="#fdfbf5">Grupo</text>
+        <text x="85" y="185" font-family="Arial,Helvetica,sans-serif" font-size="92" font-weight="800" letter-spacing="-1" fill="#fdfbf5">TRIBALDOS</text>
+        <text x="618" y="140" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="700" fill="#fdfbf5">®</text>
+        <text x="428" y="232" font-family="Georgia,'Times New Roman',serif" font-size="46" font-weight="700" fill="#fdfbf5">Realtors</text>
+        <path d="M348 15c-20 0-36 16-36 36 0 27 36 68 36 68s36-41 36-68c0-20-16-36-36-36z" fill="#c0392b"/>
+        <circle cx="348" cy="51" r="19" fill="#6e2233"/>
+      </svg>
+    </div>
+    <div class="header-inner">
+      <div class="header-left">
+        <div class="eyebrow">San Francisco, Costa del Este y alrededores · Casas en venta</div>
+        <h1>Propiedades seleccionadas</h1>
+        <div class="client">Preparado para <b>Sra. Lola Díaz</b></div>
+      </div>
+      <div class="stats" id="stats"></div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="note-box">
+    <b>Nota:</b> 19 casas en venta en San Francisco, Costa del Este y zonas cercanas, ordenadas de menor a mayor precio. Haz clic en cualquier foto para ver la galería completa sin salir de esta página.
+  </div>
+
+  <div class="sec-head"><h2>Opciones</h2><span class="meta" id="count-meta"></span><div class="rule"></div></div>
+  <div class="grid" id="grid"></div>
+</main>
+
+<footer>
+  Selección preparada en octubre de 2026 · Los precios y la disponibilidad pueden cambiar.
+<div class="brand-footer">
+    <div class="brand-name">Grupo Tribaldos</div>
+    <div class="brand-tag">Selección de casas preparada para Sra. Lola Díaz, con todas las fotos de cada propiedad disponibles directamente en esta página.</div>
+    <div class="contact">¿Alguna te interesa? Escríbeme y coordinamos una visita.<br><b>Zaskia Castell</b> · Corredora de bienes raíces · WhatsApp / teléfono: +507 6617-7930</div>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Galería de fotos">
+  <div class="lightbox-inner">
+    <div class="lightbox-imgwrap">
+      <button class="lightbox-close" id="lb-close" title="Cerrar" aria-label="Cerrar">✕</button>
+      <img id="lightbox-img" src="" alt="Foto de la propiedad">
+    </div>
+    <div class="lightbox-navrow">
+      <button class="lightbox-nav" id="lb-prev" title="Anterior" aria-label="Foto anterior">‹</button>
+      <div class="lightbox-meta"><b id="lightbox-title"></b><br><span id="lightbox-counter"></span></div>
+      <button class="lightbox-nav" id="lb-next" title="Siguiente" aria-label="Foto siguiente">›</button>
+    </div>
+    <div class="lightbox-thumbs" id="lightbox-thumbs"></div>
+  </div>
+</div>
+
+<script>
+const PROPERTIES = [{"id": "hp-piscina", "building": "Casa con piscina en Hato Pintado", "area": "Pueblo Nuevo · Hato Pintado", "price": 380000, "beds": 3, "baths": 3, "parking": 4, "size_m2": 366, "lot_m2": 622, "maintenance": null, "description": "Casa de tres niveles en Hato Pintado, en un terreno de 622 m². Tiene cocina abierta, sala y comedor, sala familiar, estudio, lavandería y cuarto de servicio. La recámara principal tiene balcón. Afuera hay jardín, terraza abierta, bohío y piscina. Es una casa de 1976, con buen espacio para remodelar a gusto.", "facts": ["Piscina y bohío", "Terreno de 622 m²", "Estacionamiento para 4 autos", "Ideal para remodelar"], "photos": ["../fotos/sel-hp-piscina-1.jpg", "../fotos/sel-hp-piscina-2.jpg", "../fotos/sel-hp-piscina-3.jpg", "../fotos/sel-hp-piscina-4.jpg", "../fotos/sel-hp-piscina-5.jpg", "../fotos/sel-hp-piscina-6.jpg", "../fotos/sel-hp-piscina-7.jpg", "../fotos/sel-hp-piscina-8.jpg", "../fotos/sel-hp-piscina-9.jpg", "../fotos/sel-hp-piscina-10.jpg"]}, {"id": "laloma-elevador", "building": "Casa con elevador en La Loma", "area": "Pueblo Nuevo · Hato Pintado, La Loma", "price": 390000, "beds": 3, "baths": "4 + ½", "parking": 3, "size_m2": 720, "lot_m2": null, "maintenance": null, "description": "Casa de dos plantas con elevador entre ambos niveles, en una calle residencial arbolada de La Loma. Tiene ventanales altos con mucha luz y ventilación cruzada, patio con bohío para reuniones y dos depósitos. Está cerca del Hospital San Fernando, de colegios y de Vía España.", "facts": ["Elevador entre los dos niveles", "Patio con bohío", "Dos depósitos", "Cerca del Hospital San Fernando"], "photos": ["../fotos/sel-laloma-elevador-1.jpg", "../fotos/sel-laloma-elevador-2.jpg", "../fotos/sel-laloma-elevador-3.jpg", "../fotos/sel-laloma-elevador-4.jpg", "../fotos/sel-laloma-elevador-5.jpg", "../fotos/sel-laloma-elevador-6.jpg", "../fotos/sel-laloma-elevador-7.jpg", "../fotos/sel-laloma-elevador-8.jpg", "../fotos/sel-laloma-elevador-9.jpg", "../fotos/sel-laloma-elevador-10.jpg"]}, {"id": "betania", "building": "Casa de una planta en Betania", "area": "Betania · Los Ángeles", "price": 550000, "beds": 4, "baths": 4, "parking": 4, "size_m2": 665, "lot_m2": null, "maintenance": null, "description": "Casa de un solo nivel con 665 m² de construcción, en un lote totalmente cercado. Tiene sala y comedor, den, cocina amplia con comedor de diario, lavandería, cuatro recámaras con baño, cuarto y baño de servicio, gimnasio y depósito. Atrás hay patio con piscina, gazebo y terraza.", "facts": ["Todo en una planta", "Piscina, gazebo y terraza", "Cuarto de gimnasio", "4 estacionamientos techados"], "photos": ["../fotos/sel-betania-1.jpg", "../fotos/sel-betania-2.jpg", "../fotos/sel-betania-3.jpg", "../fotos/sel-betania-4.jpg", "../fotos/sel-betania-5.jpg", "../fotos/sel-betania-6.jpg", "../fotos/sel-betania-7.jpg", "../fotos/sel-betania-8.jpg", "../fotos/sel-betania-9.jpg", "../fotos/sel-betania-10.jpg"]}, {"id": "adg-cerrada", "building": "Casa en barriada cerrada de Altos del Golf", "area": "San Francisco · Altos del Golf", "price": 575000, "beds": 4, "baths": "4 + ½", "parking": 2, "size_m2": 434, "lot_m2": 285, "maintenance": null, "description": "Casa de 434 m² en una calle cerrada de Altos del Golf, con acceso interno al Parque Omar. Tiene sala, comedor, terraza, cuatro recámaras, cuatro baños y medio y cuarto de servicio. Cuenta con planta eléctrica para toda la casa. Está cerca de Punta Paitilla, Punta Pacífica, colegios y hospitales.", "facts": ["Barriada cerrada", "Planta eléctrica total", "Acceso al Parque Omar", "Cerca de Punta Pacífica"], "photos": ["../fotos/sel-altos-golf-1.jpg", "../fotos/sel-altos-golf-2.jpg", "../fotos/sel-altos-golf-3.jpg", "../fotos/sel-altos-golf-4.jpg", "../fotos/sel-altos-golf-5.jpg", "../fotos/sel-altos-golf-6.jpg", "../fotos/sel-altos-golf-7.jpg", "../fotos/sel-altos-golf-8.jpg", "../fotos/sel-altos-golf-9.jpg", "../fotos/sel-altos-golf-10.jpg"]}, {"id": "sf-5r", "building": "Casa reformada en San Francisco", "area": "San Francisco", "price": 675000, "beds": 5, "baths": 5, "parking": 3, "size_m2": 475, "lot_m2": 508, "maintenance": null, "description": "Casa unifamiliar reformada de 475 m² en un terreno de 508 m². Tiene cinco recámaras, la principal con vestidor y baño propio, biblioteca o estudio, sala de usos múltiples, cocina integral, balcón, lavandería, depósito y cuarto de servicio. Incluye aires acondicionados y clósets.", "facts": ["5 recámaras", "Reformada", "Estudio y sala de usos múltiples", "3 estacionamientos"], "photos": ["../fotos/juan-sf-1.jpg", "../fotos/juan-sf-2.jpg", "../fotos/juan-sf-3.jpg", "../fotos/juan-sf-4.jpg", "../fotos/juan-sf-5.jpg", "../fotos/juan-sf-6.jpg", "../fotos/juan-sf-7.jpg", "../fotos/juan-sf-8.jpg", "../fotos/juan-sf-9.jpg", "../fotos/juan-sf-10.jpg", "../fotos/juan-sf-11.jpg", "../fotos/juan-sf-12.jpg", "../fotos/juan-sf-13.jpg", "../fotos/juan-sf-14.jpg", "../fotos/juan-sf-15.jpg", "../fotos/juan-sf-16.jpg", "../fotos/juan-sf-17.jpg", "../fotos/juan-sf-18.jpg", "../fotos/juan-sf-19.jpg", "../fotos/juan-sf-20.jpg"]}, {"id": "sf-vina-del-mar", "building": "Casa de una planta en Viña del Mar", "area": "San Francisco · Viña del Mar", "price": 680000, "beds": 2, "baths": 2, "parking": 2, "size_m2": 350, "lot_m2": 350.37, "maintenance": null, "description": "Casa de un nivel con dos recámaras amplias, la principal con walk-in closet, y dos baños remodelados. Sala y comedor integrados, cocina moderna con sobres de granito, área familiar y de juegos, terrazas techadas y abiertas y patio privado con vegetación. Tiene cargador para auto eléctrico, alarma con cámaras, tanque de reserva de agua y portón eléctrico.", "facts": ["Baños y cocina remodelados", "Cargador para auto eléctrico", "Alarma y cámaras", "Patio privado"], "photos": ["../fotos/jrd-sf-vina-del-mar-1.jpg", "../fotos/jrd-sf-vina-del-mar-2.jpg", "../fotos/jrd-sf-vina-del-mar-3.jpg", "../fotos/jrd-sf-vina-del-mar-4.jpg", "../fotos/jrd-sf-vina-del-mar-5.jpg", "../fotos/jrd-sf-vina-del-mar-6.jpg", "../fotos/jrd-sf-vina-del-mar-7.jpg", "../fotos/jrd-sf-vina-del-mar-8.jpg", "../fotos/jrd-sf-vina-del-mar-9.jpg", "../fotos/jrd-sf-vina-del-mar-10.jpg", "../fotos/jrd-sf-vina-del-mar-11.jpg", "../fotos/jrd-sf-vina-del-mar-12.jpg", "../fotos/jrd-sf-vina-del-mar-13.jpg", "../fotos/jrd-sf-vina-del-mar-14.jpg", "../fotos/jrd-sf-vina-del-mar-15.jpg", "../fotos/jrd-sf-vina-del-mar-16.jpg", "../fotos/jrd-sf-vina-del-mar-17.jpg", "../fotos/jrd-sf-vina-del-mar-18.jpg", "../fotos/jrd-sf-vina-del-mar-19.jpg"]}, {"id": "adg-1050", "building": "Casa en Altos del Golf con terreno de 1,050 m²", "area": "San Francisco · Altos del Golf", "price": 695000, "beds": 5, "baths": 2, "parking": 4, "size_m2": 340, "lot_m2": 1050, "maintenance": null, "description": "Casa de 340 m² en un terreno amplio de 1,050 m² (20 m de frente por 53.5 m de fondo). Tiene sala, comedor, cocina equipada, terraza, portal de entrada, gazebo, jardín al frente y un patio trasero muy grande. Cinco recámaras, cuarto y baño de servicio, lavandería y depósito. Tiene muy buen potencial para remodelar.", "facts": ["Terreno de 1,050 m²", "Gran potencial de remodelación", "Gazebo y patio amplio", "4 estacionamientos"], "photos": ["../fotos/jrd-adg-1050-1.jpg", "../fotos/jrd-adg-1050-2.jpg", "../fotos/jrd-adg-1050-3.jpg", "../fotos/jrd-adg-1050-4.jpg", "../fotos/jrd-adg-1050-5.jpg", "../fotos/jrd-adg-1050-6.jpg", "../fotos/jrd-adg-1050-7.jpg", "../fotos/jrd-adg-1050-8.jpg", "../fotos/jrd-adg-1050-9.jpg", "../fotos/jrd-adg-1050-10.jpg", "../fotos/jrd-adg-1050-11.jpg", "../fotos/jrd-adg-1050-12.jpg", "../fotos/jrd-adg-1050-13.jpg", "../fotos/jrd-adg-1050-14.jpg", "../fotos/jrd-adg-1050-15.jpg", "../fotos/jrd-adg-1050-16.jpg", "../fotos/jrd-adg-1050-17.jpg", "../fotos/jrd-adg-1050-18.jpg"]}, {"id": "terreno-sf", "building": "Terreno con casa en San Francisco", "area": "San Francisco · Calle 64 Este", "price": 750000, "beds": null, "baths": null, "parking": null, "size_m2": null, "lot_m2": 1000, "maintenance": null, "description": "Lote de 1,000 m² con una casa tipo chalet construida, a pocos metros de Vía Porras y cerca de Multiplaza y el área bancaria. Sirve para remodelar la casa existente o para construir. Está libre de gravámenes.", "facts": ["Lote de 1,000 m²", "Casa tipo chalet existente", "Libre de gravámenes", "Cerca de Vía Porras y Multiplaza"], "photos": ["../fotos/jrd-terreno-sf-1.jpg", "../fotos/jrd-terreno-sf-2.jpg", "../fotos/jrd-terreno-sf-3.jpg", "../fotos/jrd-terreno-sf-4.jpg", "../fotos/jrd-terreno-sf-5.jpg", "../fotos/jrd-terreno-sf-6.jpg", "../fotos/jrd-terreno-sf-7.jpg", "../fotos/jrd-terreno-sf-8.jpg", "../fotos/jrd-terreno-sf-9.jpg", "../fotos/jrd-terreno-sf-10.jpg", "../fotos/jrd-terreno-sf-11.jpg", "../fotos/jrd-terreno-sf-12.jpg", "../fotos/jrd-terreno-sf-13.jpg", "../fotos/jrd-terreno-sf-14.jpg", "../fotos/jrd-terreno-sf-15.jpg", "../fotos/jrd-terreno-sf-16.jpg", "../fotos/jrd-terreno-sf-17.jpg", "../fotos/jrd-terreno-sf-18.jpg", "../fotos/jrd-terreno-sf-19.jpg", "../fotos/jrd-terreno-sf-20.jpg"]}, {"id": "loma-alegre-piscina", "building": "Casa con piscina en Loma Alegre", "area": "San Francisco · Loma Alegre, junto a Coco del Mar", "price": 799500, "beds": 3, "baths": "3 + ½", "parking": 5, "size_m2": 524.15, "lot_m2": 1045, "maintenance": null, "description": "Casa de dos niveles en un terreno de unos 1,045 m², totalmente cercada y en un complejo con vigilancia. Abajo tiene vestíbulo, sala y comedor, sala de estar, cocina con desayunador, estudio, lavandería y cuarto de servicio. Arriba, la recámara principal con baño y vestidor y dos recámaras más. Afuera hay dos terrazas con bar, piscina, bohío y jardines. Precio negociable.", "facts": ["Piscina, bohío y dos terrazas con bar", "Terreno de 1,045 m²", "Precio negociable", "Parque con cancha de tenis cerca"], "photos": ["../fotos/sel-loma-alegre-1.jpg", "../fotos/sel-loma-alegre-2.jpg", "../fotos/sel-loma-alegre-3.jpg", "../fotos/sel-loma-alegre-4.jpg", "../fotos/sel-loma-alegre-5.jpg", "../fotos/sel-loma-alegre-6.jpg", "../fotos/sel-loma-alegre-7.jpg", "../fotos/sel-loma-alegre-8.jpg", "../fotos/sel-loma-alegre-9.jpg", "../fotos/sel-loma-alegre-10.jpg"]}, {"id": "loma-alegre-800", "building": "Casa de 800 m² en Loma Alegre", "area": "San Francisco · Loma Alegre, cerca de Coco del Mar", "price": 850000, "beds": 4, "baths": 3, "parking": 4, "size_m2": 800, "lot_m2": null, "maintenance": null, "description": "Residencia amplia en una calle tranquila de Loma Alegre. Tiene sala y comedor amplios, cocina, cuatro recámaras, la principal con walk-in closet, tres baños, cuarto y baño de servicio, lavandería y depósito. Cuenta con terraza en cada planta, jardín y área de BBQ.", "facts": ["800 m²", "Terrazas en ambas plantas", "Jardín y área de BBQ", "4 estacionamientos"], "photos": ["../fotos/jrd-loma-alegre-800-1.jpg", "../fotos/jrd-loma-alegre-800-2.jpg", "../fotos/jrd-loma-alegre-800-3.jpg", "../fotos/jrd-loma-alegre-800-4.jpg", "../fotos/jrd-loma-alegre-800-5.jpg", "../fotos/jrd-loma-alegre-800-6.jpg", "../fotos/jrd-loma-alegre-800-7.jpg", "../fotos/jrd-loma-alegre-800-8.jpg", "../fotos/jrd-loma-alegre-800-9.jpg", "../fotos/jrd-loma-alegre-800-10.jpg", "../fotos/jrd-loma-alegre-800-11.jpg", "../fotos/jrd-loma-alegre-800-12.jpg", "../fotos/jrd-loma-alegre-800-13.jpg", "../fotos/jrd-loma-alegre-800-14.jpg", "../fotos/jrd-loma-alegre-800-15.jpg"]}, {"id": "villa-lilla", "building": "Casa con terreno grande en Villa Lilla", "area": "San Francisco · Villa Lilla", "price": 850000, "beds": 3, "baths": 2, "parking": 4, "size_m2": 400, "lot_m2": 1511.93, "maintenance": null, "description": "Casa de un nivel de unos 400 m² en un terreno plano de 1,512 m², con zonificación R3. Tiene sala, comedor, terraza, patio, cocina, tres recámaras, dos baños, cuarto y baño de servicio, lavandería y depósito, además de un local adosado con cuatro salones. Por el tamaño del terreno, se presta para remodelar o construir una casa nueva.", "facts": ["Terreno de 1,512 m²", "Zonificación R3", "Local adosado con 4 salones", "Ideal para remodelar o construir"], "photos": ["../fotos/jrd-villa-lilla-1.jpg", "../fotos/jrd-villa-lilla-2.jpg", "../fotos/jrd-villa-lilla-3.jpg", "../fotos/jrd-villa-lilla-4.jpg", "../fotos/jrd-villa-lilla-5.jpg", "../fotos/jrd-villa-lilla-6.jpg", "../fotos/jrd-villa-lilla-7.jpg", "../fotos/jrd-villa-lilla-8.jpg", "../fotos/jrd-villa-lilla-9.jpg", "../fotos/jrd-villa-lilla-10.jpg", "../fotos/jrd-villa-lilla-11.jpg", "../fotos/jrd-villa-lilla-12.jpg", "../fotos/jrd-villa-lilla-13.jpg", "../fotos/jrd-villa-lilla-14.jpg"]}, {"id": "altos-del-golf-moderna", "building": "Casa moderna en Altos del Golf", "area": "San Francisco · Altos del Golf", "price": 870000, "beds": 4, "baths": "3 + ½", "parking": 3, "size_m2": 540, "lot_m2": null, "maintenance": 530, "description": "Casa moderna de tres niveles en un conjunto privado de solo 10 casas con vigilancia 24 horas. Las áreas principales tienen doble y triple altura y mucha luz natural. Cuatro recámaras amplias, estudio para oficina o den familiar, cuarto y baño de servicio y un baño junto a la piscina. Afuera hay una terraza equipada con BBQ, nevera y fregadero, y una piscina temperada. Tiene 48 paneles solares que generan cerca de $800 al mes en electricidad, según el propietario. Incluye línea blanca y persianas.", "facts": ["48 paneles solares", "Piscina temperada y terraza con BBQ", "Doble y triple altura", "Conjunto privado de 10 casas"], "photos": ["../fotos/juan-adg-moderna-1.jpg", "../fotos/juan-adg-moderna-2.jpg", "../fotos/juan-adg-moderna-3.jpg", "../fotos/juan-adg-moderna-4.jpg", "../fotos/juan-adg-moderna-5.jpg", "../fotos/juan-adg-moderna-6.jpg", "../fotos/juan-adg-moderna-7.jpg", "../fotos/juan-adg-moderna-8.jpg", "../fotos/juan-adg-moderna-9.jpg", "../fotos/juan-adg-moderna-10.jpg", "../fotos/juan-adg-moderna-11.jpg", "../fotos/juan-adg-moderna-12.jpg", "../fotos/juan-adg-moderna-13.jpg", "../fotos/juan-adg-moderna-14.jpg", "../fotos/juan-adg-moderna-15.jpg", "../fotos/juan-adg-moderna-16.jpg", "../fotos/juan-adg-moderna-17.jpg", "../fotos/juan-adg-moderna-18.jpg", "../fotos/juan-adg-moderna-19.jpg"]}, {"id": "costa-azul-3r", "building": "Casa en Residencial Costa Azul", "area": "Costa del Este", "price": 950000, "beds": 3, "baths": "3 + ½", "parking": 2, "size_m2": 504.08, "lot_m2": null, "maintenance": 240, "description": "Casa de dos niveles en Costa Azul, residencial privado de Costa del Este con jardines, área social, gazebo para eventos, parque infantil, canchas deportivas y gimnasio. Pensada para la vida familiar, con áreas sociales amplias bien separadas de las privadas: sala y comedor, desayunador, cocina, lavandería, den, sala familiar, vestíbulo y portal. Tiene tres terrazas, depósito, cuarto y baño de servicio, y dos estacionamientos techados.", "facts": ["Tres terrazas", "Den y sala familiar", "Estacionamientos techados", "Residencial con gimnasio, canchas y parque infantil"], "photos": ["../fotos/juan-costa-azul-3r-1.jpg", "../fotos/juan-costa-azul-3r-2.jpg", "../fotos/juan-costa-azul-3r-3.jpg", "../fotos/juan-costa-azul-3r-4.jpg", "../fotos/juan-costa-azul-3r-5.jpg", "../fotos/juan-costa-azul-3r-6.jpg", "../fotos/juan-costa-azul-3r-7.jpg", "../fotos/juan-costa-azul-3r-8.jpg", "../fotos/juan-costa-azul-3r-9.jpg", "../fotos/juan-costa-azul-3r-10.jpg", "../fotos/juan-costa-azul-3r-11.jpg", "../fotos/juan-costa-azul-3r-12.jpg", "../fotos/juan-costa-azul-3r-13.jpg", "../fotos/juan-costa-azul-3r-14.jpg", "../fotos/juan-costa-azul-3r-15.jpg", "../fotos/juan-costa-azul-3r-16.jpg", "../fotos/juan-costa-azul-3r-17.jpg", "../fotos/juan-costa-azul-3r-18.jpg", "../fotos/juan-costa-azul-3r-19.jpg", "../fotos/juan-costa-azul-3r-20.jpg"]}, {"id": "costa-bella", "building": "Casa en Costa Bella", "area": "Costa del Este · Costa Bella", "price": 995000, "beds": 5, "baths": "5 + ½", "parking": 6, "size_m2": 465, "lot_m2": 465, "maintenance": 210, "description": "Casa familiar amplia en Costa Bella. En planta baja tiene una recámara con baño, oficina, sala, comedor, terraza y áreas sociales. Arriba hay cuatro recámaras y tres baños, la principal con walk-in closet. Incluye cuarto y baño de servicio, lavandería, depósito, área de BBQ y parque infantil.", "facts": ["Recámara en planta baja", "Oficina", "6 estacionamientos", "Área de BBQ y parque infantil"], "photos": ["../fotos/jrd-costa-bella-1.jpg", "../fotos/jrd-costa-bella-2.jpg", "../fotos/jrd-costa-bella-3.jpg", "../fotos/jrd-costa-bella-4.jpg", "../fotos/jrd-costa-bella-5.jpg", "../fotos/jrd-costa-bella-6.jpg", "../fotos/jrd-costa-bella-7.jpg", "../fotos/jrd-costa-bella-8.jpg", "../fotos/jrd-costa-bella-9.jpg", "../fotos/jrd-costa-bella-10.jpg", "../fotos/jrd-costa-bella-11.jpg", "../fotos/jrd-costa-bella-12.jpg", "../fotos/jrd-costa-bella-13.jpg", "../fotos/jrd-costa-bella-14.jpg", "../fotos/jrd-costa-bella-15.jpg", "../fotos/jrd-costa-bella-16.jpg", "../fotos/jrd-costa-bella-17.jpg", "../fotos/jrd-costa-bella-18.jpg", "../fotos/jrd-costa-bella-19.jpg", "../fotos/jrd-costa-bella-20.jpg"]}, {"id": "the-woods-338", "building": "Casa nueva en The Woods", "area": "Santa María · The Woods", "price": 1001178, "beds": 4, "baths": 4, "parking": 2, "size_m2": 338, "lot_m2": null, "maintenance": null, "description": "Casa nueva de proyecto, de 338 m², con cocina italiana, pisos de mármol, ventanas dobles laminadas y grifería y sanitarios de primera línea. Abajo tiene sala y comedor, den, cocina semi abierta, terraza, medio baño de visitas y cuarto con baño de servicio. Arriba, sala familiar y cuatro recámaras, cada una con su baño.", "facts": ["Construcción nueva", "Acabados de lujo", "4 recámaras con baño", "Rodeada de naturaleza"], "photos": ["../fotos/jrd-the-woods-338-1.jpg", "../fotos/jrd-the-woods-338-2.jpg", "../fotos/jrd-the-woods-338-3.jpg", "../fotos/jrd-the-woods-338-4.jpg", "../fotos/jrd-the-woods-338-5.jpg", "../fotos/jrd-the-woods-338-6.jpg", "../fotos/jrd-the-woods-338-7.jpg", "../fotos/jrd-the-woods-338-8.jpg", "../fotos/jrd-the-woods-338-9.jpg", "../fotos/jrd-the-woods-338-10.jpg", "../fotos/jrd-the-woods-338-11.jpg", "../fotos/jrd-the-woods-338-12.jpg", "../fotos/jrd-the-woods-338-13.jpg", "../fotos/jrd-the-woods-338-14.jpg", "../fotos/jrd-the-woods-338-15.jpg", "../fotos/jrd-the-woods-338-16.jpg", "../fotos/jrd-the-woods-338-17.jpg", "../fotos/jrd-the-woods-338-18.jpg", "../fotos/jrd-the-woods-338-19.jpg", "../fotos/jrd-the-woods-338-20.jpg"]}, {"id": "costa-bay-piscina", "building": "Casa con piscina en Costa Bay", "area": "Costa del Este · Costa Bay", "price": 1025000, "beds": 4, "baths": "3 + ½", "parking": 2, "size_m2": 450, "lot_m2": 460, "maintenance": 210, "description": "Casa de dos niveles frente al área social de Costa Bay. Tiene sala y comedor, cocina abierta, oficina, espacio para gimnasio, lavandería y depósito. Afuera hay piscina privada, jardín, terraza techada y área de BBQ. El residencial tiene seguridad, piscina y cancha de tenis, y está cerca de colegios, supermercados y del Corredor Sur.", "facts": ["Piscina privada y BBQ", "Frente al área social", "Oficina y gimnasio", "2 estacionamientos techados"], "photos": ["../fotos/jrd-costa-bay-piscina-1.jpg", "../fotos/jrd-costa-bay-piscina-2.jpg", "../fotos/jrd-costa-bay-piscina-3.jpg", "../fotos/jrd-costa-bay-piscina-4.jpg", "../fotos/jrd-costa-bay-piscina-5.jpg", "../fotos/jrd-costa-bay-piscina-6.jpg", "../fotos/jrd-costa-bay-piscina-7.jpg", "../fotos/jrd-costa-bay-piscina-8.jpg", "../fotos/jrd-costa-bay-piscina-9.jpg", "../fotos/jrd-costa-bay-piscina-10.jpg", "../fotos/jrd-costa-bay-piscina-11.jpg", "../fotos/jrd-costa-bay-piscina-12.jpg", "../fotos/jrd-costa-bay-piscina-13.jpg", "../fotos/jrd-costa-bay-piscina-14.jpg", "../fotos/jrd-costa-bay-piscina-15.jpg", "../fotos/jrd-costa-bay-piscina-16.jpg", "../fotos/jrd-costa-bay-piscina-17.jpg"]}, {"id": "costa-del-este-reformada", "building": "Casa reformada con piscina privada", "area": "Costa del Este", "price": 1025000, "beds": 5, "baths": "3 + ½", "parking": 2, "size_m2": 450, "lot_m2": null, "maintenance": 210, "description": "Casa unifamiliar reformada, en excelente estado y lista para mudarse. Planta baja con vestíbulo, sala y comedor con vista a la piscina, cocina remodelada, recámara de invitados o estudio, terraza techada, cuarto de gimnasio y un salón acristalado para bar, juegos o lounge. Piscina privada con jardín y ducha exterior. Planta alta con tres recámaras con baño, la principal con walk-in closet y bañera, más un den familiar u oficina. Se puede incluir el mobiliario.", "facts": ["Lista para mudarse", "Piscina privada y terraza techada", "Gimnasio y salón acristalado", "Mobiliario opcional"], "photos": ["../fotos/juan-costa-del-este-reformada-1.jpg", "../fotos/juan-costa-del-este-reformada-2.jpg", "../fotos/juan-costa-del-este-reformada-3.jpg", "../fotos/juan-costa-del-este-reformada-4.jpg", "../fotos/juan-costa-del-este-reformada-5.jpg", "../fotos/juan-costa-del-este-reformada-6.jpg", "../fotos/juan-costa-del-este-reformada-7.jpg", "../fotos/juan-costa-del-este-reformada-8.jpg", "../fotos/juan-costa-del-este-reformada-9.jpg", "../fotos/juan-costa-del-este-reformada-10.jpg", "../fotos/juan-costa-del-este-reformada-11.jpg", "../fotos/juan-costa-del-este-reformada-12.jpg", "../fotos/juan-costa-del-este-reformada-13.jpg", "../fotos/juan-costa-del-este-reformada-14.jpg", "../fotos/juan-costa-del-este-reformada-15.jpg", "../fotos/juan-costa-del-este-reformada-16.jpg", "../fotos/juan-costa-del-este-reformada-17.jpg", "../fotos/juan-costa-del-este-reformada-18.jpg", "../fotos/juan-costa-del-este-reformada-19.jpg", "../fotos/juan-costa-del-este-reformada-20.jpg"]}, {"id": "costa-bay-esquina", "building": "Casa de esquina en Costa Bay", "area": "Costa del Este", "price": 1050000, "beds": 5, "baths": "8", "parking": 4, "size_m2": 711.1, "lot_m2": 980.75, "maintenance": 220, "description": "Casa de esquina de tres niveles en Costa Bay, residencial privado con garita, piscina, parque infantil, salón de juegos y canchas. Planta baja con sala de recibo, estudio o biblioteca, sala familiar con bar, comedor, cocina amplia con desayunador, lavandería, cuarto y baño de servicio, y terraza con patio, piscina y gazebo con baño. Segundo nivel con cinco recámaras, cada una con su baño, dos de ellas con balcón. Tercer nivel con ático, medio baño y balcón.", "facts": ["Lote de esquina de casi 1,000 m²", "Piscina y gazebo con baño", "Ático para gimnasio, estudio o sala de TV", "Precio rebajado"], "photos": ["../fotos/juan-costa-bay-esquina-1.jpg", "../fotos/juan-costa-bay-esquina-2.jpg", "../fotos/juan-costa-bay-esquina-3.jpg", "../fotos/juan-costa-bay-esquina-4.jpg", "../fotos/juan-costa-bay-esquina-5.jpg", "../fotos/juan-costa-bay-esquina-6.jpg", "../fotos/juan-costa-bay-esquina-7.jpg", "../fotos/juan-costa-bay-esquina-8.jpg", "../fotos/juan-costa-bay-esquina-9.jpg", "../fotos/juan-costa-bay-esquina-10.jpg", "../fotos/juan-costa-bay-esquina-11.jpg", "../fotos/juan-costa-bay-esquina-12.jpg", "../fotos/juan-costa-bay-esquina-13.jpg", "../fotos/juan-costa-bay-esquina-14.jpg", "../fotos/juan-costa-bay-esquina-15.jpg", "../fotos/juan-costa-bay-esquina-16.jpg", "../fotos/juan-costa-bay-esquina-17.jpg", "../fotos/juan-costa-bay-esquina-18.jpg", "../fotos/juan-costa-bay-esquina-19.jpg", "../fotos/juan-costa-bay-esquina-20.jpg"]}, {"id": "adg-campestre", "building": "Casa estilo campestre en Altos del Golf", "area": "San Francisco · Altos del Golf", "price": 1250000, "beds": 4, "baths": "4 + ½", "parking": 6, "size_m2": 631.7, "lot_m2": 947, "maintenance": null, "description": "Casa de dos plantas en una calle sin salida, con acabados de piedra y madera. Áreas sociales amplias, chimenea, cocina remodelada, terraza, jardín tropical y piscina con cascada. Arriba tiene pisos de madera, baños con doble lavamanos y jacuzzi, y una recámara principal con walk-in closet grande.", "facts": ["Piscina con cascada", "Calle sin salida", "Chimenea", "6 estacionamientos"], "photos": ["../fotos/jrd-adg-campestre-1.jpg", "../fotos/jrd-adg-campestre-2.jpg", "../fotos/jrd-adg-campestre-3.jpg", "../fotos/jrd-adg-campestre-4.jpg", "../fotos/jrd-adg-campestre-5.jpg", "../fotos/jrd-adg-campestre-6.jpg", "../fotos/jrd-adg-campestre-7.jpg", "../fotos/jrd-adg-campestre-8.jpg", "../fotos/jrd-adg-campestre-9.jpg", "../fotos/jrd-adg-campestre-10.jpg", "../fotos/jrd-adg-campestre-11.jpg", "../fotos/jrd-adg-campestre-12.jpg", "../fotos/jrd-adg-campestre-13.jpg", "../fotos/jrd-adg-campestre-14.jpg", "../fotos/jrd-adg-campestre-15.jpg", "../fotos/jrd-adg-campestre-16.jpg", "../fotos/jrd-adg-campestre-17.jpg", "../fotos/jrd-adg-campestre-18.jpg", "../fotos/jrd-adg-campestre-19.jpg", "../fotos/jrd-adg-campestre-20.jpg"]}];
+
+const fmtMoney = n => "$" + Math.round(n).toLocaleString("en-US");
+const fmtM2 = n => n.toLocaleString("en-US",{maximumFractionDigits:2}) + " m²";
+
+function cardHtml(p, i){
+  const base = p.size_m2 || p.lot_m2; const ppm = Math.round(p.price / base); const ppmLabel = p.size_m2 ? "construido" : "de terreno";
+  const strip = p.photos.slice(1,5).map((src,k)=>
+    `<button style="background-image:url('${src}')" data-id="${p.id}" data-i="${k+1}" aria-label="Ver foto ${k+2} de ${p.building}"></button>`).join("");
+  const cells = [
+    [p.beds,"recámaras"],[p.baths,"baños"],[p.parking,"estacionamientos"],
+    [p.size_m2?fmtM2(p.size_m2):null,"construcción"]
+  ];
+  if(p.lot_m2) cells.push([fmtM2(p.lot_m2),"terreno"]);
+  const shown = cells.filter(([v])=>v!==null && v!==undefined && v!=="" && !String(v).startsWith("null"));
+  return `
+  <article class="card">
+    <button class="thumb" style="background-image:url('${p.photos[0]}')" data-id="${p.id}" data-i="0" aria-label="Ver fotos de ${p.building}">
+      <span class="source-tag">Opción ${i+1}</span>
+      <span class="photos-btn">📷 Ver todas las fotos (${p.photos.length})</span>
+    </button>
+    <div class="strip">${strip}</div>
+    <div class="card-body">
+      <h3>${p.building}</h3>
+      <div class="area">${p.area}</div>
+      <div class="price">${fmtMoney(p.price)}<span class="ppm">$${ppm.toLocaleString("en-US")}/m² ${ppmLabel}</span></div>
+      <div class="facts">${shown.map(([v,l])=>`<div><b>${v}</b><span>${l}</span></div>`).join("")}</div>
+      <p class="desc">${p.description}</p>
+      <div class="amenities">
+        <b>Destacados</b>
+        <ul>${p.facts.map(c=>`<li>${c}</li>`).join("")}</ul>
+      </div>
+      ${p.maintenance ? `<div class="maint">Mantenimiento: $${p.maintenance}/mes</div>` : ""}
+      <div class="card-foot">
+        <span class="ref-badge">Opción ${i+1}</span>
+        <span class="updated">Venta · octubre 2026</span>
+      </div>
+    </div>
+  </article>`;
+}
+
+function render(){
+  const sorted = [...PROPERTIES].sort((a,b)=>a.price-b.price);
+  document.getElementById("grid").innerHTML = sorted.map((p,i)=>cardHtml(p,i)).join("");
+  const total = PROPERTIES.reduce((s,p)=>s+p.photos.length,0);
+  document.getElementById("count-meta").textContent = PROPERTIES.length + " propiedades · ordenadas por precio";
+  document.getElementById("stats").innerHTML = `
+    <div class="stat"><div class="n">${PROPERTIES.length}</div><div class="l">PROPIEDADES</div></div>
+    <div class="stat"><div class="n">${total}</div><div class="l">FOTOS</div></div>`;
+}
+
+let galleryPhotos = [], galleryIndex = 0, lastFocus = null;
+function openGallery(id, start){
+  const p = PROPERTIES.find(x=>x.id===id);
+  if(!p) return;
+  lastFocus = document.activeElement;
+  galleryPhotos = p.photos; galleryIndex = start || 0;
+  document.getElementById("lightbox-title").textContent = p.building + " · " + fmtMoney(p.price);
+  document.getElementById("lightbox-thumbs").innerHTML = p.photos.map((s,i)=>`<img src="${s}" data-g="${i}" alt="Miniatura ${i+1}" loading="lazy">`).join("");
+  showPhoto();
+  document.getElementById("lightbox").hidden = false;
+  document.body.style.overflow = "hidden";
+  document.getElementById("lb-close").focus();
+}
+function closeGallery(){
+  document.getElementById("lightbox").hidden = true;
+  document.body.style.overflow = "";
+  if(lastFocus) lastFocus.focus();
+}
+function showPhoto(){
+  document.getElementById("lightbox-img").src = galleryPhotos[galleryIndex];
+  document.getElementById("lightbox-counter").textContent = (galleryIndex+1) + " / " + galleryPhotos.length;
+  document.querySelectorAll("#lightbox-thumbs img").forEach((im,i)=>{
+    im.classList.toggle("active", i===galleryIndex);
+    if(i===galleryIndex) im.scrollIntoView({block:"nearest",inline:"center"});
+  });
+  [galleryIndex+1, galleryIndex-1].forEach(i=>{ const j=(i+galleryPhotos.length)%galleryPhotos.length; new Image().src = galleryPhotos[j]; });
+}
+const nextPhoto = ()=>{ galleryIndex=(galleryIndex+1)%galleryPhotos.length; showPhoto(); };
+const prevPhoto = ()=>{ galleryIndex=(galleryIndex-1+galleryPhotos.length)%galleryPhotos.length; showPhoto(); };
+
+document.getElementById("grid").addEventListener("click", e=>{
+  const b = e.target.closest("[data-id]");
+  if(b) openGallery(b.dataset.id, Number(b.dataset.i));
+});
+document.getElementById("lb-close").addEventListener("click", closeGallery);
+document.getElementById("lb-next").addEventListener("click", nextPhoto);
+document.getElementById("lb-prev").addEventListener("click", prevPhoto);
+document.getElementById("lightbox-thumbs").addEventListener("click", e=>{
+  if(e.target.dataset.g){ galleryIndex = Number(e.target.dataset.g); showPhoto(); }
+});
+document.getElementById("lightbox").addEventListener("click", e=>{ if(e.target.id==="lightbox") closeGallery(); });
+document.addEventListener("keydown", e=>{
+  if(document.getElementById("lightbox").hidden) return;
+  if(e.key==="Escape") closeGallery();
+  if(e.key==="ArrowRight") nextPhoto();
+  if(e.key==="ArrowLeft") prevPhoto();
+});
+let tx=null;
+document.getElementById("lightbox-img").addEventListener("touchstart", e=>{ tx=e.touches[0].clientX; }, {passive:true});
+document.getElementById("lightbox-img").addEventListener("touchend", e=>{
+  if(tx===null) return; const dx=e.changedTouches[0].clientX-tx; tx=null;
+  if(Math.abs(dx)>40) (dx<0?nextPhoto:prevPhoto)();
+});
+
+render();
+</script>
+
+</body>
+</html>
